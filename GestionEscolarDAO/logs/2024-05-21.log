@@ -17,3 +17,11 @@
 [16:39:38] [SUCCESS] - @ 'Profesor' Removed object with id '2'
 [16:39:38] [INFO] - @ 'Profesor' Object saved
 [16:39:38] [SUCCESS] - @ 'Profesor' Updated object with id '3'
+[19:00:54] [WARN] - @ 'Profesor' Tried to add repeated object with id '1'
+[19:00:54] [INFO] - @ 'Profesor' Object saved
+[19:00:54] [SUCCESS] - @ 'Profesor' Object with id: '2' added.
+[19:00:54] [WARN] - @ 'Profesor' Tried to add repeated object with id '3'
+[19:00:54] [INFO] - @ 'Profesor' Object saved
+[19:00:54] [SUCCESS] - @ 'Profesor' Removed object with id '2'
+[19:00:54] [INFO] - @ 'Profesor' Object saved
+[19:00:54] [SUCCESS] - @ 'Profesor' Updated object with id '3'

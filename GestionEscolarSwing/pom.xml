@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>mateourrutia</groupId>
-            <artifactId>GestionEscolar</artifactId>
+            <artifactId>GestionEscolarDAO</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
