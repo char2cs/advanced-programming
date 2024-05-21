@@ -1,0 +1,20 @@
+[16:21:17] [INFO] This is an information log.
+[16:21:17] [ERROR] This is an error log.
+[16:21:17] [WARN] This is a warning log.
+[16:21:17] [FATAL] This is a fatal log.
+[16:21:17] [SUCCESS] This is a success log.
+[INFO] - 16:22:11 - This is an information log.
+[ERROR] - 16:22:11 - This is an error log.
+[WARN] - 16:22:11 - This is a warning log.
+[FATAL] - 16:22:11 - This is a fatal log.
+[SUCCESS] - 16:22:11 - This is a success log.
+[16:22:33] [INFO] - This is an information log.
+[16:22:33] [ERROR] - This is an error log.
+[16:22:33] [WARN] - This is a warning log.
+[16:22:33] [FATAL] - This is a fatal log.
+[16:22:33] [SUCCESS] - This is a success log.
+[16:31:09] [INFO] - This is an information log.
+[16:31:09] [ERROR] - This is an error log.
+[16:31:09] [WARN] - This is a warning log.
+[16:31:09] [FATAL] - This is a fatal log.
+[16:31:09] [SUCCESS] - This is a success log.

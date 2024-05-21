@@ -1,0 +1,19 @@
+[16:31:19] [INFO] - This is an information log.
+[16:31:19] [ERROR] - This is an error log.
+[16:31:19] [WARN] - This is a warning log.
+[16:31:19] [FATAL] - This is a fatal log.
+[16:31:19] [SUCCESS] - This is a success log.
+[16:37:57] [INFO] - @ 'Profesor' Tried to add repeated object with id '1'
+[16:37:57] [FATAL] - @ 'Profesor' Object saved
+[16:37:57] [INFO] - @ 'Profesor' Tried to add repeated object with id '3'
+[16:37:57] [FATAL] - @ 'Profesor' Object saved
+[16:37:57] [SUCCESS] - @ 'Profesor' Removed object with id '2'
+[16:37:57] [FATAL] - @ 'Profesor' Object saved
+[16:37:57] [SUCCESS] - @ 'Profesor' Updated object with id '3'
+[16:39:38] [WARN] - @ 'Profesor' Tried to add repeated object with id '1'
+[16:39:38] [INFO] - @ 'Profesor' Object saved
+[16:39:38] [WARN] - @ 'Profesor' Tried to add repeated object with id '3'
+[16:39:38] [INFO] - @ 'Profesor' Object saved
+[16:39:38] [SUCCESS] - @ 'Profesor' Removed object with id '2'
+[16:39:38] [INFO] - @ 'Profesor' Object saved
+[16:39:38] [SUCCESS] - @ 'Profesor' Updated object with id '3'

@@ -3,8 +3,12 @@ package mateourrutia.FileWriter;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
 import mateourrutia.helper.Property;
+import mateourrutia.helper.Logger;
 
 public class FileWriter<T extends ObjectWriter> {
 	private final String className;
@@ -32,11 +36,22 @@ public class FileWriter<T extends ObjectWriter> {
 
 		objects.add(object);
 		saveFile(objects);
+
+		Logger.log(
+			Logger.LogLevel.SUCCESS,
+			"@ '" + this.className + "' Object with id: '" + object.getId() + "' added."
+		);
 	}
 
 	public void add(T object) {
 		if ( this.get( object.getId() ) != null )
+		{
+			Logger.log(
+				Logger.LogLevel.WARN,
+				"@ '" + this.className + "' Tried to add repeated object with id '" + object.getId() + "'"
+			);
 			return;
+		}
 
 		this.create( object );
 	}
@@ -44,10 +59,14 @@ public class FileWriter<T extends ObjectWriter> {
 	public T get(Integer id) {
 		List<T> objects = this.readFile();
 
-		if ( objects != null && !objects.isEmpty() )
-			for ( T object : objects )
-				if ( object.getId().equals(id) )
-					return object;
+		if (objects != null && !objects.isEmpty())
+		{
+			Optional<T> result = objects.stream()
+				.filter(object -> object.getId().equals(id))
+					.findFirst();
+
+			return result.orElse(null);
+		}
 
 		return null;
 	}
@@ -56,13 +75,26 @@ public class FileWriter<T extends ObjectWriter> {
 		List<T> objects = readFile();
 
 		if (objects != null && !objects.isEmpty())
-			for (int i = 0; i < objects.size(); i++)
-				if ( objects.get(i).getId().equals(object.getId()) )
-				{
-					objects.set(i, object);
-					saveFile(objects);
-					return true;
-				}
+		{
+			OptionalInt index = IntStream.range(0, objects.size())
+				.filter( i -> objects.get(i).getId().equals(object.getId()) )
+					.findFirst();
+
+			if ( index.isPresent() )
+			{
+				objects.set(
+						index.getAsInt(),
+						object
+				);
+				saveFile(objects);
+
+				Logger.log(
+						Logger.LogLevel.SUCCESS,
+						"@ '" + this.className + "' Updated object with id '" + object.getId() + "'"
+				);
+				return true;
+			}
+		}
 
 		return false;
 	}
@@ -71,13 +103,23 @@ public class FileWriter<T extends ObjectWriter> {
 		List<T> objects = readFile();
 
 		if (objects != null && !objects.isEmpty())
-			for (int i = 0; i < objects.size(); i++)
-				if ( objects.get(i).getId().equals(id) )
-				{
-					objects.remove(i);
-					saveFile(objects);
-					return true;
-				}
+		{
+			OptionalInt index = IntStream.range(0, objects.size())
+					.filter( i -> objects.get(i).getId().equals( id ) )
+					.findFirst();
+
+			if ( index.isPresent() )
+			{
+				objects.remove( index.getAsInt() );
+				saveFile(objects);
+
+				Logger.log(
+						Logger.LogLevel.SUCCESS,
+						"@ '" + this.className + "' Removed object with id '" + id + "'"
+				);
+				return true;
+			}
+		}
 
 		return false;
 	}
@@ -103,32 +145,45 @@ public class FileWriter<T extends ObjectWriter> {
 		}
 		catch (FileNotFoundException e) {
 			System.out.println("[FileWriter] @ '" + this.className + "' File not found: " + e.getMessage());
+			Logger.log(
+				Logger.LogLevel.FATAL,
+				"@ '" + this.className + "' File not found: " + e.getMessage()
+			);
 		}
 		catch (IOException | ClassNotFoundException e) {
+			Logger.log(
+				Logger.LogLevel.FATAL,
+				"@ '" + this.className + "' IOException | ClassNotFoundException: " + e.getMessage()
+			);
 			e.printStackTrace();
 		}
 
 		return contents;
 	}
 
-	// Method to write an ArrayList to the file
-	private boolean fileAddContents(ArrayList<T> newContents) {
+	private boolean saveFile( List<T> objects ) {
+		ArrayList<T> newObjects = new ArrayList<>( objects );
+
 		try (
 				ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream(filePath) )
 		) {
-			oos.writeObject( newContents );
+			oos.writeObject( newObjects );
+
+			Logger.log(
+				Logger.LogLevel.INFO,
+				"@ '" + this.className + "' Object saved"
+			);
 		}
 		catch (IOException e) {
+			Logger.log(
+				Logger.LogLevel.FATAL,
+				"@ '" + this.className + "' IOException: " + e.getMessage()
+			);
 			e.printStackTrace();
 			return false;
 		}
 
 		return true;
-	}
-
-	private boolean saveFile( List<T> objects ) {
-		ArrayList<T> newObjects = new ArrayList<>( objects );
-		return this.fileAddContents( newObjects );
 	}
 
 }

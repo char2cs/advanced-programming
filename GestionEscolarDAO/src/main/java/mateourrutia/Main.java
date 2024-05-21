@@ -42,6 +42,15 @@ public class Main {
 
         profesorDAO.delete(2);
 
+        profesorDAO.update(new Profesor(
+                3,
+                45518345,
+                "New Name",
+                "NAMING",
+                "Informatica II",
+                new ArrayList<>()
+        ));
+
         for ( Profesor alumno : profesorDAO.getAll() )
             System.out.println(alumno);
     }
