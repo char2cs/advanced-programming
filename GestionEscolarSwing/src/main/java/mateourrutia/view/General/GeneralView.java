@@ -2,23 +2,27 @@
  * Created by JFormDesigner on Wed May 22 15:42:33 ART 2024
  */
 
-package mateourrutia.view.Objects;
+package mateourrutia.view.General;
+
+import java.util.List;
 
 import java.awt.*;
 import javax.swing.*;
 
+import mateourrutia.controller.General.GeneralTableModel;
+
 /**
  * @author char2cs
  */
-public class GeneralView extends JPanel {
-    public GeneralView() {
-        initComponents();
+public class GeneralView<T> extends JPanel {
+    public GeneralView( GeneralTableModel<T> tableModel ) {
+        initComponents( tableModel );
     }
 
-    private void initComponents() {
+    private void initComponents( GeneralTableModel<T> tableModel ) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         tableScroll = new JScrollPane();
-        Table = new JTable();
+        Table = new JTable(tableModel);
         Buttons = new JPanel();
         BtnRight = new JPanel();
         Add = new JButton();
@@ -93,4 +97,9 @@ public class GeneralView extends JPanel {
     public JTable getTable() {
         return Table;
     }
+
+    public void setTable(JTable table) {
+        Table = table;
+    }
+
 }

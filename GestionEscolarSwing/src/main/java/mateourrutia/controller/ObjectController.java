@@ -1,5 +1,7 @@
 package mateourrutia.controller;
 
+import mateourrutia.controller.Objects.PabellonController;
+import mateourrutia.view.General.GeneralView;
 import mateourrutia.view.ObjectView;
 
 import java.awt.event.WindowAdapter;
@@ -9,8 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
-
-import mateourrutia.view.Objects.*;
 
 public class ObjectController {
 	private final ObjectView objectView;
@@ -27,10 +27,10 @@ public class ObjectController {
 	) {
 		switch (selectedItem) {
 			case "Pabellon":
-				return new GeneralView();
+				return PabellonController.get().getView();
 		}
 
-		return new GeneralView();
+		return null;
 	}
 
 	private void setUpListeners() {
