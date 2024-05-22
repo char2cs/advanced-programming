@@ -1,0 +1,89 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"title": "Gestion Escolar"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "EntitiesScroll"
+					"minimumSize": new java.awt.Dimension( 500, 22 )
+					add( new FormComponent( "javax.swing.JTree" ) {
+						name: "Entities"
+						"model": new javax.swing.tree.DefaultTreeModel( new javax.swing.tree.DefaultMutableTreeNode {
+							userObject: "(root)"
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Profesor"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Alumno"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Mantenimiento"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Administrativo"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Curso"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Carrera"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Pabellon"
+							} )
+						} )
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"rootVisible": false
+						"showsRootHandles": false
+						"cursor": new java.awt.Cursor( 12 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "West"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "Scene"
+					"cursor": new java.awt.Cursor( 3 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "menuBar1"
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "FIle"
+					"text": "File"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "NewEntity"
+						"text": "New Entity"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "Exit"
+						"text": "Exit"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "View"
+					"text": "View"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "consoleBtn"
+						"text": "Open console logs"
+					} )
+				} )
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 165, 200 )
+			"size": new java.awt.Dimension( 795, 560 )
+		} )
+	}
+}
