@@ -8,18 +8,17 @@ import java.util.List;
 
 import java.awt.*;
 import javax.swing.*;
-
-import mateourrutia.controller.General.GeneralTableModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author char2cs
  */
-public class GeneralView<T> extends JPanel {
-    public GeneralView( GeneralTableModel<T> tableModel ) {
+public class GeneralView extends JPanel {
+    public GeneralView(DefaultTableModel tableModel ) {
         initComponents( tableModel );
     }
 
-    private void initComponents( GeneralTableModel<T> tableModel ) {
+    private void initComponents( DefaultTableModel tableModel ) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         tableScroll = new JScrollPane();
         Table = new JTable(tableModel);

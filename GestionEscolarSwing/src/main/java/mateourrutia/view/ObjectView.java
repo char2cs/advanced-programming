@@ -132,6 +132,9 @@ public class ObjectView extends JFrame {
     }
 
     public void setScene(JPanel sceneContent) {
+        if ( sceneContent == null )
+            return;
+
         Scene.removeAll();
         Scene.add(sceneContent, BorderLayout.CENTER);
         Scene.revalidate();

@@ -130,7 +130,7 @@ public class FileWriter<T extends ObjectWriter> {
 		if ( objects != null && !objects.isEmpty() )
 			return objects;
 
-		return null;
+		return new ArrayList<>();
 	}
 
 	// File interacting methods...

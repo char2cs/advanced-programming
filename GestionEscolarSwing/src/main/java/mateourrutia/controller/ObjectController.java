@@ -1,7 +1,6 @@
 package mateourrutia.controller;
 
 import mateourrutia.controller.Objects.PabellonController;
-import mateourrutia.view.General.GeneralView;
 import mateourrutia.view.ObjectView;
 
 import java.awt.event.WindowAdapter;
@@ -27,7 +26,8 @@ public class ObjectController {
 	) {
 		switch (selectedItem) {
 			case "Pabellon":
-				return PabellonController.get().getView();
+				PabellonController pabellonController = new PabellonController();
+				return pabellonController.getView();
 		}
 
 		return null;

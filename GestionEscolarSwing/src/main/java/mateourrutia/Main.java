@@ -1,24 +1,19 @@
 package mateourrutia;
 
-import mateourrutia.DAO.imp.ProfesorDAOImp;
-import mateourrutia.domain.Profesor;
-
-import java.util.ArrayList;
+import mateourrutia.DAO.imp.PabellonDAOImp;
+import mateourrutia.domain.Pabellon;
 
 public class Main {
 	public static void main(String[] args) {
-		ProfesorDAOImp profesorDAO = new ProfesorDAOImp();
+		PabellonDAOImp pabellonDAOImp = new PabellonDAOImp();
 
-		profesorDAO.add(new Profesor(
-				0,
-				45518340,
-				"Mateo",
-				"Urrutia",
-				"test",
-				new ArrayList<>()
+		pabellonDAOImp.create(new Pabellon(
+				1,
+				"Testing",
+				"USAL"
 		));
 
-		for (Profesor profesor : profesorDAO.getAll())
-			System.out.println(profesor);
+		for (Pabellon pabellon : pabellonDAOImp.getAll())
+			System.out.println(pabellon);
 	}
 }
