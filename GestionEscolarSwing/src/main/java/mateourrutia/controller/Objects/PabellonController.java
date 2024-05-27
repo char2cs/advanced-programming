@@ -4,7 +4,9 @@ import mateourrutia.DAO.imp.PabellonDAOImp;
 import mateourrutia.controller.GeneralController;
 import mateourrutia.domain.Pabellon;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.event.TableModelEvent;
 
 public class PabellonController extends GeneralController<Pabellon> {
 
@@ -38,9 +40,47 @@ public class PabellonController extends GeneralController<Pabellon> {
         }
         catch ( IllegalAccessException e ) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
-        return;
     }
 
+    // Table Model Listeners
+    @Override
+    protected void onUpdate(
+            TableModelEvent e
+    ) throws ClassCastException {
+        DefaultTableModel Model = this.getModel();
+        int row                 = e.getFirstRow();
+        int column              = e.getColumn();
+
+        Object      newValue   = Model.getValueAt(row, column);
+        Pabellon    pabellon   = pabellonDAOImp.get(
+                (int) Model.getValueAt(row, 0)
+        );
+
+        switch (column) {
+            case 0:
+                break;
+            case 1:
+                pabellon.setName( (String) newValue );
+                break;
+            case 2:
+                pabellon.setUbicacion( (String) newValue );
+                break;
+        }
+
+        pabellonDAOImp.update( pabellon );
+    }
+
+    @Override
+    protected void onDelete(
+            int[] rows,
+            JTable table
+    ) throws ClassCastException {
+        for ( int row : rows )
+        {
+            pabellonDAOImp.delete( (int) table.getValueAt(row, 0) );
+            this.removeRow( row );
+        }
+    }
 }

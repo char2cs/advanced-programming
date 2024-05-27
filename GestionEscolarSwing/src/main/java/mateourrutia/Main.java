@@ -8,9 +8,9 @@ public class Main {
 		PabellonDAOImp pabellonDAOImp = new PabellonDAOImp();
 
 		pabellonDAOImp.create(new Pabellon(
-				1,
-				"Testing",
-				"USAL"
+				2,
+				"Testing2",
+				"USAL2"
 		));
 
 		for (Pabellon pabellon : pabellonDAOImp.getAll())
