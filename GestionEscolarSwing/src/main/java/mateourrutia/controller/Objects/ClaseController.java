@@ -5,13 +5,14 @@ import mateourrutia.controller.TableTypes.ComplexController;
 import mateourrutia.controller.TableTypes.GeneralController;
 import mateourrutia.controller.TableTypes.SimpleController;
 import mateourrutia.controller.TableTypes.TableTypes;
+import mateourrutia.domain.Alumno;
 import mateourrutia.domain.Clase;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
-public class ClaseController extends ComplexController<Clase> {
+public class ClaseController extends ComplexController<Clase, Alumno> {
 	ClaseDAOImp claseDAOImp = new ClaseDAOImp();
 
 	public ClaseController() {
@@ -29,7 +30,7 @@ public class ClaseController extends ComplexController<Clase> {
 		}
 	}
 
-	private GeneralController<Clase> createGeneralController() throws IllegalAccessException {
+	public GeneralController<Clase> createGeneralController() throws IllegalAccessException {
 		Object[] header = {"#", "Nombre", "Pabellon", "Profesor"};
 
 		DefaultTableModel tableModel = new DefaultTableModel(
@@ -68,7 +69,12 @@ public class ClaseController extends ComplexController<Clase> {
 		};
 	}
 
-	private SimpleController<Clase> createSimpleController() throws IllegalAccessException {
+	/**
+	 * TODO: 'Alumno' Default Table model here
+	 * @return
+	 * @throws IllegalAccessException
+	 */
+	private SimpleController<Alumno> createSimpleController() throws IllegalAccessException {
 		Object[] header = {"#", "Nombre", "Pabellon", "Profesor"};
 
 		DefaultTableModel tableModel = new DefaultTableModel(
@@ -89,9 +95,9 @@ public class ClaseController extends ComplexController<Clase> {
 			}
 		};
 
-		return new SimpleController<Clase>(tableModel) {
+		return new SimpleController<Alumno>(tableModel) {
 			@Override
-			protected Clase onAdd() throws ClassCastException {
+			protected Alumno onAdd() throws ClassCastException {
 				return null;
 			}
 

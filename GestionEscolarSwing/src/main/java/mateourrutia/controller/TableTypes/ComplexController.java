@@ -2,23 +2,23 @@ package mateourrutia.controller.TableTypes;
 
 import mateourrutia.view.TableTypes.ComplexView;
 
-public abstract class ComplexController<T> {
+public abstract class ComplexController<T, G> {
 	private ComplexView 			view;
 	private GeneralController<T> 	generalController;
-	private SimpleController<T>		simpleController;
+	private SimpleController<G>		simpleController;
 
 	public ComplexController() {}
 
 	public ComplexController(
 			GeneralController<T> generalController,
-			SimpleController<T> simpleController
+			SimpleController<G> simpleController
 	) {
 		setControllers(generalController, simpleController);
 	}
 
 	protected void setControllers(
 			GeneralController<T> generalController,
-			SimpleController<T> simpleController
+			SimpleController<G> simpleController
 	) {
 		this.generalController 	= generalController;
 		this.simpleController 	= simpleController;
