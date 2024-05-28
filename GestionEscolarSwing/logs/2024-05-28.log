@@ -1,0 +1,240 @@
+[11:18:38] [INFO] - @ 'Pabellon' Object saved
+[11:18:38] [SUCCESS] - @ 'Pabellon' Object with id: '1' added.
+[11:18:42] [INFO] - @ 'Pabellon' Object saved
+[11:18:42] [SUCCESS] - @ 'Pabellon' Updated object with id '1'
+[11:18:45] [INFO] - @ 'Pabellon' Object saved
+[11:18:45] [SUCCESS] - @ 'Pabellon' Updated object with id '1'
+[11:19:01] [INFO] - @ 'Pabellon' Object saved
+[11:19:01] [SUCCESS] - @ 'Pabellon' Removed object with id '1'
+[11:21:31] [INFO] - @ 'Pabellon' Object saved
+[11:21:31] [SUCCESS] - @ 'Pabellon' Object with id: '1' added.
+[11:21:36] [INFO] - @ 'Pabellon' Object saved
+[11:21:36] [SUCCESS] - @ 'Pabellon' Updated object with id '1'
+[11:21:39] [INFO] - @ 'Pabellon' Object saved
+[11:21:39] [SUCCESS] - @ 'Pabellon' Updated object with id '1'
+[11:21:39] [INFO] - @ 'Pabellon' Object saved
+[11:21:39] [SUCCESS] - @ 'Pabellon' Object with id: '2' added.
+[11:21:41] [INFO] - @ 'Pabellon' Object saved
+[11:21:41] [SUCCESS] - @ 'Pabellon' Updated object with id '2'
+[11:21:43] [INFO] - @ 'Pabellon' Object saved
+[11:21:43] [SUCCESS] - @ 'Pabellon' Updated object with id '2'
+[11:21:43] [INFO] - @ 'Pabellon' Object saved
+[11:21:43] [SUCCESS] - @ 'Pabellon' Object with id: '3' added.
+[11:21:45] [INFO] - @ 'Pabellon' Object saved
+[11:21:45] [SUCCESS] - @ 'Pabellon' Updated object with id '3'
+[11:21:48] [INFO] - @ 'Pabellon' Object saved
+[11:21:48] [SUCCESS] - @ 'Pabellon' Updated object with id '3'
+[11:22:03] [INFO] - @ 'Pabellon' Object saved
+[11:22:03] [SUCCESS] - @ 'Pabellon' Removed object with id '2'
+[11:22:07] [INFO] - @ 'Pabellon' Object saved
+[11:22:07] [SUCCESS] - @ 'Pabellon' Removed object with id '3'
+[11:22:23] [INFO] - @ 'Pabellon' Object saved
+[11:22:23] [SUCCESS] - @ 'Pabellon' Object with id: '2' added.
+[11:22:26] [INFO] - @ 'Pabellon' Object saved
+[11:22:26] [SUCCESS] - @ 'Pabellon' Updated object with id '2'
+[11:22:26] [INFO] - @ 'Pabellon' Object saved
+[11:22:26] [SUCCESS] - @ 'Pabellon' Object with id: '3' added.
+[11:22:28] [INFO] - @ 'Pabellon' Object saved
+[11:22:28] [SUCCESS] - @ 'Pabellon' Updated object with id '3'
+[11:23:32] [INFO] - @ 'Pabellon' Object saved
+[11:23:32] [SUCCESS] - @ 'Pabellon' Removed object with id '1'
+[11:23:32] [INFO] - @ 'Pabellon' Object saved
+[11:23:32] [SUCCESS] - @ 'Pabellon' Removed object with id '3'
+[11:24:16] [INFO] - @ 'Pabellon' Object saved
+[11:24:16] [SUCCESS] - @ 'Pabellon' Updated object with id '2'
+[11:24:18] [INFO] - @ 'Pabellon' Object saved
+[11:24:18] [SUCCESS] - @ 'Pabellon' Removed object with id '2'
+[11:24:39] [INFO] - @ 'Pabellon' Object saved
+[11:24:39] [SUCCESS] - @ 'Pabellon' Object with id: '1' added.
+[11:24:41] [INFO] - @ 'Pabellon' Object saved
+[11:24:41] [SUCCESS] - @ 'Pabellon' Updated object with id '1'
+[11:24:42] [INFO] - @ 'Pabellon' Object saved
+[11:24:42] [SUCCESS] - @ 'Pabellon' Object with id: '2' added.
+[11:24:44] [INFO] - @ 'Pabellon' Object saved
+[11:24:44] [SUCCESS] - @ 'Pabellon' Updated object with id '2'
+[11:24:45] [INFO] - @ 'Pabellon' Object saved
+[11:24:45] [SUCCESS] - @ 'Pabellon' Object with id: '3' added.
+[11:24:46] [INFO] - @ 'Pabellon' Object saved
+[11:24:46] [SUCCESS] - @ 'Pabellon' Updated object with id '3'
+[11:24:47] [INFO] - @ 'Pabellon' Object saved
+[11:24:47] [SUCCESS] - @ 'Pabellon' Object with id: '4' added.
+[11:24:50] [INFO] - @ 'Pabellon' Object saved
+[11:24:50] [SUCCESS] - @ 'Pabellon' Updated object with id '4'
+[11:24:54] [INFO] - @ 'Pabellon' Object saved
+[11:24:54] [SUCCESS] - @ 'Pabellon' Removed object with id '1'
+[11:24:54] [INFO] - @ 'Pabellon' Object saved
+[11:24:54] [SUCCESS] - @ 'Pabellon' Removed object with id '3'
+[11:25:14] [INFO] - @ 'Pabellon' Object saved
+[11:25:14] [SUCCESS] - @ 'Pabellon' Object with id: '3' added.
+[11:25:16] [INFO] - @ 'Pabellon' Object saved
+[11:25:16] [SUCCESS] - @ 'Pabellon' Updated object with id '3'
+[11:25:16] [WARN] - @ 'Pabellon' Tried to add repeated object with id '4'
+[11:25:18] [INFO] - @ 'Pabellon' Object saved
+[11:25:18] [SUCCESS] - @ 'Pabellon' Updated object with id '4'
+[11:25:20] [INFO] - @ 'Pabellon' Object saved
+[11:25:20] [SUCCESS] - @ 'Pabellon' Removed object with id '2'
+[11:25:20] [INFO] - @ 'Pabellon' Object saved
+[11:25:20] [SUCCESS] - @ 'Pabellon' Removed object with id '3'
+[11:25:46] [INFO] - @ 'Pabellon' Object saved
+[11:25:46] [SUCCESS] - @ 'Pabellon' Removed object with id '4'
+[11:25:49] [INFO] - @ 'Pabellon' Object saved
+[11:25:49] [SUCCESS] - @ 'Pabellon' Object with id: '1' added.
+[11:25:51] [INFO] - @ 'Pabellon' Object saved
+[11:25:51] [SUCCESS] - @ 'Pabellon' Updated object with id '1'
+[11:25:51] [INFO] - @ 'Pabellon' Object saved
+[11:25:51] [SUCCESS] - @ 'Pabellon' Object with id: '2' added.
+[11:25:53] [INFO] - @ 'Pabellon' Object saved
+[11:25:53] [SUCCESS] - @ 'Pabellon' Updated object with id '2'
+[11:25:54] [INFO] - @ 'Pabellon' Object saved
+[11:25:54] [SUCCESS] - @ 'Pabellon' Object with id: '3' added.
+[11:25:56] [INFO] - @ 'Pabellon' Object saved
+[11:25:56] [SUCCESS] - @ 'Pabellon' Updated object with id '3'
+[11:25:56] [INFO] - @ 'Pabellon' Object saved
+[11:25:56] [SUCCESS] - @ 'Pabellon' Object with id: '4' added.
+[11:25:58] [INFO] - @ 'Pabellon' Object saved
+[11:25:58] [SUCCESS] - @ 'Pabellon' Updated object with id '4'
+[11:25:59] [INFO] - @ 'Pabellon' Object saved
+[11:25:59] [SUCCESS] - @ 'Pabellon' Object with id: '5' added.
+[11:26:01] [INFO] - @ 'Pabellon' Object saved
+[11:26:01] [SUCCESS] - @ 'Pabellon' Object with id: '6' added.
+[11:26:03] [INFO] - @ 'Pabellon' Object saved
+[11:26:03] [SUCCESS] - @ 'Pabellon' Updated object with id '5'
+[11:26:05] [INFO] - @ 'Pabellon' Object saved
+[11:26:05] [SUCCESS] - @ 'Pabellon' Updated object with id '6'
+[11:26:11] [INFO] - @ 'Pabellon' Object saved
+[11:26:11] [SUCCESS] - @ 'Pabellon' Removed object with id '1'
+[11:26:11] [INFO] - @ 'Pabellon' Object saved
+[11:26:11] [SUCCESS] - @ 'Pabellon' Removed object with id '3'
+[11:26:11] [INFO] - @ 'Pabellon' Object saved
+[11:26:11] [SUCCESS] - @ 'Pabellon' Removed object with id '5'
+[11:31:14] [WARN] - @ 'Pabellon' Tried to add repeated object with id '4'
+[11:31:17] [INFO] - @ 'Pabellon' Object saved
+[11:31:17] [SUCCESS] - @ 'Pabellon' Updated object with id '4'
+[11:31:19] [INFO] - @ 'Pabellon' Object saved
+[11:31:19] [SUCCESS] - @ 'Pabellon' Updated object with id '4'
+[11:31:22] [INFO] - @ 'Pabellon' Object saved
+[11:31:22] [SUCCESS] - @ 'Pabellon' Removed object with id '2'
+[11:31:22] [INFO] - @ 'Pabellon' Object saved
+[11:31:22] [SUCCESS] - @ 'Pabellon' Removed object with id '6'
+[11:34:18] [INFO] - @ 'Pabellon' Object saved
+[11:34:18] [SUCCESS] - @ 'Pabellon' Object with id: '2' added.
+[11:34:22] [INFO] - @ 'Pabellon' Object saved
+[11:34:22] [SUCCESS] - @ 'Pabellon' Updated object with id '2'
+[11:34:23] [INFO] - @ 'Pabellon' Object saved
+[11:34:23] [SUCCESS] - @ 'Pabellon' Object with id: '3' added.
+[11:34:24] [INFO] - @ 'Pabellon' Object saved
+[11:34:24] [SUCCESS] - @ 'Pabellon' Updated object with id '3'
+[11:34:25] [WARN] - @ 'Pabellon' Tried to add repeated object with id '4'
+[11:34:27] [INFO] - @ 'Pabellon' Object saved
+[11:34:27] [SUCCESS] - @ 'Pabellon' Updated object with id '4'
+[11:34:28] [WARN] - @ 'Pabellon' Tried to add repeated object with id '4'
+[11:34:30] [INFO] - @ 'Pabellon' Object saved
+[11:34:30] [SUCCESS] - @ 'Pabellon' Updated object with id '4'
+[11:34:54] [INFO] - @ 'Pabellon' Object saved
+[11:34:54] [SUCCESS] - @ 'Pabellon' Removed object with id '4'
+[11:34:54] [INFO] - @ 'Pabellon' Object saved
+[11:34:54] [SUCCESS] - @ 'Pabellon' Removed object with id '3'
+[11:34:54] [INFO] - @ 'Pabellon' Object saved
+[11:34:54] [SUCCESS] - @ 'Pabellon' Removed object with id '2'
+[11:34:58] [INFO] - @ 'Pabellon' Object saved
+[11:34:58] [SUCCESS] - @ 'Pabellon' Object with id: '1' added.
+[11:35:00] [INFO] - @ 'Pabellon' Object saved
+[11:35:00] [SUCCESS] - @ 'Pabellon' Updated object with id '1'
+[11:35:01] [INFO] - @ 'Pabellon' Object saved
+[11:35:01] [SUCCESS] - @ 'Pabellon' Object with id: '2' added.
+[11:35:02] [INFO] - @ 'Pabellon' Object saved
+[11:35:02] [SUCCESS] - @ 'Pabellon' Updated object with id '2'
+[11:35:03] [INFO] - @ 'Pabellon' Object saved
+[11:35:03] [SUCCESS] - @ 'Pabellon' Object with id: '3' added.
+[11:35:05] [INFO] - @ 'Pabellon' Object saved
+[11:35:05] [SUCCESS] - @ 'Pabellon' Updated object with id '3'
+[11:35:05] [INFO] - @ 'Pabellon' Object saved
+[11:35:05] [SUCCESS] - @ 'Pabellon' Object with id: '4' added.
+[11:35:07] [INFO] - @ 'Pabellon' Object saved
+[11:35:07] [SUCCESS] - @ 'Pabellon' Updated object with id '4'
+[11:36:52] [INFO] - @ 'Pabellon' Object saved
+[11:36:52] [SUCCESS] - @ 'Pabellon' Removed object with id '3'
+[11:37:01] [INFO] - @ 'Pabellon' Object saved
+[11:37:01] [SUCCESS] - @ 'Pabellon' Object with id: '5' added.
+[11:37:02] [INFO] - @ 'Pabellon' Object saved
+[11:37:02] [SUCCESS] - @ 'Pabellon' Updated object with id '5'
+[11:37:05] [INFO] - @ 'Pabellon' Object saved
+[11:37:05] [SUCCESS] - @ 'Pabellon' Removed object with id '5'
+[11:37:05] [INFO] - @ 'Pabellon' Object saved
+[11:37:05] [SUCCESS] - @ 'Pabellon' Removed object with id '4'
+[11:37:05] [INFO] - @ 'Pabellon' Object saved
+[11:37:05] [SUCCESS] - @ 'Pabellon' Removed object with id '2'
+[11:37:05] [INFO] - @ 'Pabellon' Object saved
+[11:37:05] [SUCCESS] - @ 'Pabellon' Removed object with id '1'
+[12:00:20] [FATAL] - @ 'Carrera' File not found: data/Carrera.dat (No such file or directory)
+[12:00:22] [FATAL] - @ 'Carrera' File not found: data/Carrera.dat (No such file or directory)
+[12:02:10] [FATAL] - @ 'Carrera' File not found: data/Carrera.dat (No such file or directory)
+[12:02:12] [FATAL] - @ 'Carrera' File not found: data/Carrera.dat (No such file or directory)
+[12:02:12] [FATAL] - @ 'Carrera' File not found: data/Carrera.dat (No such file or directory)
+[12:02:12] [FATAL] - @ 'Carrera' File not found: data/Carrera.dat (No such file or directory)
+[12:02:12] [INFO] - @ 'Carrera' Object saved
+[12:02:12] [SUCCESS] - @ 'Carrera' Object with id: '0' added.
+[12:02:17] [INFO] - @ 'Carrera' Object saved
+[12:02:17] [SUCCESS] - @ 'Carrera' Updated object with id '0'
+[12:02:19] [INFO] - @ 'Carrera' Object saved
+[12:02:19] [SUCCESS] - @ 'Carrera' Object with id: '1' added.
+[12:02:22] [INFO] - @ 'Carrera' Object saved
+[12:02:22] [SUCCESS] - @ 'Carrera' Updated object with id '1'
+[12:02:28] [INFO] - @ 'Carrera' Object saved
+[12:02:28] [SUCCESS] - @ 'Carrera' Removed object with id '1'
+[12:02:31] [INFO] - @ 'Carrera' Object saved
+[12:02:31] [SUCCESS] - @ 'Carrera' Object with id: '1' added.
+[12:02:34] [INFO] - @ 'Carrera' Object saved
+[12:02:34] [SUCCESS] - @ 'Carrera' Updated object with id '1'
+[12:03:57] [INFO] - @ 'Carrera' Object saved
+[12:03:57] [SUCCESS] - @ 'Carrera' Updated object with id '0'
+[12:04:09] [INFO] - @ 'Carrera' Object saved
+[12:04:09] [SUCCESS] - @ 'Carrera' Removed object with id '0'
+[12:04:10] [INFO] - @ 'Carrera' Object saved
+[12:04:10] [SUCCESS] - @ 'Carrera' Object with id: '2' added.
+[12:04:10] [INFO] - @ 'Carrera' Object saved
+[12:04:10] [SUCCESS] - @ 'Carrera' Object with id: '3' added.
+[12:04:11] [INFO] - @ 'Carrera' Object saved
+[12:04:11] [SUCCESS] - @ 'Carrera' Object with id: '4' added.
+[12:04:11] [INFO] - @ 'Carrera' Object saved
+[12:04:11] [SUCCESS] - @ 'Carrera' Object with id: '5' added.
+[12:04:11] [INFO] - @ 'Carrera' Object saved
+[12:04:11] [SUCCESS] - @ 'Carrera' Object with id: '6' added.
+[12:04:11] [INFO] - @ 'Carrera' Object saved
+[12:04:11] [SUCCESS] - @ 'Carrera' Object with id: '7' added.
+[12:04:14] [INFO] - @ 'Carrera' Object saved
+[12:04:14] [SUCCESS] - @ 'Carrera' Removed object with id '4'
+[12:04:18] [INFO] - @ 'Carrera' Object saved
+[12:04:18] [SUCCESS] - @ 'Carrera' Removed object with id '6'
+[12:04:18] [INFO] - @ 'Carrera' Object saved
+[12:04:18] [SUCCESS] - @ 'Carrera' Removed object with id '5'
+[12:04:18] [INFO] - @ 'Carrera' Object saved
+[12:04:18] [SUCCESS] - @ 'Carrera' Removed object with id '3'
+[12:04:18] [INFO] - @ 'Carrera' Object saved
+[12:04:18] [SUCCESS] - @ 'Carrera' Removed object with id '2'
+[12:04:21] [INFO] - @ 'Carrera' Object saved
+[12:04:21] [SUCCESS] - @ 'Carrera' Updated object with id '7'
+[12:04:23] [INFO] - @ 'Carrera' Object saved
+[12:04:23] [SUCCESS] - @ 'Carrera' Object with id: '8' added.
+[12:04:26] [INFO] - @ 'Carrera' Object saved
+[12:04:26] [SUCCESS] - @ 'Carrera' Removed object with id '8'
+[12:04:28] [INFO] - @ 'Carrera' Object saved
+[12:04:28] [SUCCESS] - @ 'Carrera' Removed object with id '7'
+[12:08:13] [INFO] - @ 'Carrera' Object saved
+[12:08:13] [SUCCESS] - @ 'Carrera' Object with id: '2' added.
+[12:08:15] [INFO] - @ 'Carrera' Object saved
+[12:08:15] [SUCCESS] - @ 'Carrera' Updated object with id '2'
+[12:08:16] [INFO] - @ 'Carrera' Object saved
+[12:08:16] [SUCCESS] - @ 'Carrera' Object with id: '3' added.
+[12:08:18] [INFO] - @ 'Carrera' Object saved
+[12:08:18] [SUCCESS] - @ 'Carrera' Updated object with id '3'
+[12:08:19] [INFO] - @ 'Carrera' Object saved
+[12:08:19] [SUCCESS] - @ 'Carrera' Object with id: '4' added.
+[12:08:21] [INFO] - @ 'Carrera' Object saved
+[12:08:21] [SUCCESS] - @ 'Carrera' Updated object with id '4'
+[12:08:24] [INFO] - @ 'Carrera' Object saved
+[12:08:24] [SUCCESS] - @ 'Carrera' Removed object with id '4'
+[12:08:24] [INFO] - @ 'Carrera' Object saved
+[12:08:24] [SUCCESS] - @ 'Carrera' Removed object with id '3'
+[12:08:24] [INFO] - @ 'Carrera' Object saved
+[12:08:24] [SUCCESS] - @ 'Carrera' Removed object with id '2'

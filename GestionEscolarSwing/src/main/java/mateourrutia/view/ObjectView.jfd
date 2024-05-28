@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.10" encoding: "UTF-8"
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.11" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -64,8 +64,8 @@ new FormModel {
 					name: "FIle"
 					"text": "File"
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
-						name: "NewEntity"
-						"text": "New Entity"
+						name: "Reload"
+						"text": "Reload"
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "Exit"

@@ -21,7 +21,7 @@ public class ObjectView extends JFrame {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         menuBar1 = new JMenuBar();
         FIle = new JMenu();
-        NewEntity = new JMenuItem();
+        Reload = new JMenuItem();
         Exit = new JMenuItem();
         View = new JMenu();
         consoleBtn = new JMenuItem();
@@ -42,9 +42,9 @@ public class ObjectView extends JFrame {
             {
                 FIle.setText("File");
 
-                //---- NewEntity ----
-                NewEntity.setText("New Entity");
-                FIle.add(NewEntity);
+                //---- Reload ----
+                Reload.setText("Reload");
+                FIle.add(Reload);
 
                 //---- Exit ----
                 Exit.setText("Exit");
@@ -109,7 +109,7 @@ public class ObjectView extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JMenuBar menuBar1;
     private JMenu FIle;
-    private JMenuItem NewEntity;
+    private JMenuItem Reload;
     private JMenuItem Exit;
     private JMenu View;
     private JMenuItem consoleBtn;
@@ -121,6 +121,10 @@ public class ObjectView extends JFrame {
 
     public JMenuItem getExit() {
         return Exit;
+    }
+
+    public JMenuItem getReload() {
+        return Reload;
     }
 
     public JTree getEntities() {

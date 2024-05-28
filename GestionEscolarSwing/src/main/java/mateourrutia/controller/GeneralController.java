@@ -6,9 +6,16 @@ import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import java.lang.reflect.Field;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class GeneralController<T> {
@@ -111,6 +118,13 @@ public abstract class GeneralController<T> {
     }
 
     /**
+     * On add button event, will fire up this event.
+     * @return
+     * @throws ClassCastException
+     */
+    protected abstract T onAdd() throws ClassCastException;
+
+    /**
      * On row update, this function will be called.
      * @param e TableModelEvent - Event
      * @throws ClassCastException
@@ -126,7 +140,7 @@ public abstract class GeneralController<T> {
      * @param table
      */
     protected abstract void onDelete(
-            int[] rows,
+            Integer[] rows,
             JTable table
     ) throws ClassCastException;
 
@@ -149,11 +163,45 @@ public abstract class GeneralController<T> {
     private void setUpListeners() {
         JTable table = view.getTable();
 
+        table.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_DELETE) {
+                    try {
+                        Integer[] rowsArray = Arrays.stream( table.getSelectedRows() ).boxed().toArray(Integer[]::new);
+                        Arrays.sort( rowsArray, Collections.reverseOrder() );
+
+                        onDelete( rowsArray, table );
+                    }
+                    catch (ClassCastException exception) {
+                        exception.printStackTrace();
+                        throw new RuntimeException(exception);
+                    }
+                }
+            }
+        });
+
         view.getDelete().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    onDelete( table.getSelectedRows(), table );
+                    Integer[] rowsArray = Arrays.stream( table.getSelectedRows() ).boxed().toArray(Integer[]::new);
+                    Arrays.sort( rowsArray, Collections.reverseOrder() );
+
+                    onDelete( rowsArray, table );
+                }
+                catch ( ClassCastException exception ) {
+                    exception.printStackTrace();
+                    throw new RuntimeException( exception );
+                }
+            }
+        });
+
+        view.getAdd().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    addRow( onAdd() );
                 }
                 catch ( ClassCastException exception ) {
                     exception.printStackTrace();

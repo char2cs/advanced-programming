@@ -21,13 +21,11 @@ public class GeneralView extends JPanel {
     private void initComponents( DefaultTableModel tableModel ) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         tableScroll = new JScrollPane();
-        Table = new JTable(tableModel);
+        Table = new JTable( tableModel );
         Buttons = new JPanel();
         BtnRight = new JPanel();
-        Add = new JButton();
-        BtnLeft = new JPanel();
-        Update = new JButton();
         Delete = new JButton();
+        Add = new JButton();
 
         //======== this ========
         setLayout(new BorderLayout());
@@ -46,25 +44,15 @@ public class GeneralView extends JPanel {
             {
                 BtnRight.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
+                //---- Delete ----
+                Delete.setText("Borrar seleccionados");
+                BtnRight.add(Delete);
+
                 //---- Add ----
-                Add.setText("Agregar");
+                Add.setText("Agregar +");
                 BtnRight.add(Add);
             }
             Buttons.add(BtnRight, BorderLayout.EAST);
-
-            //======== BtnLeft ========
-            {
-                BtnLeft.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-                //---- Update ----
-                Update.setText("Actualizar seleccionados");
-                BtnLeft.add(Update);
-
-                //---- Delete ----
-                Delete.setText("Borrar seleccionados");
-                BtnLeft.add(Delete);
-            }
-            Buttons.add(BtnLeft, BorderLayout.WEST);
         }
         add(Buttons, BorderLayout.SOUTH);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
@@ -75,15 +63,9 @@ public class GeneralView extends JPanel {
     private JTable Table;
     private JPanel Buttons;
     private JPanel BtnRight;
-    private JButton Add;
-    private JPanel BtnLeft;
-    private JButton Update;
     private JButton Delete;
+    private JButton Add;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
-
-    public JButton getUpdate() {
-        return Update;
-    }
 
     public JButton getDelete() {
         return Delete;

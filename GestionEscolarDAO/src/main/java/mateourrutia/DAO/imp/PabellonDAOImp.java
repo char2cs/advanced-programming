@@ -1,7 +1,6 @@
 package mateourrutia.DAO.imp;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import mateourrutia.FileWriter.FileWriter;
 import mateourrutia.DAO.interfaces.PabellonDAO;
@@ -12,27 +11,29 @@ public class PabellonDAOImp implements PabellonDAO {
 
 	@Override
 	public void create(Pabellon pabellon) {
-		fileWriter.create(pabellon);
+		fileWriter.create( pabellon );
 	}
 
 	@Override
-	public Pabellon get(int id) {
+	public void add(Pabellon pabellon) {
+		fileWriter.add( pabellon );
+	}
+
+	@Override
+	public Pabellon get(Integer id) {
 		return fileWriter.get( id );
 	}
 
 	@Override
-	public void update(Pabellon pabellon) {
-		fileWriter.update( pabellon );
+	public boolean update(Pabellon pabellon) {
+		return fileWriter.update( pabellon );
 	}
 
 	@Override
-	public boolean delete(int id) {
+	public boolean delete(Integer id) {
 		return fileWriter.delete( id );
 	}
 
 	@Override
-	public List<Pabellon> getAll() {
-		return fileWriter.getAll();
-	}
-
+	public List<Pabellon> getAll() { return fileWriter.getAll(); }
 }

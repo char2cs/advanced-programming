@@ -1,6 +1,8 @@
 package mateourrutia.controller;
 
 import mateourrutia.controller.Objects.PabellonController;
+import mateourrutia.controller.Objects.CarreraController;
+
 import mateourrutia.view.ObjectView;
 
 import java.awt.event.WindowAdapter;
@@ -28,6 +30,10 @@ public class ObjectController {
 			case "Pabellon":
 				PabellonController pabellonController = new PabellonController();
 				return pabellonController.getView();
+
+			case "Carrera":
+				CarreraController carreraController = new CarreraController();
+				return carreraController.getView();
 		}
 
 		return null;
@@ -50,10 +56,17 @@ public class ObjectController {
 				onTreeSelectionChanged();
 			}
 		});
+
+		objectView.getReload().addActionListener( e -> onReload() );
 	}
 
 	private void onExit() {
 		objectView.dispose();
+	}
+
+	private void onReload() {
+		objectView.getScene().revalidate();
+		objectView.getScene().repaint();
 	}
 
 	public void showObjectView() {

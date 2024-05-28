@@ -7,9 +7,9 @@ import mateourrutia.domain.Pabellon;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.event.TableModelEvent;
+import java.util.List;
 
 public class PabellonController extends GeneralController<Pabellon> {
-
     private final PabellonDAOImp pabellonDAOImp = new PabellonDAOImp();
 
     public PabellonController() {
@@ -46,6 +46,29 @@ public class PabellonController extends GeneralController<Pabellon> {
 
     // Table Model Listeners
     @Override
+    protected Pabellon onAdd() throws ClassCastException {
+        List<Pabellon> pabellons = pabellonDAOImp.getAll();
+        Pabellon pabellon;
+
+        if ( !pabellons.isEmpty() )
+            pabellon = new Pabellon(
+                    pabellons.get(pabellons.size() - 1).getId() + 1,
+                    "",
+                    ""
+            );
+        else
+            pabellon = new Pabellon(
+                    0,
+                    "",
+                    ""
+            );
+
+        pabellonDAOImp.add( pabellon );
+
+        return pabellon;
+    }
+
+    @Override
     protected void onUpdate(
             TableModelEvent e
     ) throws ClassCastException {
@@ -74,7 +97,7 @@ public class PabellonController extends GeneralController<Pabellon> {
 
     @Override
     protected void onDelete(
-            int[] rows,
+            Integer[] rows,
             JTable table
     ) throws ClassCastException {
         for ( int row : rows )
