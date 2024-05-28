@@ -59,12 +59,13 @@ public class InitController {
 	}
 
 	public static void main(String[] args) {
-//		try {
+		try {
 //			UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-//		}
-//		catch (Exception e) {
-//			e.printStackTrace();
-//		}
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		SwingUtilities.invokeLater(() -> {
 			InitController initController = new InitController(null);

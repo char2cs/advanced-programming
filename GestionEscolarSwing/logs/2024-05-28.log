@@ -238,3 +238,38 @@
 [12:08:24] [SUCCESS] - @ 'Carrera' Removed object with id '3'
 [12:08:24] [INFO] - @ 'Carrera' Object saved
 [12:08:24] [SUCCESS] - @ 'Carrera' Removed object with id '2'
+[16:37:27] [INFO] - @ 'Pabellon' Object saved
+[16:37:27] [SUCCESS] - @ 'Pabellon' Object with id: '1' added.
+[16:37:32] [INFO] - @ 'Pabellon' Object saved
+[16:37:32] [SUCCESS] - @ 'Pabellon' Updated object with id '1'
+[16:37:34] [INFO] - @ 'Pabellon' Object saved
+[16:37:34] [SUCCESS] - @ 'Pabellon' Updated object with id '1'
+[16:37:35] [INFO] - @ 'Pabellon' Object saved
+[16:37:35] [SUCCESS] - @ 'Pabellon' Object with id: '2' added.
+[16:37:36] [INFO] - @ 'Pabellon' Object saved
+[16:37:36] [SUCCESS] - @ 'Pabellon' Object with id: '3' added.
+[16:37:36] [INFO] - @ 'Pabellon' Object saved
+[16:37:36] [SUCCESS] - @ 'Pabellon' Object with id: '4' added.
+[16:37:36] [INFO] - @ 'Pabellon' Object saved
+[16:37:36] [SUCCESS] - @ 'Pabellon' Object with id: '5' added.
+[16:37:36] [INFO] - @ 'Pabellon' Object saved
+[16:37:36] [SUCCESS] - @ 'Pabellon' Object with id: '6' added.
+[16:37:39] [INFO] - @ 'Pabellon' Object saved
+[16:37:39] [SUCCESS] - @ 'Pabellon' Removed object with id '6'
+[16:37:39] [INFO] - @ 'Pabellon' Object saved
+[16:37:39] [SUCCESS] - @ 'Pabellon' Removed object with id '5'
+[16:37:39] [INFO] - @ 'Pabellon' Object saved
+[16:37:39] [SUCCESS] - @ 'Pabellon' Removed object with id '4'
+[16:37:39] [INFO] - @ 'Pabellon' Object saved
+[16:37:39] [SUCCESS] - @ 'Pabellon' Removed object with id '3'
+[16:37:40] [INFO] - @ 'Pabellon' Object saved
+[16:37:40] [SUCCESS] - @ 'Pabellon' Updated object with id '2'
+[16:37:41] [INFO] - @ 'Pabellon' Object saved
+[16:37:41] [SUCCESS] - @ 'Pabellon' Removed object with id '2'
+[16:37:42] [INFO] - @ 'Pabellon' Object saved
+[16:37:42] [SUCCESS] - @ 'Pabellon' Removed object with id '1'
+[16:43:25] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)
+[16:47:30] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)
+[16:47:30] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)
+[16:51:42] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)
+[16:51:42] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)

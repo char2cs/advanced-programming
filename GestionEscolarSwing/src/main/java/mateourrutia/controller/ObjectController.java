@@ -1,5 +1,6 @@
 package mateourrutia.controller;
 
+import mateourrutia.controller.Objects.ClaseController;
 import mateourrutia.controller.Objects.PabellonController;
 import mateourrutia.controller.Objects.CarreraController;
 
@@ -34,6 +35,10 @@ public class ObjectController {
 			case "Carrera":
 				CarreraController carreraController = new CarreraController();
 				return carreraController.getView();
+
+			case "Curso":
+				ClaseController claseController = new ClaseController();
+				return claseController.getView();
 		}
 
 		return null;

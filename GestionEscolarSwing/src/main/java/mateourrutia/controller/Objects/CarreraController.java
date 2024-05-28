@@ -1,7 +1,7 @@
 package mateourrutia.controller.Objects;
 
 import mateourrutia.DAO.imp.CarreraDAOImp;
-import mateourrutia.controller.GeneralController;
+import mateourrutia.controller.TableTypes.GeneralController;
 import mateourrutia.domain.Carrera;
 
 import javax.swing.*;

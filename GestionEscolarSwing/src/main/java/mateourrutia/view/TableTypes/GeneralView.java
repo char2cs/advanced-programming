@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Wed May 22 15:42:33 ART 2024
  */
 
-package mateourrutia.view.General;
+package mateourrutia.view.TableTypes;
 
 import java.util.List;
 

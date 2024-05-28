@@ -1,7 +1,7 @@
 package mateourrutia.controller.Objects;
 
 import mateourrutia.DAO.imp.PabellonDAOImp;
-import mateourrutia.controller.GeneralController;
+import mateourrutia.controller.TableTypes.GeneralController;
 import mateourrutia.domain.Pabellon;
 
 import javax.swing.*;
