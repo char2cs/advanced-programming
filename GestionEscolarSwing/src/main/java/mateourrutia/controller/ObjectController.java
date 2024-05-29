@@ -7,6 +7,7 @@ import mateourrutia.controller.Objects.CarreraController;
 
 import mateourrutia.view.ObjectView;
 
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -38,11 +39,11 @@ public class ObjectController {
 				return carreraController.getView();
 
 			case "Curso":
-				ClaseController claseController = new ClaseController();
+				ClaseController claseController = new ClaseController(objectView);
 				return claseController.getView();
 
 			case "Alumno":
-				AlumnoController alumnoController = new AlumnoController();
+				AlumnoController alumnoController = new AlumnoController(); // TODO add objectView here.
 				return alumnoController.getView();
 		}
 

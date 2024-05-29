@@ -21,8 +21,8 @@ public abstract class ButtonTableRenderer {
 			}
 
 			@Override
-			public JPanel onClick(Object object) {
-				return onClickPanel( object );
+			public void onClick(Object object) {
+				onClickPanel( object );
 			}
 		};
 	}
@@ -37,5 +37,5 @@ public abstract class ButtonTableRenderer {
 
 	public abstract String setButtonLabel(Object object);
 
-	public abstract JPanel onClickPanel(Object object);
+	public abstract void onClickPanel(Object object);
 }

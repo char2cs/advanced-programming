@@ -1,9 +1,11 @@
 package mateourrutia.controller.Objects;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import mateourrutia.DAO.imp.ClaseDAOImp;
+import mateourrutia.controller.DefaultDialogController;
 import mateourrutia.controller.TableTypes.ComplexController;
 import mateourrutia.controller.TableTypes.GeneralController;
 import mateourrutia.controller.TableTypes.TableTypes;
@@ -20,8 +22,8 @@ import javax.swing.table.DefaultTableModel;
 public class ClaseController extends ComplexController<Clase, Alumno> {
 	ClaseDAOImp claseDAOImp = new ClaseDAOImp();
 
-	public ClaseController() {
-		super();
+	public ClaseController(Window window) {
+		super(window);
 
 		try {
 			this.setControllers(
@@ -98,12 +100,16 @@ public class ClaseController extends ComplexController<Clase, Alumno> {
 					}
 
 					@Override
-					public JPanel onClickPanel(Object object) {
+					public void onClickPanel(Object object) {
 						List<Pabellon> pabellons = new ArrayList<>();
 						pabellons.add( (Pabellon) object );
 
 						PabellonController pabellonController = new PabellonController( pabellons );
-						return pabellonController.getView();
+						DefaultDialogController defaultDialogController = new DefaultDialogController( getWindow() );
+
+						defaultDialogController.
+
+						defaultDialogController.openDialog();
 					}
 				}
 		);

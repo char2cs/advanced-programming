@@ -21,7 +21,7 @@ public abstract class ButtonEditor extends AbstractCellEditor implements TableCe
 
 	public abstract String getLabel(Object object);
 
-	public abstract JPanel onClick(Object object);
+	public abstract void onClick(Object object);
 
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
