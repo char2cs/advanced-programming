@@ -6,6 +6,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.ArrayList;
 
 public abstract class TableTypes<T> {
 	protected DefaultTableModel model;
@@ -83,28 +84,57 @@ public abstract class TableTypes<T> {
 
 	// ? Children's helpers
 	/**
-	 * Parse or convert any list of object T into an 2D Object array.
-	 * @param dataList
-	 * @return
-	 * @throws IllegalAccessException
+	 * Parse or convert any list of object T into a 2D Object array.
+	 *
+	 * @param dataList The list of objects to be converted.
+	 * @return A 2D Object array representing the data.
+	 * @throws IllegalAccessException If the fields of the objects are not accessible.
 	 */
-	public static <T> Object[][] convertToTableData(
-			List<T> dataList
-	) throws IllegalAccessException {
-		if ( dataList.isEmpty() ) // Descartamos que la lista este vacia
+	public static <T> Object[][] convertToTableData(List<T> dataList) throws IllegalAccessException {
+		if (dataList.isEmpty())
 			return new Object[0][0];
 
-		int columnCount = dataList.get(0).getClass().getDeclaredFields().length; // Conseguimos la cantidad de campos del objetod
-		Object[][] data = new Object[dataList.size()][columnCount]; // Creamos el array 2D de objetos
+		List<Field> fields 	= getAllFields(dataList.get(0).getClass());
+		int columnCount 	= fields.size();
+		Object[][] data 	= new Object[dataList.size()][columnCount];
 
-		for ( int i = 0; i < dataList.size(); i++ )
+		for (int i = 0; i < dataList.size(); i++)
 		{
-			T obj           = dataList.get(i);
-			Object[] row    = parseObjectToArray(obj); // Parseamos el objeto de tipo T a tipo Object[]
-			data[i]         = row;
+			T obj 			= dataList.get(i);
+			Object[] row 	= parseObjectToArray(obj, fields);
+			data[i] 		= row;
 		}
 
 		return data;
+	}
+
+	private static List<Field> getAllFields(Class<?> clazz) {
+		List<Field> fields = new ArrayList<>();
+		while (clazz != null)
+		{
+			for (Field field : clazz.getDeclaredFields())
+				fields.add(field);
+
+			clazz = clazz.getSuperclass();
+		}
+
+		return fields;
+	}
+
+	public static <T> Object[] parseObjectToArray(
+			T obj,
+			List<Field> fields
+	) throws IllegalAccessException {
+		Object[] row = new Object[fields.size()];
+
+		for (int j = 0; j < fields.size(); j++)
+		{
+			Field field = fields.get(j);
+			field.setAccessible(true);
+			row[j] = field.get(obj);
+		}
+
+		return row;
 	}
 
 	/**

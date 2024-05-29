@@ -13,7 +13,7 @@ import javax.swing.*;
 public class ComplexView extends JPanel {
     public ComplexView(
             GeneralView generalView,
-            SimpleView  simpleView
+            GeneralView simpleView
     ) {
         initComponents();
         GeneralView.add(generalView, BorderLayout.CENTER);

@@ -1,0 +1,28 @@
+[13:47:05] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)
+[13:47:05] [FATAL] - @ 'Alumno' File not found: data/Alumno.dat (No such file or directory)
+[13:56:14] [FATAL] - @ 'Alumno' File not found: data/Alumno.dat (No such file or directory)
+[13:56:14] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)
+[13:56:14] [FATAL] - @ 'Alumno' File not found: data/Alumno.dat (No such file or directory)
+[13:56:14] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)
+[14:24:46] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)
+[14:24:46] [FATAL] - @ 'Clase' File not found: data/Clase.dat (No such file or directory)
+[14:24:46] [INFO] - @ 'Clase' Object saved
+[14:24:46] [SUCCESS] - @ 'Clase' Object with id: '0' added.
+[14:24:46] [INFO] - @ 'Clase' Object saved
+[14:24:46] [SUCCESS] - @ 'Clase' Object with id: '1' added.
+[14:24:46] [WARN] - @ 'Clase' Tried to add repeated object with id '1'
+[14:24:59] [WARN] - @ 'Clase' Tried to add repeated object with id '0'
+[14:24:59] [WARN] - @ 'Clase' Tried to add repeated object with id '1'
+[14:24:59] [INFO] - @ 'Clase' Object saved
+[14:24:59] [SUCCESS] - @ 'Clase' Object with id: '2' added.
+[14:24:59] [FATAL] - @ 'Alumno' File not found: data/Alumno.dat (No such file or directory)
+[14:24:59] [FATAL] - @ 'Alumno' File not found: data/Alumno.dat (No such file or directory)
+[14:24:59] [INFO] - @ 'Alumno' Object saved
+[14:24:59] [SUCCESS] - @ 'Alumno' Object with id: '0' added.
+[14:24:59] [WARN] - @ 'Alumno' Tried to add repeated object with id '0'
+[14:25:40] [WARN] - @ 'Clase' Tried to add repeated object with id '0'
+[14:25:40] [WARN] - @ 'Clase' Tried to add repeated object with id '1'
+[14:25:40] [WARN] - @ 'Clase' Tried to add repeated object with id '2'
+[14:25:40] [WARN] - @ 'Alumno' Tried to add repeated object with id '0'
+[14:25:40] [INFO] - @ 'Alumno' Object saved
+[14:25:40] [SUCCESS] - @ 'Alumno' Object with id: '1' added.

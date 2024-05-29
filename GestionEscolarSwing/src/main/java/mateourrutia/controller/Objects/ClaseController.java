@@ -1,12 +1,17 @@
 package mateourrutia.controller.Objects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import mateourrutia.DAO.imp.ClaseDAOImp;
 import mateourrutia.controller.TableTypes.ComplexController;
 import mateourrutia.controller.TableTypes.GeneralController;
-import mateourrutia.controller.TableTypes.SimpleController;
 import mateourrutia.controller.TableTypes.TableTypes;
 import mateourrutia.domain.Alumno;
 import mateourrutia.domain.Clase;
+
+import mateourrutia.domain.Pabellon;
+import mateourrutia.render.ButtonTable.ButtonTableRenderer;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
@@ -20,8 +25,8 @@ public class ClaseController extends ComplexController<Clase, Alumno> {
 
 		try {
 			this.setControllers(
-					createGeneralController(),
-					createSimpleController()
+					createGeneralController( claseDAOImp.getAll() ),
+					createSimpleController( new ArrayList<>() )
 			);
 		}
 		catch ( IllegalAccessException e ) {
@@ -30,11 +35,14 @@ public class ClaseController extends ComplexController<Clase, Alumno> {
 		}
 	}
 
-	public GeneralController<Clase> createGeneralController() throws IllegalAccessException {
+	public static DefaultTableModel generalTableModel (
+			List<Clase> objects,
+			boolean 	editable
+	) throws IllegalAccessException {
 		Object[] header = {"#", "Nombre", "Pabellon", "Profesor"};
 
-		DefaultTableModel tableModel = new DefaultTableModel(
-				TableTypes.convertToTableData( claseDAOImp.getAll() ),
+		return new DefaultTableModel(
+				TableTypes.convertToTableData( objects ),
 				header
 		) {
 			@Override
@@ -47,11 +55,19 @@ public class ClaseController extends ComplexController<Clase, Alumno> {
 
 			@Override
 			public boolean isCellEditable(int row, int column) {
-				return column == 1 || column == 2 || column == 3;
+				return editable ?
+						column == 1 || column == 2 || column == 3 :
+						false;
 			}
 		};
+	}
 
-		return new GeneralController<Clase>(tableModel) {
+	private GeneralController<Clase> createGeneralController(
+			List<Clase> clases
+	) throws IllegalAccessException {
+		DefaultTableModel tableModel = generalTableModel(clases, true);
+
+		GeneralController<Clase> generalController = new GeneralController<Clase>(tableModel) {
 			@Override
 			protected Clase onAdd() throws ClassCastException {
 				return null;
@@ -67,6 +83,32 @@ public class ClaseController extends ComplexController<Clase, Alumno> {
 
 			}
 		};
+
+		// TODO Dialog.
+		//  Also, need to keep in mind that teh cellDialog structure is for changing that value, not only visualizing it.
+
+		generalController.setCellDialog(
+				"Pabellon",
+				new ButtonTableRenderer() {
+					@Override
+					public String setButtonLabel(Object object) {
+						Pabellon pabellon = (Pabellon) object;
+
+						return pabellon.getName();
+					}
+
+					@Override
+					public JPanel onClickPanel(Object object) {
+						List<Pabellon> pabellons = new ArrayList<>();
+						pabellons.add( (Pabellon) object );
+
+						PabellonController pabellonController = new PabellonController( pabellons );
+						return pabellonController.getView();
+					}
+				}
+		);
+
+		return generalController;
 	}
 
 	/**
@@ -74,28 +116,12 @@ public class ClaseController extends ComplexController<Clase, Alumno> {
 	 * @return
 	 * @throws IllegalAccessException
 	 */
-	private SimpleController<Alumno> createSimpleController() throws IllegalAccessException {
-		Object[] header = {"#", "Nombre", "Pabellon", "Profesor"};
-
-		DefaultTableModel tableModel = new DefaultTableModel(
-				TableTypes.convertToTableData( claseDAOImp.getAll() ),
-				header
+	private GeneralController<Alumno> createSimpleController(
+			List<Alumno> objects
+	) throws IllegalAccessException {
+		return new GeneralController<Alumno>(
+				AlumnoController.generalTableModel( objects, false )
 		) {
-			@Override
-			public Class<?> getColumnClass(int columnIndex) {
-				if (columnIndex == 0)
-					return Integer.class;
-
-				return super.getColumnClass(columnIndex);
-			}
-
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return column == 1 || column == 2 || column == 3;
-			}
-		};
-
-		return new SimpleController<Alumno>(tableModel) {
 			@Override
 			protected Alumno onAdd() throws ClassCastException {
 				return null;

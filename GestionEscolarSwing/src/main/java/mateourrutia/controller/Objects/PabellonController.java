@@ -14,12 +14,24 @@ public class PabellonController extends GeneralController<Pabellon> {
 
     public PabellonController() {
         super();
+        Constructor( pabellonDAOImp.getAll() );
+    }
 
+    public PabellonController(
+            List<Pabellon> pabellons
+    ) {
+        super();
+        Constructor(pabellons);
+    }
+
+    private void Constructor(
+            List<Pabellon> pabellons
+    ) {
         try {
             Object[] header = {"#", "Nombre", "Ubicacion"};
 
             DefaultTableModel tableModel = new DefaultTableModel(
-                    convertToTableData( pabellonDAOImp.getAll() ),
+                    convertToTableData( pabellons ),
                     header
             ) {
                 @Override

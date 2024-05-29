@@ -1,5 +1,8 @@
 package mateourrutia.controller.TableTypes;
 
+import mateourrutia.render.ButtonTable.ButtonEditor;
+import mateourrutia.render.ButtonTable.ButtonRenderer;
+import mateourrutia.render.ButtonTable.ButtonTableRenderer;
 import mateourrutia.view.TableTypes.GeneralView;
 
 import javax.swing.*;
@@ -34,6 +37,22 @@ public abstract class GeneralController<T> extends TableTypes<T> {
 
     public GeneralView getView() {
         return view;
+    }
+
+    /**
+     * Will create a button inside each row's cell specified.
+     *
+     * @param identifier
+     * @param buttonTableRenderer
+     */
+    public void setCellDialog(
+            String              identifier,
+            ButtonTableRenderer buttonTableRenderer
+    ) {
+        this.view.getTable()
+                .getColumn(identifier).setCellRenderer( buttonTableRenderer.getButtonRenderer() );
+        this.view.getTable()
+                .getColumn(identifier).setCellEditor( buttonTableRenderer.getButtonEditor() );
     }
 
     // Internal methods
