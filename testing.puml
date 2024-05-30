@@ -1,0 +1,80 @@
+@startuml
+
+' Cryptocurrency class that stores type and current value
+class Cryptocurrency {
+  +String name
+  +double currentValue
+  +void fetchCurrentValue()
+}
+
+' Wallet class that now contains a Cryptocurrency object
+class Wallet {
+  +String address
+  +double balance
+  +Cryptocurrency cryptocurrency
+  +void deposit(double amount)
+  +void transfer(double amount, Wallet toWallet)
+  +void convert(double amount, Wallet toWallet)
+}
+
+' General account class for common properties
+abstract class Account {
+  +String id
+  +double balance
+  +void deposit(double amount)
+  +void transfer(double amount, Account toAccount)
+}
+
+' Different fiat accounts
+class SavingsAccount extends Account {
+  +String cbu
+  +String cuit
+  +void deposit(double amount)
+  +void transfer(double amount, Account toAccount)
+}
+
+class CheckingAccount extends Account {
+  +double overdraftLimit
+  +void deposit(double amount)
+  +void transfer(double amount, Account toAccount)
+}
+
+' Client class with personal details and accounts
+class Client {
+  +String firstName
+  +String lastName
+  +String cuit
+  +String phone
+  +String mobile
+  +String email
+  +String address
+  +List<SavingsAccount> savingsAccounts
+  +List<CheckingAccount> checkingAccounts
+  +List<Wallet> wallets
+  +void addSavingsAccount(SavingsAccount account)
+  +void addCheckingAccount(CheckingAccount account)
+  +void addWallet(Wallet wallet)
+}
+
+' Transaction history class
+class TransactionHistory {
+  +Date date
+  +Client client
+  +double amount
+  +String type
+  +Account fromAccount
+  +Account toAccount
+}
+
+' Relationships between classes
+SavingsAccount --|> Account
+CheckingAccount --|> Account
+Wallet --|> Account
+
+Client "1" -- "0..*" SavingsAccount
+Client "1" -- "0..*" CheckingAccount
+Client "1" -- "0..*" Wallet
+Client "1" -- "0..*" TransactionHistory
+TransactionHistory "0..*" -- "1" Client
+
+@enduml
