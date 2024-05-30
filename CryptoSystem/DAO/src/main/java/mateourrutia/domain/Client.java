@@ -2,6 +2,19 @@ package mateourrutia.domain;
 
 import java.util.List;
 
+/**
+ * Client --- Account relationship dilemma. Each Account would be saved inside each Client object.
+ *
+ * Both will contain some interface and implementation, Client for obvious reasons, however account
+ * also would have, the account will retrieve all object, for ex., from all the users and interact
+ * with that data from then. Although being to resource intensive, we make sure to not have repeated
+ * data stored, or even inconsistencies through all the application, as data could easily change in
+ * one place, but not the other.
+ *
+ * Also, each TransactionHistory object will contain a copy of each account state, and their users,
+ * that will repeat data, but that is for historic and perseveration sake.
+ */
+
 public class Client {
 	private Integer 		cuit;
 	private String 			name;
