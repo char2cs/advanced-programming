@@ -1,8 +1,10 @@
-package mateourrutia.domain;
+package mateourrutia.Domain;
 
-public abstract class Account {
+import mateourrutia.helper.FileWriter.ObjectWriter;
+import java.io.Serializable;
+
+public abstract class Account extends ObjectWriter implements Serializable {
 	private 	Client		client;
-	private 	Integer 	id;
 	protected 	double 		balance;
 
 	public Account(
@@ -10,17 +12,13 @@ public abstract class Account {
 			Integer id,
 			double 	balance
 	) {
+		super();
 		this.client 	= 	client;
-		this.id 		= 	id;
 		this.balance 	= 	balance;
 	}
 
 	public Client getClient() {
 		return client;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 
 	public double getBalance() {

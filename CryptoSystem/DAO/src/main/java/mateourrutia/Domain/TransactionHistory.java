@@ -1,8 +1,11 @@
-package mateourrutia.domain;
+package mateourrutia.Domain;
 
+import mateourrutia.helper.FileWriter.ObjectWriter;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class TransactionHistory {
+public class TransactionHistory extends ObjectWriter implements Serializable {
 	private 	Date 		date 		= new Date();
 	private 	Status 		status		;
 	private 	Type 		type		;
@@ -32,6 +35,7 @@ public class TransactionHistory {
 			double 	amount,
 			Account fromAccount
 	) {
+		super();
 		this.status 		= status;
 		this.type 			= type;
 		this.amount 		= amount;
@@ -46,6 +50,7 @@ public class TransactionHistory {
 			Account fromAccount,
 			Account toAccount
 	) {
+		super();
 		this.type 			= type;
 		this.status		 	= status;
 		this.amount 		= amount;

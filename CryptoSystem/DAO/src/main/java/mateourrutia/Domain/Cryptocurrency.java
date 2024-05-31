@@ -1,9 +1,9 @@
-package mateourrutia.domain;
+package mateourrutia.Domain;
 
 import mateourrutia.helper.Logger;
 import mateourrutia.helper.Property;
 
-public class Cryptocurrency {
+public class Cryptocurrency  {
 	private String name;
 	private double currentValue;
 

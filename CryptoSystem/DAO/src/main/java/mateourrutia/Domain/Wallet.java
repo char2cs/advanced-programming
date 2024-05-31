@@ -1,4 +1,4 @@
-package mateourrutia.domain;
+package mateourrutia.Domain;
 
 public class Wallet extends Account {
 	private Cryptocurrency cryptocurrency;

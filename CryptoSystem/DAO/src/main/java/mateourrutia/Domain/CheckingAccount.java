@@ -1,27 +1,20 @@
-package mateourrutia.domain;
+package mateourrutia.Domain;
 
-public class SavingsAccount extends Account {
-	private Integer cbu;
-	private Integer cuit;
+public class CheckingAccount extends Account {
+	private double overdraftLimit;
 
-	public SavingsAccount(
+	public CheckingAccount(
 			Client 	client,
 			Integer id,
 			double 	balance,
-			Integer cbu,
-			Integer cuit
+			double 	overdraftLimit
 	) {
 		super(client, id, balance);
-		this.cbu 	= cbu;
-		this.cuit 	= cuit;
+		this.overdraftLimit = overdraftLimit;
 	}
 
-	public Integer getCbu() {
-		return cbu;
-	}
-
-	public Integer getCuit() {
-		return cuit;
+	public double getOverdraftLimit() {
+		return overdraftLimit;
 	}
 
 	@Override
@@ -38,7 +31,7 @@ public class SavingsAccount extends Account {
 
 	@Override
 	public TransactionHistory withdraw(double amount) {
-		if (balance >= amount)
+		if (balance + overdraftLimit >= amount)
 		{
 			balance -= amount;
 
@@ -52,22 +45,18 @@ public class SavingsAccount extends Account {
 
 		return new TransactionHistory(
 				TransactionHistory.Type.WITHDRAW,
-				TransactionHistory.Status.ERROR_NOT_ENOUGH_BALANCE,
+				TransactionHistory.Status.ERROR_OVERDRAFT_ISSUE,
 				amount,
 				this
 		);
 	}
 
 	@Override
-	public TransactionHistory transfer(
-			double amount,
-			Account toAccount
-	) {
-		if (balance >= amount)
+	public TransactionHistory transfer(double amount, Account toAccount) {
+		if (balance + overdraftLimit >= amount)
 		{
 			balance -= amount;
 			toAccount.deposit(amount);
-
 			return new TransactionHistory(
 					TransactionHistory.Type.TRANSFER,
 					TransactionHistory.Status.SUCCESS,
@@ -79,7 +68,7 @@ public class SavingsAccount extends Account {
 
 		return new TransactionHistory(
 				TransactionHistory.Type.TRANSFER,
-				TransactionHistory.Status.ERROR_NOT_ENOUGH_BALANCE,
+				TransactionHistory.Status.ERROR_OVERDRAFT_ISSUE,
 				amount,
 				this,
 				toAccount

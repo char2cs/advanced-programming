@@ -1,6 +1,9 @@
-package mateourrutia.domain;
+package mateourrutia.Domain;
 
 import java.util.List;
+import java.io.Serializable;
+
+import mateourrutia.helper.FileWriter.ObjectWriter;
 
 /**
  * Client --- Account relationship dilemma. Each Account would be saved inside each Client object.
@@ -15,7 +18,8 @@ import java.util.List;
  * that will repeat data, but that is for historic and perseveration sake.
  */
 
-public class Client {
+public class Client extends ObjectWriter implements Serializable {
+	private Integer 		id;
 	private Integer 		cuit;
 	private String 			name;
 	private String 			lastname;
@@ -26,7 +30,7 @@ public class Client {
 	List<CheckingAccount> 	checkingAccounts;
 	List<Wallet> 			wallets;
 
-	public Client() {}
+	public Client() { super(); }
 
 	public Client(
 			Integer cuit,
@@ -36,6 +40,7 @@ public class Client {
 			String email,
 			String address
 	) {
+		super();
 		this.cuit = cuit;
 		this.name = name;
 		this.lastname = lastname;
@@ -55,6 +60,7 @@ public class Client {
 			List<CheckingAccount> checkingAccounts,
 			List<Wallet> wallets
 	) {
+		super();
 		this.cuit = cuit;
 		this.name = name;
 		this.lastname = lastname;
