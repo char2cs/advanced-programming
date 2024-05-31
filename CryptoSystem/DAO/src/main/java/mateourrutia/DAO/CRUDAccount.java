@@ -14,23 +14,31 @@ public interface CRUDAccount<T> {
 	 * @param objects
 	 * @param client
 	 */
-	void create(T objects, Client client);
+	void create(T objects, Client client) throws ObjectNotFoundException, UpdateFailedException;
 
 	/**
 	 * Verifica que no exista otro UUID.
 	 * @param objects
 	 * @param client
 	 */
-	void add(T objects, Client client) throws ObjectAlreadyExistsException;
+	void add(T objects, Client client) throws ObjectNotFoundException, ObjectAlreadyExistsException, UpdateFailedException;
 
 	/**
 	 * Busca la account seleccionada
 	 * @param uuid
-	 * @param client ? NULL, al ser NULL, la busqueda sera global.
+	 * @param client
 	 * @return state
 	 * @throws ObjectNotFoundException El objecto no fue encontrado.
 	 */
 	T get(Integer uuid, Client client) throws ObjectNotFoundException;
+
+	/**
+	 * Busca la account seleccionada global.
+	 * @param uuid
+	 * @return
+	 * @throws ObjectNotFoundException
+	 */
+	T get(Integer uuid) throws ObjectNotFoundException;
 
 	/**
 	 * Busca el objecto, por UUID y lo actualiza.
@@ -39,6 +47,13 @@ public interface CRUDAccount<T> {
 	 * @return state
 	 */
 	boolean update(T objects, Client client) throws ObjectNotFoundException, UpdateFailedException;
+
+	/**
+	 * Busca el objecto, por UUID y lo actualiza.
+	 * @param objects
+	 * @return state
+	 */
+	boolean update(T objects) throws ObjectNotFoundException, UpdateFailedException;
 
 	/**
 	 * Borra el objecto relacionado por la UUID deseada.
@@ -53,4 +68,20 @@ public interface CRUDAccount<T> {
 	 * @return
 	 */
 	List<T> getAll();
+
+	/**
+	 * Retorna todos los objectos dentro de client
+	 *
+	 * @param client
+	 * @return
+	 */
+	List<T> getAll(Client client) throws ObjectAlreadyExistsException;
+
+	/**
+	 * Retorna todos los objectos dentro de client, usando su UUID
+	 *
+	 * @param uuid
+	 * @return
+	 */
+	List<T> getAll(Integer uuid) throws ObjectAlreadyExistsException;
 }
