@@ -5,7 +5,6 @@ import mateourrutia.DAO.ClientDAO;
 import mateourrutia.Domain.Client;
 import mateourrutia.Domain.SavingsAccount;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
-import mateourrutia.Exceptions.ObjectNotFoundException;
 import mateourrutia.Factory.AccountFactory;
 import mateourrutia.Factory.ClientFactory;
 
@@ -41,12 +40,5 @@ public class Main {
 
 		for ( Client client : clientDAO.getAll() )
 			System.out.println(client);
-
-//		try {
-//			System.out.println( accountDAO.get( savings.getUuid() ) );
-//		}
-//		catch (ObjectNotFoundException e) {
-//			throw new RuntimeException(e);
-//		}
 	}
 }
