@@ -5,11 +5,10 @@ public class Wallet extends Account {
 
 	public Wallet(
 			Client			client,
-			Integer 		id,
 			double 			balance,
 			Cryptocurrency 	cryptocurrency
 	) {
-		super(client, id, balance);
+		super(client, balance);
 		this.cryptocurrency = cryptocurrency;
 	}
 

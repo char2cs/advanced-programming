@@ -32,10 +32,7 @@ public class Main {
 		);
 
 		SavingsAccount savings = new SavingsAccount(mateo,
-				23213,
-				233,
-				000200324234,
-				2045518340
+				23213
 		);
 
 		for ( Client client : clientDAO.getAll() )

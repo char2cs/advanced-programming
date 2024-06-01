@@ -5,12 +5,12 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
-			"minimumSize": new java.awt.Dimension( 768, 768 )
-			"preferredSize": new java.awt.Dimension( 768, 768 )
+			"minimumSize": new java.awt.Dimension( 768, 512 )
+			"preferredSize": new java.awt.Dimension( 768, 512 )
 			"name": "TableFrame"
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 775, 770 )
+			"size": new java.awt.Dimension( 775, 705 )
 		} )
 	}
 }

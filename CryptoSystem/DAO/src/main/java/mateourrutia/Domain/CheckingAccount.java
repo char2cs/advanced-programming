@@ -5,11 +5,10 @@ public class CheckingAccount extends Account {
 
 	public CheckingAccount(
 			Client 	client,
-			Integer id,
 			double 	balance,
 			double 	overdraftLimit
 	) {
-		super(client, id, balance);
+		super(client, balance);
 		this.overdraftLimit = overdraftLimit;
 	}
 

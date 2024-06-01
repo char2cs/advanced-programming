@@ -14,6 +14,7 @@ import java.awt.event.WindowEvent;
  * @param <T>
  */
 public abstract class WindowController<T extends JPanel> {
+	private String windowTitle;
 	private Window window;
 	private T view;
 
@@ -45,6 +46,7 @@ public abstract class WindowController<T extends JPanel> {
 		if (window == null)
 		{
 			window = new Window();
+			window.setTitle(windowTitle);
 			window.getContentPane().add(view, BorderLayout.CENTER);
 		}
 
@@ -63,5 +65,9 @@ public abstract class WindowController<T extends JPanel> {
 				action.run();
 			}
 		});
+	}
+
+	public void setTitle(String title) {
+		windowTitle = title;
 	}
 }

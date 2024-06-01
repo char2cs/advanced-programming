@@ -2,23 +2,29 @@ package mateourrutia.Domain;
 
 import mateourrutia.utils.ObjectWriter;
 import java.io.Serializable;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Account extends ObjectWriter implements Serializable {
-	private 	Client		client;
-	protected 	double 		balance;
+	private final 	Long	cbu;
+	protected 		double 	balance;
+	private final 	Client	client;
 
 	public Account(
 			Client client,
-			Integer id,
 			double 	balance
 	) {
 		super();
+		this.cbu 		= 	generateCbu();
 		this.client 	= 	client;
 		this.balance 	= 	balance;
 	}
 
 	public Client getClient() {
 		return client;
+	}
+
+	public Long getCbu() {
+		return cbu;
 	}
 
 	public double getBalance() {
@@ -43,5 +49,12 @@ public abstract class Account extends ObjectWriter implements Serializable {
 		return super.toString() + "Account{" +
 				"balance=" + balance +
 				"}";
+	}
+
+	private Long generateCbu() {
+		return ThreadLocalRandom.current().nextLong(
+				100000000000L,
+				999999999999L + 1
+		);
 	}
 }

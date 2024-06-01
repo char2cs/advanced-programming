@@ -19,8 +19,24 @@ public abstract class SimpleTable<T> extends TableType<T, SimpleView> {
 		this.model  = model;
 		setView( new SimpleView(this.model) );
 
+		getView().getTable().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
 		setTableModelListeners();
 		setUpListeners();
+	}
+
+	public Integer getSelectedRowIndex() {
+		int row = getView().getTable().getSelectedRow();
+
+		if (row == -1)
+			JOptionPane.showMessageDialog(
+					getView(),
+					"Por favor, selecciona una opcion.",
+					"*Almost* UNFORESEEN CONSEQUENCES",
+					JOptionPane.WARNING_MESSAGE
+			);
+
+		return row;
 	}
 
 	@Override

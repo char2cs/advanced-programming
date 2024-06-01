@@ -19,8 +19,8 @@ public class Window extends JFrame {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
 
         //======== this ========
-        setMinimumSize(new Dimension(768, 768));
-        setPreferredSize(new Dimension(768, 768));
+        setMinimumSize(new Dimension(768, 512));
+        setPreferredSize(new Dimension(768, 512));
         setName("TableFrame");
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
@@ -31,4 +31,9 @@ public class Window extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
+
+    @Override
+    public void setTitle(String title) {
+        super.setTitle(title);
+    }
 }

@@ -1,20 +1,26 @@
 package mateourrutia.Controller;
 
-import mateourrutia.Controller.Domain.ClientCRUD;
-import mateourrutia.Controller.Domain.ClientSimple;
-import mateourrutia.Controller.Domain.TransactionHistorySimple;
+import mateourrutia.Controller.Tables.ClientCRUD;
+import mateourrutia.Controller.Tables.ClientSimple;
+import mateourrutia.Controller.Tables.TransactionHistorySimple;
+import mateourrutia.DAO.ClientDAO;
+import mateourrutia.Domain.Client;
+import mateourrutia.Exceptions.ObjectNotFoundException;
+import mateourrutia.Factory.ClientFactory;
 import mateourrutia.View.InitView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class InitController extends WindowController<InitView> {
 	private ClientSimple clientSimple;
 
 	public InitController() {
 		super( new InitView() );
+		setTitle("Crypto System");
 
 		getView().getAllClients().addActionListener(new OpenAnotherWindowListener<ClientCRUD>() {
 			@Override
@@ -44,7 +50,7 @@ public class InitController extends WindowController<InitView> {
 
 	/**
 	 * Para ventanas emergentes que requieran recargar el contenido de Init.
-	 * @param <T>
+	 * @param
 	 */
 	private abstract class OpenAnotherWindowListener<object extends WindowController<? extends JPanel>> implements ActionListener {
 		/**
@@ -71,15 +77,33 @@ public class InitController extends WindowController<InitView> {
 	private class UserSelectListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int selectedRow = clientSimple.getView().getTable().getSelectedRow();
+			ClientDAO clientDAO = ClientFactory.getClientDAO("FileWriter");
 
-			if (selectedRow != -1)
-			{
-				System.out.println("Selected User: " + selectedRow);
+			List<Client> clients = clientDAO.getAll();
+			int row = clientSimple.getSelectedRowIndex();
+
+			if (row == -1)
+				return;
+
+			Client client;
+
+			try {
+				client = clientDAO.get( clients.get(row).getUuid() );
+			}
+			catch (ObjectNotFoundException ex) {
+				ex.printStackTrace();
+				ErrorController.show( getView(), ex );
 				return;
 			}
 
-			System.out.println("No user selected");
+			ClientOverviewController clientOverviewController = new ClientOverviewController(client);
+
+			hideWindow();
+			clientOverviewController.showWindow(JFrame.DISPOSE_ON_CLOSE);
+			clientOverviewController.onClose(() -> {
+				reloadTable();
+				showWindow();
+			});
 		}
 	}
 

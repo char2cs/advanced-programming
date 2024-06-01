@@ -3,3 +3,14 @@
 [09:38:16] [SUCCESS] - @ 'Client' Object with id: '799193bf-b675-491c-adc9-a186cda34cb3' added.
 [13:19:27] [WARN] - @ 'Client' Tried to add repeated object with id 'a661f4bd-951a-4743-8575-6ea404a6ffb3'
 [13:19:40] [WARN] - @ 'Client' Tried to add repeated object with id 'e062d074-e32f-45ce-8397-6ddcb3efe36b'
+[15:00:21] [FATAL] - @ 'Client' IOException | ClassNotFoundException: mateourrutia.Domain.Account; local class incompatible: stream classdesc serialVersionUID = 916179890733845794, local class serialVersionUID = 259116497649009321
+[15:00:21] [FATAL] - @ 'Client' IOException | ClassNotFoundException: mateourrutia.Domain.Account; local class incompatible: stream classdesc serialVersionUID = 916179890733845794, local class serialVersionUID = 259116497649009321
+[15:00:21] [FATAL] - @ 'Client' IOException | ClassNotFoundException: mateourrutia.Domain.Account; local class incompatible: stream classdesc serialVersionUID = 916179890733845794, local class serialVersionUID = 259116497649009321
+[15:00:21] [INFO] - @ 'Client' Object saved
+[15:00:21] [SUCCESS] - @ 'Client' Object with id: 'b55ebfca-48d8-45ab-a362-351a159a60a1' added.
+[15:00:21] [INFO] - @ 'Client' Object saved
+[15:00:21] [SUCCESS] - @ 'Client' Object with id: '0a74e13a-603b-4393-9ea2-e0cbbae1e3b9' added.
+[15:00:58] [INFO] - @ 'Client' Object saved
+[15:00:59] [SUCCESS] - @ 'Client' Object with id: '63e1830c-5787-407c-8dfe-a03dc5d73ae2' added.
+[15:00:59] [INFO] - @ 'Client' Object saved
+[15:00:59] [SUCCESS] - @ 'Client' Object with id: '8b8ddb4c-b5e2-45f4-a8dc-11171dc91a01' added.

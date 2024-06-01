@@ -1,27 +1,12 @@
 package mateourrutia.Domain;
 
 public class SavingsAccount extends Account {
-	private Integer cbu;
-	private Integer cuit;
 
 	public SavingsAccount(
 			Client 	client,
-			Integer id,
-			double 	balance,
-			Integer cbu,
-			Integer cuit
+			double 	balance
 	) {
-		super(client, id, balance);
-		this.cbu 	= cbu;
-		this.cuit 	= cuit;
-	}
-
-	public Integer getCbu() {
-		return cbu;
-	}
-
-	public Integer getCuit() {
-		return cuit;
+		super(client, balance);
 	}
 
 	@Override
@@ -89,8 +74,7 @@ public class SavingsAccount extends Account {
 	@Override
 	public String toString() {
 		return super.toString() + "SavingsAccount{" +
-				"cbu=" + cbu +
-				", cuit=" + cuit +
+				"cbu=" + getCbu() +
 				"}\n";
 	}
 }

@@ -1,0 +1,92 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.11" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "Title"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "Welcome"
+					"text": "Bienvenido,"
+					"font": new java.awt.Font( "DejaVu Sans", 0, 28 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "North"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "clientName"
+					"text": "user_name"
+					"font": new java.awt.Font( "DejaVu Sans", 2, 48 )
+					"horizontalAlignment": 2
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
+					name: "hSpacer1"
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "West"
+				} )
+				add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
+					name: "hSpacer2"
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "East"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Selecciona una Cuenta"
+					"font": new java.awt.Font( "DejaVu Sans", 0, 20 )
+					"horizontalAlignment": 0
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "Table"
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "Buttons"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "Btn_Right"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "Back"
+						"text": "Volver"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "SelectedAccount"
+						"text": "Operar con cuenta seleccionada"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "East"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"alignment": 0
+				} ) {
+					name: "Btn_Left"
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "CreateType"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "Create"
+						"text": "Crear cuenta"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "Delete"
+						"text": "Borrar cuenta"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "West"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "South"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 775, 600 )
+		} )
+	}
+}

@@ -3,8 +3,10 @@ package mateourrutia.Domain;
 import mateourrutia.utils.Logger;
 import mateourrutia.utils.Property;
 
-public class Cryptocurrency  {
-	private String name;
+import java.io.Serializable;
+
+public class Cryptocurrency implements Serializable {
+	private final String name;
 	private double currentValue;
 
 	public Cryptocurrency(

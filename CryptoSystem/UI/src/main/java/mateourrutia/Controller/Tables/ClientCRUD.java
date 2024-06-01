@@ -1,4 +1,4 @@
-package mateourrutia.Controller.Domain;
+package mateourrutia.Controller.Tables;
 
 import mateourrutia.Controller.ErrorController;
 import mateourrutia.Controller.TableTypes.GeneralTable;

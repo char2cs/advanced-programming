@@ -7,6 +7,8 @@ import mateourrutia.Controller.InitController;
 /**
  * TODO: Account CRUD, User menu and Account issues like, transfer, deposit, convert, etc.
  * 	Check TransactionHistorySimple if it works (It won't, so fix it.)
+ * 	Account TODO: Create / Remove (Remove will work though)
+ * 	Account TODO: Transfers and deposits.
  */
 
 public class Main {
