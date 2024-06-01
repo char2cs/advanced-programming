@@ -117,7 +117,7 @@ public class ListWriter<T extends ObjectWriter> {
 					.filter(object -> object.getUuid().equals(uuid))
 					.findFirst();
 
-			return result.orElse(null);
+			return result.orElseThrow( () -> new ObjectNotFoundException("Object with id '" + uuid + "' not found.") );
 		}
 
 		throw new ObjectNotFoundException("Object with id '" + uuid + "' not found.");

@@ -1,6 +1,8 @@
 package mateourrutia.Controller;
 
+import mateourrutia.Controller.Domain.ClientCRUD;
 import mateourrutia.Controller.Domain.ClientSimple;
+import mateourrutia.Controller.Domain.TransactionHistorySimple;
 import mateourrutia.View.InitView;
 
 import javax.swing.*;
@@ -8,22 +10,61 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InitController {
-	private InitView view;
-	private ClientSimple clientSimple = new ClientSimple();
+public class InitController extends WindowController<InitView> {
+	private ClientSimple clientSimple;
 
 	public InitController() {
-		view = new InitView();
+		super( new InitView() );
 
-		view.getUserSelect().addActionListener(new UserSelectListener());
-		view.getExit().addActionListener(new ExitListener());
+		getView().getAllClients().addActionListener(new OpenAnotherWindowListener<ClientCRUD>() {
+			@Override
+			protected ClientCRUD Object() {
+				return new ClientCRUD();
+			}
+		});
 
-		view.getTablePanel().add( clientSimple.getView(), BorderLayout.CENTER );
+		getView().getTransactionHistory().addActionListener(new OpenAnotherWindowListener<TransactionHistorySimple>() {
+			@Override
+			protected TransactionHistorySimple Object() {
+				return new TransactionHistorySimple();
+			}
+		});
+
+		getView().getUserSelect().addActionListener(new UserSelectListener());
+		getView().getExit().addActionListener(new ExitListener());
+
+		reloadTable();
 	}
 
-	public void showInitView() {
-		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		view.setVisible(true);
+	private void reloadTable() {
+		clientSimple = new ClientSimple();
+		getView().getTablePanel().removeAll();
+		getView().getTablePanel().add( clientSimple.getView(), BorderLayout.CENTER );
+	}
+
+	/**
+	 * Para ventanas emergentes que requieran recargar el contenido de Init.
+	 * @param <T>
+	 */
+	private abstract class OpenAnotherWindowListener<object extends WindowController<? extends JPanel>> implements ActionListener {
+		/**
+		 * Este metodo deberia devolver el objecto CRUD ya creado para este Listener.
+		 * @return Instancia de Object
+		 */
+		protected abstract object Object();
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			hideWindow();
+
+			object crud = Object();
+			crud.showWindow(JFrame.DISPOSE_ON_CLOSE);
+
+			crud.onClose(() -> {
+				reloadTable();
+				showWindow();
+			});
+		}
 	}
 
 	// Listener for UserSelect button
@@ -48,5 +89,9 @@ public class InitController {
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
 		}
+	}
+
+	public ClientSimple getClientSimple() {
+		return clientSimple;
 	}
 }

@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  * @author char2cs
  */
-public class InitView extends JFrame {
+public class InitView extends JPanel {
     public InitView() {
         initComponents();
     }
@@ -33,8 +33,7 @@ public class InitView extends JFrame {
         //======== this ========
         setMinimumSize(new Dimension(768, 768));
         setPreferredSize(new Dimension(768, 768));
-        Container contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
 
         //======== TitleContainer ========
         {
@@ -52,14 +51,14 @@ public class InitView extends JFrame {
             label1.setFont(new Font("DejaVu Sans", Font.ITALIC, 20));
             TitleContainer.add(label1, BorderLayout.SOUTH);
         }
-        contentPane.add(TitleContainer, BorderLayout.NORTH);
+        add(TitleContainer, BorderLayout.NORTH);
 
         //======== TablePanel ========
         {
             TablePanel.setMinimumSize(new Dimension(1024, 768));
             TablePanel.setLayout(new BorderLayout());
         }
-        contentPane.add(TablePanel, BorderLayout.CENTER);
+        add(TablePanel, BorderLayout.CENTER);
 
         //======== BUttons ========
         {
@@ -93,9 +92,7 @@ public class InitView extends JFrame {
             }
             BUttons.add(ButtonLeft, BorderLayout.WEST);
         }
-        contentPane.add(BUttons, BorderLayout.SOUTH);
-        pack();
-        setLocationRelativeTo(getOwner());
+        add(BUttons, BorderLayout.SOUTH);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 

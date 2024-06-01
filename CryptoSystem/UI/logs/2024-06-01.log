@@ -1,2 +1,37 @@
 [10:37:54] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
 [10:38:42] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[13:07:46] [WARN] - @ 'Client' Tried to add repeated object with id '1445bbf0-32cd-490d-a50c-0ae42d5f6572'
+[13:07:55] [WARN] - @ 'Client' Tried to add repeated object with id 'bd4a61e3-15ad-4609-93a1-25fbc4dc3de2'
+[13:16:24] [WARN] - @ 'Client' Tried to add repeated object with id '93af37b3-98e1-4c1a-b356-b5b81fb27525'
+[13:18:05] [WARN] - @ 'Client' Tried to add repeated object with id '70145c84-dbcb-43b8-9712-9b9ce5e03941'
+[13:22:13] [INFO] - @ 'Client' Object saved
+[13:22:13] [SUCCESS] - @ 'Client' Object with id: '87111b74-b49f-49c4-8297-69ecc21c6935' added.
+[13:31:14] [INFO] - @ 'Client' Object saved
+[13:31:14] [SUCCESS] - @ 'Client' Removed object with id '87111b74-b49f-49c4-8297-69ecc21c6935'
+[13:31:15] [INFO] - @ 'Client' Object saved
+[13:31:15] [SUCCESS] - @ 'Client' Object with id: '354b8fa2-3707-43c4-b0c7-db3687be164f' added.
+[13:31:18] [INFO] - @ 'Client' Object saved
+[13:31:18] [SUCCESS] - @ 'Client' Updated object with id '354b8fa2-3707-43c4-b0c7-db3687be164f'
+[13:31:21] [INFO] - @ 'Client' Object saved
+[13:31:21] [SUCCESS] - @ 'Client' Updated object with id '354b8fa2-3707-43c4-b0c7-db3687be164f'
+[13:31:23] [INFO] - @ 'Client' Object saved
+[13:31:23] [SUCCESS] - @ 'Client' Updated object with id '354b8fa2-3707-43c4-b0c7-db3687be164f'
+[13:31:43] [INFO] - @ 'Client' Object saved
+[13:31:43] [SUCCESS] - @ 'Client' Updated object with id '354b8fa2-3707-43c4-b0c7-db3687be164f'
+[13:31:46] [INFO] - @ 'Client' Object saved
+[13:31:46] [SUCCESS] - @ 'Client' Updated object with id '354b8fa2-3707-43c4-b0c7-db3687be164f'
+[13:34:39] [INFO] - @ 'Client' Object saved
+[13:34:39] [SUCCESS] - @ 'Client' Updated object with id '354b8fa2-3707-43c4-b0c7-db3687be164f'
+[13:34:49] [INFO] - @ 'Client' Object saved
+[13:34:49] [SUCCESS] - @ 'Client' Updated object with id '354b8fa2-3707-43c4-b0c7-db3687be164f'
+[13:34:53] [INFO] - @ 'Client' Object saved
+[13:34:53] [SUCCESS] - @ 'Client' Updated object with id '354b8fa2-3707-43c4-b0c7-db3687be164f'
+[13:43:09] [INFO] - @ 'Client' Object saved
+[13:43:09] [SUCCESS] - @ 'Client' Updated object with id '799193bf-b675-491c-adc9-a186cda34cb3'
+[13:43:47] [INFO] - @ 'Client' Object saved
+[13:43:47] [SUCCESS] - @ 'Client' Updated object with id '799193bf-b675-491c-adc9-a186cda34cb3'
+[13:44:17] [INFO] - @ 'Client' Object saved
+[13:44:17] [SUCCESS] - @ 'Client' Updated object with id '799193bf-b675-491c-adc9-a186cda34cb3'
+[13:50:21] [INFO] - @ 'Client' Object saved
+[13:50:21] [SUCCESS] - @ 'Client' Updated object with id '799193bf-b675-491c-adc9-a186cda34cb3'
+[13:57:38] [FATAL] - @ 'TransactionHistory' File not found: data/TransactionHistory.dat (No such file or directory)

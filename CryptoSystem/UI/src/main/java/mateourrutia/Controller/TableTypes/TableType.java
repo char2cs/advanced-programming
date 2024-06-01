@@ -1,5 +1,7 @@
 package mateourrutia.Controller.TableTypes;
 
+import mateourrutia.Controller.WindowController;
+
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -8,8 +10,8 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract class TableType<T> {
-	protected DefaultTableModel model;
+public abstract class TableType<T, View extends JPanel> extends WindowController<View> {
+	protected 	DefaultTableModel 	model;
 
 	public DefaultTableModel getModel() {
 		return model;

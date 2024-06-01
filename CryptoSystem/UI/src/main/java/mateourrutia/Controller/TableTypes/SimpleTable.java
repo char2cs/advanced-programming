@@ -6,9 +6,7 @@ import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
-public abstract class SimpleTable<T> extends TableType<T> {
-	private SimpleView view;
-
+public abstract class SimpleTable<T> extends TableType<T, SimpleView> {
 	public SimpleTable() {}
 
 	public SimpleTable(
@@ -19,14 +17,10 @@ public abstract class SimpleTable<T> extends TableType<T> {
 
 	protected void setModel(DefaultTableModel model) {
 		this.model  = model;
-		this.view   = new SimpleView( this.model );
+		setView( new SimpleView(this.model) );
 
 		setTableModelListeners();
 		setUpListeners();
-	}
-
-	public SimpleView getView() {
-		return view;
 	}
 
 	@Override

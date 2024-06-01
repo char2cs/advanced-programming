@@ -20,6 +20,10 @@ public class GeneralView extends JPanel {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
 		tableScroll = new JScrollPane();
 		Table = new JTable( tableModel );
+		Buttons = new JPanel();
+		BtnRight = new JPanel();
+		Delete = new JButton();
+		Add = new JButton();
 
 		//======== this ========
 		setLayout(new BorderLayout());

@@ -13,9 +13,7 @@ import java.util.Collections;
 
 import mateourrutia.View.TableTypes.GeneralView;
 
-public abstract class GeneralTable <T> extends TableType<T> {
-	private GeneralView view;
-
+public abstract class GeneralTable <T> extends TableType<T, GeneralView> {
 	public GeneralTable() {}
 
 	public GeneralTable(
@@ -26,19 +24,15 @@ public abstract class GeneralTable <T> extends TableType<T> {
 
 	protected void setModel(DefaultTableModel model) {
 		this.model  = model;
-		this.view   = new GeneralView( this.model );
+		setView( new GeneralView(this.model) );
 
 		setTableModelListeners();
 		setUpListeners();
 	}
 
-	public GeneralView getView() {
-		return view;
-	}
-
 	// Internal methods
 	private void setUpListeners() {
-		JTable table = view.getTable();
+		JTable table = getView().getTable();
 
 		table.addKeyListener(new KeyAdapter() {
 			@Override
@@ -58,7 +52,7 @@ public abstract class GeneralTable <T> extends TableType<T> {
 			}
 		});
 
-		view.getDelete().addActionListener(new ActionListener() {
+		getView().getDelete().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -74,7 +68,7 @@ public abstract class GeneralTable <T> extends TableType<T> {
 			}
 		});
 
-		view.getAdd().addActionListener(new ActionListener() {
+		getView().getAdd().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {

@@ -4,6 +4,11 @@ import javax.swing.*;
 
 import mateourrutia.Controller.InitController;
 
+/**
+ * TODO: Account CRUD, User menu and Account issues like, transfer, deposit, convert, etc.
+ * 	Check TransactionHistorySimple if it works (It won't, so fix it.)
+ */
+
 public class Main {
 	public static void main(String[] args) {
 		try {
@@ -15,7 +20,7 @@ public class Main {
 
 		SwingUtilities.invokeLater(() -> {
 			InitController initController = new InitController();
-			initController.showInitView();
+			initController.showWindow();
 		});
 	}
 }

@@ -1,5 +1,6 @@
 package mateourrutia.Controller.Domain;
 
+import mateourrutia.Controller.ErrorController;
 import mateourrutia.DAO.ClientDAO;
 import mateourrutia.Domain.Client;
 import mateourrutia.Controller.TableTypes.SimpleTable;
@@ -21,7 +22,10 @@ public class ClientSimple extends SimpleTable<Client> {
 				@Override
 				public Class<?> getColumnClass(int columnIndex) {
 					if ( columnIndex == 0 )
-						return Integer.class;
+						return Long.class;
+
+					if ( columnIndex == 3 )
+						return Long.class;
 
 					return super.getColumnClass(columnIndex);
 				}
@@ -36,7 +40,7 @@ public class ClientSimple extends SimpleTable<Client> {
 		}
 		catch (IllegalAccessException e) {
 			e.printStackTrace();
-			throw new RuntimeException(e);
+			ErrorController.show( this.getView(), e );
 		}
 	}
 }

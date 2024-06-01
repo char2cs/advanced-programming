@@ -22,12 +22,24 @@ public class Main {
 				"Ituzaingo 670"
 		);
 
+		Client nothing = new Client(
+				null,
+				"",
+				"",
+				null,
+				"",
+				""
+		);
+
 		SavingsAccount savings = new SavingsAccount(mateo,
 				23213,
 				233,
 				000200324234,
 				2045518340
 		);
+
+		for ( Client client : clientDAO.getAll() )
+			System.out.println(client);
 
 		try {
 			mateo.getAccounts().add(savings);
@@ -36,7 +48,12 @@ public class Main {
 			throw new RuntimeException(e);
 		}
 
-		clientDAO.create(mateo);
+		try {
+			clientDAO.add(mateo);
+			clientDAO.add(nothing);
+		} catch (ObjectAlreadyExistsException e) {
+			throw new RuntimeException(e);
+		}
 
 		for ( Client client : clientDAO.getAll() )
 			System.out.println(client);
