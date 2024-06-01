@@ -3,7 +3,8 @@ package mateourrutia.Domain;
 import java.util.List;
 import java.io.Serializable;
 
-import mateourrutia.helper.FileWriter.ObjectWriter;
+import mateourrutia.utils.Listed;
+import mateourrutia.utils.ObjectWriter;
 
 /**
  * Client --- Account relationship dilemma. Each Account would be saved inside each Client object.
@@ -19,24 +20,21 @@ import mateourrutia.helper.FileWriter.ObjectWriter;
  */
 
 public class Client extends ObjectWriter implements Serializable {
-	private Integer 		id;
-	private Integer 		cuit;
-	private String 			name;
-	private String 			lastname;
-	private Integer 		phone;
-	private String 			email;
-	private String 			address;
-	List<SavingsAccount> 	savingsAccounts;
-	List<CheckingAccount> 	checkingAccounts;
-	List<Wallet> 			wallets;
+	private Long 		cuit;
+	private String 		name;
+	private String 		lastname;
+	private Long 		phone;
+	private String 		email;
+	private String 		address;
+	private Listed<Account> accounts = new Listed<>();
 
 	public Client() { super(); }
 
 	public Client(
-			Integer cuit,
+			Long cuit,
 			String name,
 			String lastname,
-			Integer phone,
+			Long phone,
 			String email,
 			String address
 	) {
@@ -50,33 +48,29 @@ public class Client extends ObjectWriter implements Serializable {
 	}
 
 	public Client(
-			Integer cuit,
+			Long cuit,
 			String name,
 			String lastname,
-			Integer phone,
+			Long phone,
 			String email,
 			String address,
-			List<SavingsAccount> savingsAccounts,
-			List<CheckingAccount> checkingAccounts,
-			List<Wallet> wallets
+			List<Account> accounts
 	) {
 		super();
-		this.cuit = cuit;
-		this.name = name;
-		this.lastname = lastname;
-		this.phone = phone;
-		this.email = email;
-		this.address = address;
-		this.savingsAccounts = savingsAccounts;
-		this.checkingAccounts = checkingAccounts;
-		this.wallets = wallets;
+		this.cuit 		= cuit;
+		this.name 		= name;
+		this.lastname 	= lastname;
+		this.phone 		= phone;
+		this.email 		= email;
+		this.address 	= address;
+		this.accounts 	= new Listed<>(accounts);
 	}
 
-	public Integer getCuit() {
+	public Long getCuit() {
 		return cuit;
 	}
 
-	public void setCuit(Integer cuit) {
+	public void setCuit(Long cuit) {
 		this.cuit = cuit;
 	}
 
@@ -96,11 +90,11 @@ public class Client extends ObjectWriter implements Serializable {
 		this.lastname = lastname;
 	}
 
-	public Integer getPhone() {
+	public Long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(Long phone) {
 		this.phone = phone;
 	}
 
@@ -120,33 +114,24 @@ public class Client extends ObjectWriter implements Serializable {
 		this.address = address;
 	}
 
-	public List<SavingsAccount> getSavingsAccounts() {
-		return savingsAccounts;
+	public Listed<Account> getAccounts() {
+		return accounts;
 	}
 
-	public List<CheckingAccount> getCheckingAccounts() {
-		return checkingAccounts;
+	public void setAccounts(Listed<Account> accounts) {
+		this.accounts = accounts;
 	}
 
-	public List<Wallet> getWallets() {
-		return wallets;
-	}
-
-	public void addSavingsAccount(
-			SavingsAccount savingsAccount
-	) {
-		this.savingsAccounts.add(savingsAccount);
-	}
-
-	public void addCheckingAccount(
-			CheckingAccount checkingAccount
-	) {
-		this.checkingAccounts.add(checkingAccount);
-	}
-
-	public void addWallet(
-			Wallet wallet
-	) {
-		this.wallets.add(wallet);
+	@Override
+	public String toString() {
+		return super.toString() + "Client{" +
+				"cuit=" + cuit +
+				", name='" + name + '\'' +
+				", lastname='" + lastname + '\'' +
+				", phone=" + phone +
+				", email='" + email + '\'' +
+				", address='" + address + '\'' +
+				", accounts=" + accounts +
+				"}\n";
 	}
 }

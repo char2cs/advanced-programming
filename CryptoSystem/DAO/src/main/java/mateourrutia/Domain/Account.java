@@ -1,6 +1,6 @@
 package mateourrutia.Domain;
 
-import mateourrutia.helper.FileWriter.ObjectWriter;
+import mateourrutia.utils.ObjectWriter;
 import java.io.Serializable;
 
 public abstract class Account extends ObjectWriter implements Serializable {
@@ -37,4 +37,11 @@ public abstract class Account extends ObjectWriter implements Serializable {
 			double amount,
 			Account toAccount
 	);
+
+	@Override
+	public String toString() {
+		return super.toString() + "Account{" +
+				"balance=" + balance +
+				"}";
+	}
 }

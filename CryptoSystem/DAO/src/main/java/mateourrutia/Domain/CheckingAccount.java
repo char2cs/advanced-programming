@@ -74,4 +74,11 @@ public class CheckingAccount extends Account {
 				toAccount
 		);
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "CheckingAccount{" +
+				"overdraftLimit=" + overdraftLimit +
+				"}\n";
+	}
 }

@@ -123,4 +123,11 @@ public class Wallet extends Account {
 			toWallet
 		);
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "Wallet{" +
+				"cryptocurrency=" + cryptocurrency +
+				"}\n";
+	}
 }

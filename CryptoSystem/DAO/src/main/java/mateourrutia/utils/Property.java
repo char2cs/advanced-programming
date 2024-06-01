@@ -1,4 +1,4 @@
-package mateourrutia.helper;
+package mateourrutia.utils;
 
 import java.io.IOException;
 import java.io.FileReader;

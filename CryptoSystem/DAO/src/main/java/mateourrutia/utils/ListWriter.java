@@ -1,25 +1,18 @@
-package mateourrutia.helper.FileWriter;
+package mateourrutia.utils;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.IntStream;
-
-import mateourrutia.helper.Property;
-import mateourrutia.helper.Logger;
 
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
-import mateourrutia.Exceptions.UpdateFailedException;
-import mateourrutia.Exceptions.DeleteFailedException;
+import mateourrutia.Exceptions.OperationFailedException;
 
-public class FileWriter<T extends ObjectWriter> {
+public class ListWriter<T extends ObjectWriter> {
 	private final String className;
 	private final String filePath;
 
-	public FileWriter(
+	public ListWriter(
 			String className
 	) {
 		String Path = Property.get("data.folder");
@@ -43,7 +36,7 @@ public class FileWriter<T extends ObjectWriter> {
 			contents = (ArrayList<T>) ois.readObject();
 		}
 		catch (FileNotFoundException e) {
-			System.out.println("[FileWriter] @ '" + this.className + "' File not found: " + e.getMessage());
+			System.out.println("[ListWriter] @ '" + this.className + "' File not found: " + e.getMessage());
 			Logger.log(
 					Logger.LogLevel.FATAL,
 					"@ '" + this.className + "' File not found: " + e.getMessage()
@@ -115,7 +108,7 @@ public class FileWriter<T extends ObjectWriter> {
 		}
 	}
 
-	public T get(Integer uuid) throws ObjectNotFoundException {
+	public T get(UUID uuid) throws ObjectNotFoundException {
 		List<T> objects = this.readFile();
 
 		if (objects != null && !objects.isEmpty())
@@ -130,7 +123,7 @@ public class FileWriter<T extends ObjectWriter> {
 		throw new ObjectNotFoundException("Object with id '" + uuid + "' not found.");
 	}
 
-	public boolean update(T object) throws ObjectNotFoundException, UpdateFailedException {
+	public boolean update(T object) throws ObjectNotFoundException, OperationFailedException {
 		List<T> objects = readFile();
 
 		if (objects != null && !objects.isEmpty())
@@ -157,10 +150,10 @@ public class FileWriter<T extends ObjectWriter> {
 			throw new ObjectNotFoundException("Object with id '" + object.getUuid() + "' not found.");
 		}
 
-		throw new UpdateFailedException("Update couldn't be done, on object '" + object.getUuid() + "'.");
+		throw new OperationFailedException("Update couldn't be done, on object '" + object.getUuid() + "'.");
 	}
 
-	public boolean delete(Integer uuid) throws ObjectNotFoundException, DeleteFailedException {
+	public boolean delete(UUID uuid) throws ObjectNotFoundException, OperationFailedException {
 		List<T> objects = readFile();
 
 		if (objects != null && !objects.isEmpty())
@@ -185,7 +178,7 @@ public class FileWriter<T extends ObjectWriter> {
 			throw new ObjectNotFoundException("Object with id '" + uuid + "' not found.");
 		}
 
-		throw new DeleteFailedException("Delete couldn't be done, on object '" + uuid + "'.");
+		throw new OperationFailedException("Delete couldn't be done, on object '" + uuid + "'.");
 	}
 
 	public List<T> getAll() {

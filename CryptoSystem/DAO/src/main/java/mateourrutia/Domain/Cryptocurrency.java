@@ -1,7 +1,7 @@
 package mateourrutia.Domain;
 
-import mateourrutia.helper.Logger;
-import mateourrutia.helper.Property;
+import mateourrutia.utils.Logger;
+import mateourrutia.utils.Property;
 
 public class Cryptocurrency  {
 	private String name;
@@ -40,5 +40,13 @@ public class Cryptocurrency  {
 			Logger.log(Logger.LogLevel.ERROR, "Could not parse value for Cryptocurrency." + name);
 		}
 
+	}
+
+	@Override
+	public String toString() {
+		return "Cryptocurrency{" +
+				"name='" + name + '\'' +
+				", currentValue=" + currentValue +
+				'}';
 	}
 }

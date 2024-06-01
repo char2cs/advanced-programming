@@ -1,6 +1,6 @@
 package mateourrutia.Domain;
 
-import mateourrutia.helper.FileWriter.ObjectWriter;
+import mateourrutia.utils.ObjectWriter;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -89,5 +89,17 @@ public class TransactionHistory extends ObjectWriter implements Serializable {
 	 */
 	public boolean isPersonal() {
 		return toAccount == null;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "TransactionHistory{" +
+				"date=" + date +
+				", status=" + status +
+				", type=" + type +
+				", amount=" + amount +
+				", fromAccount=" + fromAccount +
+				", toAccount=" + toAccount +
+				"}\n";
 	}
 }

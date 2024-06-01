@@ -1,10 +1,8 @@
-package mateourrutia.helper;
+package mateourrutia.utils;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import mateourrutia.helper.Property;
 
 public abstract class Logger {
 

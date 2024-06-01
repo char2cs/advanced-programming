@@ -1,11 +1,11 @@
 package mateourrutia.DAO;
 
 import java.util.List;
+import java.util.UUID;
 
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
-import mateourrutia.Exceptions.UpdateFailedException;
-import mateourrutia.Exceptions.DeleteFailedException;
+import mateourrutia.Exceptions.OperationFailedException;
 
 public interface CRUD<T> {
 	/**
@@ -25,21 +25,21 @@ public interface CRUD<T> {
 	 * @param uuid
 	 * @return
 	 */
-	T get(Integer uuid) throws ObjectNotFoundException;
+	T get(UUID uuid) throws ObjectNotFoundException;
 
 	/**
 	 * Busca el objecto, por UUID y lo actualiza.
 	 * @param objects
 	 * @return
 	 */
-	boolean update(T objects) throws ObjectNotFoundException, UpdateFailedException;
+	boolean update(T objects) throws ObjectNotFoundException, OperationFailedException;
 
 	/**
 	 * Borra el objecto relacionado por la UUID deseada.
 	 * @param uuid
 	 * @return
 	 */
-	boolean delete(Integer uuid) throws ObjectNotFoundException, DeleteFailedException;
+	boolean delete(UUID uuid) throws ObjectNotFoundException, OperationFailedException;
 
 	/**
 	 * Retorna todos los objectos disponibles.

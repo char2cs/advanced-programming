@@ -85,4 +85,12 @@ public class SavingsAccount extends Account {
 				toAccount
 		);
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "SavingsAccount{" +
+				"cbu=" + cbu +
+				", cuit=" + cuit +
+				"}\n";
+	}
 }
