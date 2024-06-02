@@ -34,13 +34,14 @@ public class CheckingAccountCreateView extends JPanel {
         //======== panel1 ========
         {
             panel1.setLayout(new FlowLayout(FlowLayout.LEFT));
+            ((FlowLayout)panel1.getLayout()).setAlignOnBaseline(true);
 
             //---- label2 ----
             label2.setText("Limite para retirar");
             panel1.add(label2);
 
             //---- Overdraft ----
-            Overdraft.setText("Limite para retirar");
+            Overdraft.setColumns(10);
             panel1.add(Overdraft);
         }
         add(panel1, BorderLayout.CENTER);

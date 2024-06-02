@@ -87,7 +87,8 @@ public class InitController extends WindowController<InitView> {
 				return;
 
 			ClientOverviewController clientOverviewController = new ClientOverviewController(
-					clients.get(row)
+					clients.get(row),
+					clientService
 			);
 
 			hideWindow();

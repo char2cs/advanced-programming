@@ -6,17 +6,17 @@ import mateourrutia.utils.Property;
 import java.io.Serializable;
 
 public class Cryptocurrency implements Serializable {
-	private final String name;
+	private final Currency name;
 	private double currentValue;
 
 	public Cryptocurrency(
-			String name
+			Currency name
 	) {
 		this.name = name;
 		fetchCurrentValue();
 	}
 
-	public String getName() {
+	public Currency getName() {
 		return name;
 	}
 

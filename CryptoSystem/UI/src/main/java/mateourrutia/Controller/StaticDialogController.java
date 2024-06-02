@@ -4,91 +4,101 @@ import mateourrutia.View.StaticDialogView;
 import mateourrutia.View.Window;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.CountDownLatch;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.concurrent.Semaphore;
 
-public class StaticDialogController {
-	private StaticDialogView 	view;
-	private Boolean 			userSelected 	= null;
-	private CountDownLatch 		latch 			= new CountDownLatch(1);
+/**
+ * Dialog basico.
+ *
+ * Siempre que se instancie, se tiene que tener en cuenta que
+ * el main frame se pausara, y recien volvera a activarse una
+ * vez que este dialog se cierre.
+ */
+public abstract class StaticDialogController {
+	private Window window;
+	private StaticDialogView view;
+	private JPanel innerView;
+	private Semaphore semaphore;
 
-	public StaticDialogController(
-			Window owner
-	) {
-		view = new StaticDialogView(owner);
+	public StaticDialogController(Window owner) {
+		this(owner, null);
+	}
 
-		getView().getOkButton().addActionListener(new ActionListener() {
+	public StaticDialogController(Window owner, JPanel innerView) {
+		window 			= owner;
+		this.innerView 	= innerView;
+		semaphore 		= new Semaphore(0);
+		view 			= new StaticDialogView(owner);
+		setInnerView(innerView);
+
+		view.getOkButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setUserSelected(true);
+				onAccept();
 				closeDialog();
 			}
 		});
 
-		getView().getCancelButton().addActionListener(new ActionListener() {
+		view.getCancelButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setUserSelected(false);
+				onCancel();
+				closeDialog();
+			}
+		});
+
+		view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+		view.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				onCancel();
 				closeDialog();
 			}
 		});
 
 		view.setModal(true);
 		view.pack();
-		view.setVisible(true);
 	}
 
-	public StaticDialogController(
-			Window owner,
-			JPanel innerView
-	) {
-		this(owner);
-		setInnerView(innerView);
+	public abstract void onAccept();
+	public abstract void onCancel();
+
+	public void showDialog() {
+		view.setVisible(true);
+		try {
+			semaphore.acquire(); // Pausamos el Main Thread hasta que tengamos una respuesta.
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+			ErrorController.show(view, e);
+		}
 	}
 
 	public StaticDialogView getView() {
 		return view;
 	}
 
-	public Boolean getUserSelected() {
-		return userSelected;
-	}
-
-	public void setUserSelected(Boolean userSelected) {
-		this.userSelected = userSelected;
-	}
-
-	private void closeDialog() {
+	public void closeDialog() {
 		view.dispose();
-		latch.countDown();
+		parentWindowActivate();
+		semaphore.release(); // Liberamos el Main Thread.
+	}
+
+	private void parentWindowActivate() {
+		window.revalidate();
+		window.repaint();
 	}
 
 	public void setInnerView(JPanel innerView) {
+		this.innerView = innerView;
 		view.getContentPanel().removeAll();
 		view.getContentPanel().add(innerView, BorderLayout.CENTER);
 		view.getContentPanel().revalidate();
 		view.getContentPanel().repaint();
 	}
-
-	public static boolean showStaticDialog(
-			Window owner,
-			JPanel innerView
-	) {
-		StaticDialogController staticDialogController = new StaticDialogController(owner, innerView);
-
-		System.out.println( innerView );
-
-		try {
-			staticDialogController.latch.await();
-		}
-		catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		return staticDialogController.getUserSelected();
-	}
-
 }

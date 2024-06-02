@@ -10,8 +10,8 @@ import mateourrutia.Services.ClientService;
 /**
  * TODO: Account CRUD, User menu and Account issues like, transfer, deposit, convert, etc.
  * 	Check TransactionHistorySimple if it works (It won't, so fix it.)
- * 	Account TODO: Create / Remove (Remove will work though)
- * 	Account TODO: Transfers and deposits.
+ * 	Crypto TODO: Add (if not repeated), remove. Pay attention to Enum. <-- Last thing of the day.
+ * 	Account TODO: Transfers and deposits. <-- Monday, hopefully last day yey.
  */
 
 public class Main {
@@ -47,5 +47,6 @@ public class Main {
 			InitController initController = new InitController( clientService );
 			initController.showWindow();
 		});
+
 	}
 }

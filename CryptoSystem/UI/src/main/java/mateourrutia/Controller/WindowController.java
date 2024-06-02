@@ -58,6 +58,14 @@ public abstract class WindowController<T extends JPanel> {
 		window.setVisible(false);
 	}
 
+	public void repaint() {
+		window.revalidate();
+		window.repaint();
+
+		view.revalidate();
+		view.repaint();
+	}
+
 	public void onClose(Runnable action) {
 		window.addWindowListener(new WindowAdapter() {
 			@Override
@@ -69,5 +77,14 @@ public abstract class WindowController<T extends JPanel> {
 
 	public void setTitle(String title) {
 		windowTitle = title;
+	}
+
+	public void showMessageDialog(String message, int messageType) {
+		JOptionPane.showMessageDialog(view, message, "UNFORESEEN CONSEQUENCES", messageType);
+	}
+
+	public void handleError(Exception ex) {
+		ex.printStackTrace();
+		ErrorController.show(view, ex);
 	}
 }

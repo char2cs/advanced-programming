@@ -29,10 +29,10 @@ public class ClientService implements Runnable {
 		return clients;
 	}
 
-	protected void loadClients() {
-		Logger.log(Logger.LogLevel.INFO, "Loading Client Data...");
+	public void loadClients() {
 		clients = clientDAO.getAll();
 		Logger.log(Logger.LogLevel.SUCCESS, "Client data loaded successfully!");
+		System.out.println("Loading Client Data done!");
 	}
 
 	public Thread listener() {
@@ -74,7 +74,7 @@ public class ClientService implements Runnable {
 			{
 				checkForFileChanges();
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 				}
 				catch (InterruptedException e) {
 					e.printStackTrace();
