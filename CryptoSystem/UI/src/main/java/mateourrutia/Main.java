@@ -3,6 +3,9 @@ package mateourrutia;
 import javax.swing.*;
 
 import mateourrutia.Controller.InitController;
+import mateourrutia.Factory.ClientFactory;
+import mateourrutia.Factory.PersistenceType;
+import mateourrutia.Services.ClientService;
 
 /**
  * TODO: Account CRUD, User menu and Account issues like, transfer, deposit, convert, etc.
@@ -13,6 +16,26 @@ import mateourrutia.Controller.InitController;
 
 public class Main {
 	public static void main(String[] args) {
+		/**
+		 * Cargar en memoria todos los usuarios
+		 */
+		ClientService clientService = new ClientService( ClientFactory.getClientDAO(PersistenceType.FILEWRITER) );
+		Thread clientServiceThread = new Thread( clientService );
+		clientServiceThread.start();
+
+		try {
+			clientServiceThread.join();
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+			return;
+		}
+
+		clientService.listener();
+
+		/**
+		 * UI Stuff
+		 */
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
 		}
@@ -21,7 +44,7 @@ public class Main {
 		}
 
 		SwingUtilities.invokeLater(() -> {
-			InitController initController = new InitController();
+			InitController initController = new InitController( clientService );
 			initController.showWindow();
 		});
 	}

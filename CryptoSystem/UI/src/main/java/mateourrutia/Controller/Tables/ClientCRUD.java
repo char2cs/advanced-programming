@@ -2,12 +2,11 @@ package mateourrutia.Controller.Tables;
 
 import mateourrutia.Controller.ErrorController;
 import mateourrutia.Controller.TableTypes.GeneralTable;
-import mateourrutia.DAO.ClientDAO;
 import mateourrutia.Domain.Client;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
 import mateourrutia.Exceptions.OperationFailedException;
-import mateourrutia.Factory.ClientFactory;
+import mateourrutia.Services.ClientService;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
@@ -15,14 +14,17 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 public class ClientCRUD extends GeneralTable<Client> {
-	private final ClientDAO clientDAO = ClientFactory.getClientDAO("TypeWriter");
+	private final ClientService clientService;
 
-	public ClientCRUD() {
+	public ClientCRUD(
+			ClientService clientService
+	) {
 		super();
+		this.clientService = clientService;
 
 		try {
 			DefaultTableModel tableModel = new DefaultTableModel(
-					convertToTableData( clientDAO.getAll() ),
+					convertToTableData( clientService.getClients() ),
 					new Object[]{"CUIT", "Nombre", "Apellido", "Telefono", "Email", "Direccion"}
 			) {
 				@Override
@@ -61,10 +63,8 @@ public class ClientCRUD extends GeneralTable<Client> {
 				""
 		);
 
-		System.out.println( client );
-
 		try {
-			clientDAO.add(client);
+			clientService.getClientDAO().add(client);
 		}
 		catch (ObjectAlreadyExistsException e) {
 			e.printStackTrace();
@@ -81,17 +81,8 @@ public class ClientCRUD extends GeneralTable<Client> {
 		int column 				= e.getColumn();
 
 		Object something 		= Model.getValueAt(row, column);
-		List<Client> clients 	= clientDAO.getAll();
-		Client client 			= null;
-
-		try {
-			client = clientDAO.get( clients.get(row).getUuid() );
-		}
-		catch (ObjectNotFoundException ex) {
-			ex.printStackTrace();
-			ErrorController.show( this.getView(), ex );
-			return;
-		}
+		List<Client> clients 	= clientService.getClients();
+		Client client 			= clients.get(row);
 
 		switch (column) {
 			case 0:
@@ -120,7 +111,7 @@ public class ClientCRUD extends GeneralTable<Client> {
 		}
 
 		try {
-			clientDAO.update(client);
+			clientService.getClientDAO().update(client);
 		}
 		catch (ObjectNotFoundException ex) {
 			ex.printStackTrace();
@@ -134,11 +125,11 @@ public class ClientCRUD extends GeneralTable<Client> {
 
 	@Override
 	protected void onDelete(Integer[] rows, JTable table) throws ClassCastException {
-		List<Client> clients = clientDAO.getAll();
+		List<Client> clients = clientService.getClients();
 
 		for (int row : rows)
 			try {
-				clientDAO.delete( clients.get( row ).getUuid() );
+				clientService.getClientDAO().delete( clients.get( row ).getUuid() );
 				this.removeRow( row );
 			}
 			catch (ObjectNotFoundException e) {

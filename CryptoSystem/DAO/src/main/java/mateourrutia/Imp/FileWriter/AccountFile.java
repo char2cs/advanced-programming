@@ -11,8 +11,8 @@ import mateourrutia.utils.Listed;
 
 import java.util.*;
 
-public class AccountImp implements AccountDAO {
-    ClientImp clientImp = new ClientImp();
+public class AccountFile implements AccountDAO {
+    ClientFile clientImp = new ClientFile();
 
     @Override
     public void create(Account objects, Client client) throws ObjectNotFoundException, OperationFailedException {

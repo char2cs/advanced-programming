@@ -1,13 +1,18 @@
 package mateourrutia.DAO;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
 import mateourrutia.Exceptions.OperationFailedException;
+import mateourrutia.utils.ObjectWriter;
+import mateourrutia.utils.persistance.FileWriter;
 
-public interface CRUD<T> {
+public interface CRUD<T extends ObjectWriter & Serializable> {
+	String getFilePath();
+
 	/**
 	 * Crea el objecto sin importar que haya otro UUID repetido
 	 * @param objects

@@ -1,84 +1,50 @@
-package mateourrutia.utils;
-
-import java.io.*;
-import java.util.*;
-import java.util.stream.IntStream;
+package mateourrutia.utils.persistance;
 
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
 import mateourrutia.Exceptions.OperationFailedException;
+import mateourrutia.utils.Logger;
+import mateourrutia.utils.ObjectWriter;
+import mateourrutia.utils.Property;
 
-public class ListWriter<T extends ObjectWriter> {
+import java.io.Serializable;
+import java.util.*;
+import java.util.stream.IntStream;
+
+/**
+ * Writers contiene todos los metodos que una clase almacenadora de objetos requiere, incluyendo
+ * metodos CRUD.
+ * @param <T>
+ */
+public abstract class Writers<T extends ObjectWriter & Serializable> {
 	private final String className;
 	private final String filePath;
 
-	public ListWriter(
-			String className
+	public Writers(
+			String className,
+			String fileExtension
 	) {
 		String Path = Property.get("data.folder");
 		String PathConcat =  Path != null && !Path.isEmpty() ?
 				Path.concat("/") : "";
 
 		this.filePath = PathConcat.concat(
-				className.concat(".dat")
+				className.concat(".").concat(fileExtension)
 		);
 		this.className = className;
 	}
 
-	// File interacting methods...
-	@SuppressWarnings("unchecked")
-	private ArrayList<T> readFile() {
-		ArrayList<T> contents = new ArrayList<>();
-
-		try (
-				ObjectInputStream ois = new ObjectInputStream( new FileInputStream(filePath) )
-		) {
-			contents = (ArrayList<T>) ois.readObject();
-		}
-		catch (FileNotFoundException e) {
-			System.out.println("[ListWriter] @ '" + this.className + "' File not found: " + e.getMessage());
-			Logger.log(
-					Logger.LogLevel.FATAL,
-					"@ '" + this.className + "' File not found: " + e.getMessage()
-			);
-		}
-		catch (IOException | ClassNotFoundException e) {
-			Logger.log(
-					Logger.LogLevel.FATAL,
-					"@ '" + this.className + "' IOException | ClassNotFoundException: " + e.getMessage()
-			);
-			e.printStackTrace();
-		}
-
-		return contents;
+	public String getClassName() {
+		return className;
 	}
 
-	private boolean saveFile( List<T> objects ) {
-		ArrayList<T> newObjects = new ArrayList<>( objects );
-
-		try (
-				ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream(filePath) )
-		) {
-			oos.writeObject( newObjects );
-
-			Logger.log(
-					Logger.LogLevel.INFO,
-					"@ '" + this.className + "' Object saved"
-			);
-		}
-		catch (IOException e) {
-			Logger.log(
-					Logger.LogLevel.FATAL,
-					"@ '" + this.className + "' IOException: " + e.getMessage()
-			);
-			e.printStackTrace();
-			return false;
-		}
-
-		return true;
+	public String getFilePath() {
+		return filePath;
 	}
 
-	// General CRUD methods
+	protected abstract List<T> readFile();
+	protected abstract boolean saveFile( List<T> objects );
+
 	public void create(T object) {
 		List<T> objects = this.readFile();
 
@@ -189,6 +155,4 @@ public class ListWriter<T extends ObjectWriter> {
 
 		return new ArrayList<>();
 	}
-
 }
-

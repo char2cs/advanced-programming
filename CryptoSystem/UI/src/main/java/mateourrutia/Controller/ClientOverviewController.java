@@ -5,6 +5,7 @@ import mateourrutia.DAO.AccountDAO;
 import mateourrutia.Domain.Account;
 import mateourrutia.Domain.Client;
 import mateourrutia.Factory.AccountFactory;
+import mateourrutia.Factory.PersistenceType;
 import mateourrutia.View.ClientOverviewView;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ import java.awt.event.ActionListener;
 
 public class ClientOverviewController extends WindowController<ClientOverviewView> {
 	private final Client client;
-	private final AccountDAO accountDAO = AccountFactory.getAccountDAO("FileWriter");
+	private final AccountDAO accountDAO = AccountFactory.getAccountDAO(PersistenceType.FILEWRITER);
 	private final AccountSimple accountSimple;
 
 	public ClientOverviewController(Client client) {

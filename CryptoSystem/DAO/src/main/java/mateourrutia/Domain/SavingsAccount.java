@@ -2,11 +2,23 @@ package mateourrutia.Domain;
 
 public class SavingsAccount extends Account {
 
+	private Long cuit;
+
 	public SavingsAccount(
 			Client 	client,
-			double 	balance
+			double 	balance,
+			Long 	cuit
 	) {
 		super(client, balance);
+		this.cuit = cuit;
+	}
+
+	public Long getCuit() {
+		return cuit;
+	}
+
+	public void setCuit(Long cuit) {
+		this.cuit = cuit;
 	}
 
 	@Override

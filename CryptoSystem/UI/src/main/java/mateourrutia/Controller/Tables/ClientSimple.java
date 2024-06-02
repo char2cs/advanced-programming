@@ -1,22 +1,25 @@
 package mateourrutia.Controller.Tables;
 
 import mateourrutia.Controller.ErrorController;
-import mateourrutia.DAO.ClientDAO;
 import mateourrutia.Domain.Client;
 import mateourrutia.Controller.TableTypes.SimpleTable;
-import mateourrutia.Factory.ClientFactory;
+import mateourrutia.Services.ClientService;
 
 import javax.swing.table.DefaultTableModel;
 
 public class ClientSimple extends SimpleTable<Client> {
-	private final ClientDAO clientDAO = ClientFactory.getClientDAO("TypeWriter");
+	private final ClientService clientService;
 
-	public ClientSimple() {
+	public ClientSimple(
+			ClientService clientService
+	) {
 		super();
+
+		this.clientService = clientService;
 
 		try {
 			DefaultTableModel tableModel = new DefaultTableModel(
-					convertToTableData( clientDAO.getAll() ),
+					convertToTableData( clientService.getClients() ),
 					new Object[]{"CUIT", "Nombre", "Apellido", "Telefono", "Email", "Direccion"}
 			) {
 				@Override

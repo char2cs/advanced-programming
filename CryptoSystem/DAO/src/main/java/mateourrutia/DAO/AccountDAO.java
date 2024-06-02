@@ -18,7 +18,7 @@ public interface AccountDAO {
 	void create(Account objects, Client client) throws ObjectNotFoundException, OperationFailedException;
 
 	/**
-	 * Verifica que no exista otro UUID.
+	 * Crea el objeto, pero antes verifica que no exista otro con el mismo UUID.
 	 * @param objects
 	 * @param client
 	 */

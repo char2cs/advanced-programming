@@ -1,15 +1,22 @@
 package mateourrutia.Factory;
 
 import mateourrutia.DAO.AccountDAO;
-import mateourrutia.Imp.FileWriter.AccountImp;
+import mateourrutia.Imp.FileWriter.AccountFile;
+import mateourrutia.Imp.StringWriter.AccountString;
 
 public class AccountFactory {
 	public static AccountDAO getAccountDAO(
-			String type
+			PersistenceType type
 	) {
-		if ( type.equalsIgnoreCase("FileWriter") )
-			return new AccountImp();
-		else
-			return new AccountImp();
+		switch (type) {
+			case FILEWRITER:
+				return new AccountFile();
+
+			case STRINGWRITER:
+				return new AccountString();
+
+			default:
+				return null;
+		}
 	}
 }

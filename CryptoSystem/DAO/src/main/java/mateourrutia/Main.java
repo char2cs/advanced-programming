@@ -7,11 +7,12 @@ import mateourrutia.Domain.SavingsAccount;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Factory.AccountFactory;
 import mateourrutia.Factory.ClientFactory;
+import mateourrutia.Factory.PersistenceType;
 
 public class Main {
 	public static void main(String[] args) {
-		ClientDAO clientDAO = ClientFactory.getClientDAO("FileWriter");
-		AccountDAO accountDAO = AccountFactory.getAccountDAO("FileWriter");
+		ClientDAO clientDAO = ClientFactory.getClientDAO(PersistenceType.STRINGWRITER);
+		AccountDAO accountDAO = AccountFactory.getAccountDAO(PersistenceType.STRINGWRITER);
 
 		Client mateo = new Client(
 				20455183406L,
@@ -22,17 +23,9 @@ public class Main {
 				"Ituzaingo 670"
 		);
 
-		Client nothing = new Client(
-				null,
-				"",
-				"",
-				null,
-				"",
-				""
-		);
-
 		SavingsAccount savings = new SavingsAccount(mateo,
-				23213
+				23213,
+				204455183406L
 		);
 
 		for ( Client client : clientDAO.getAll() )
@@ -47,7 +40,6 @@ public class Main {
 
 		try {
 			clientDAO.add(mateo);
-			clientDAO.add(nothing);
 		} catch (ObjectAlreadyExistsException e) {
 			throw new RuntimeException(e);
 		}

@@ -1,6 +1,7 @@
 package mateourrutia.utils;
 
 import java.io.*;
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

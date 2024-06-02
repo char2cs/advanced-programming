@@ -3,10 +3,8 @@ package mateourrutia.Controller;
 import mateourrutia.Controller.Tables.ClientCRUD;
 import mateourrutia.Controller.Tables.ClientSimple;
 import mateourrutia.Controller.Tables.TransactionHistorySimple;
-import mateourrutia.DAO.ClientDAO;
 import mateourrutia.Domain.Client;
-import mateourrutia.Exceptions.ObjectNotFoundException;
-import mateourrutia.Factory.ClientFactory;
+import mateourrutia.Services.ClientService;
 import mateourrutia.View.InitView;
 
 import javax.swing.*;
@@ -16,16 +14,21 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class InitController extends WindowController<InitView> {
+	private ClientService clientService;
 	private ClientSimple clientSimple;
 
-	public InitController() {
+	public InitController(
+			ClientService clientService
+	) {
 		super( new InitView() );
+		this.clientService = clientService;
+
 		setTitle("Crypto System");
 
 		getView().getAllClients().addActionListener(new OpenAnotherWindowListener<ClientCRUD>() {
 			@Override
 			protected ClientCRUD Object() {
-				return new ClientCRUD();
+				return new ClientCRUD( clientService );
 			}
 		});
 
@@ -43,7 +46,7 @@ public class InitController extends WindowController<InitView> {
 	}
 
 	private void reloadTable() {
-		clientSimple = new ClientSimple();
+		clientSimple = new ClientSimple( clientService );
 		getView().getTablePanel().removeAll();
 		getView().getTablePanel().add( clientSimple.getView(), BorderLayout.CENTER );
 	}
@@ -77,26 +80,15 @@ public class InitController extends WindowController<InitView> {
 	private class UserSelectListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ClientDAO clientDAO = ClientFactory.getClientDAO("FileWriter");
-
-			List<Client> clients = clientDAO.getAll();
+			List<Client> clients = clientService.getClients();
 			int row = clientSimple.getSelectedRowIndex();
 
 			if (row == -1)
 				return;
 
-			Client client;
-
-			try {
-				client = clientDAO.get( clients.get(row).getUuid() );
-			}
-			catch (ObjectNotFoundException ex) {
-				ex.printStackTrace();
-				ErrorController.show( getView(), ex );
-				return;
-			}
-
-			ClientOverviewController clientOverviewController = new ClientOverviewController(client);
+			ClientOverviewController clientOverviewController = new ClientOverviewController(
+					clients.get(row)
+			);
 
 			hideWindow();
 			clientOverviewController.showWindow(JFrame.DISPOSE_ON_CLOSE);

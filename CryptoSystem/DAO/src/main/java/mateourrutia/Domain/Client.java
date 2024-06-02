@@ -7,25 +7,20 @@ import mateourrutia.utils.Listed;
 import mateourrutia.utils.ObjectWriter;
 
 /**
- * Client --- Account relationship dilemma. Each Account would be saved inside each Client object.
+ * Dilema Client --- Account.
  *
- * Both will contain some interface and implementation, Client for obvious reasons, however account
- * also would have, the account will retrieve all object, for ex., from all the users and interact
- * with that data from then. Although being to resource intensive, we make sure to not have repeated
- * data stored, or even inconsistencies through all the application, as data could easily change in
- * one place, but not the other.
- *
- * Also, each TransactionHistory object will contain a copy of each account state, and their users,
- * that will repeat data, but that is for historic and perseveration sake.
+ * Con el fin de evitar la excesiva repeticion de datos y
+ * evitar la fragmentacion de la informacion, todas las
+ * Cuentas seran guardadas junto a cliente y seran accedidas
+ * atraves de el.
  */
-
 public class Client extends ObjectWriter implements Serializable {
-	private Long 		cuit;
-	private String 		name;
-	private String 		lastname;
-	private Long 		phone;
-	private String 		email;
-	private String 		address;
+	private Long 			cuit;
+	private String 			name;
+	private String 			lastname;
+	private Long 			phone;
+	private String 			email;
+	private String 			address;
 	private Listed<Account> accounts = new Listed<>();
 
 	public Client() { super(); }

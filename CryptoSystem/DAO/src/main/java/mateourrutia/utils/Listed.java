@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Listed nos permite interacturar con una Lista de manera mas dinamica,
+ * permitiendo metodos que el tipo List no contiene por defecto.
+ * @param <T>
+ */
 public class Listed<T extends ObjectWriter> implements Serializable {
 	List<T> list = new ArrayList<>();
 

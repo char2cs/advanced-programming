@@ -1,0 +1,35 @@
+[10:44:06] [FATAL] - @ 'Client' IOException | ClassNotFoundException: mateourrutia.Domain.SavingsAccount; local class incompatible: stream classdesc serialVersionUID = 8725231526244587601, local class serialVersionUID = 5359364007752919021
+[10:44:06] [FATAL] - @ 'Client' IOException | ClassNotFoundException: mateourrutia.Domain.SavingsAccount; local class incompatible: stream classdesc serialVersionUID = 8725231526244587601, local class serialVersionUID = 5359364007752919021
+[10:44:06] [FATAL] - @ 'Client' IOException | ClassNotFoundException: mateourrutia.Domain.SavingsAccount; local class incompatible: stream classdesc serialVersionUID = 8725231526244587601, local class serialVersionUID = 5359364007752919021
+[10:44:06] [INFO] - @ 'Client' Object saved
+[10:44:06] [SUCCESS] - @ 'Client' Object with id: '2bd0fac8-1f54-4ea1-9f01-11b60e3aec82' added.
+[10:44:06] [INFO] - @ 'Client' Object saved
+[10:44:06] [SUCCESS] - @ 'Client' Object with id: '5c7d1943-7aa1-42c8-aa7a-8d574fe82e4d' added.
+[10:44:18] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[10:44:18] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[10:44:18] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[10:44:18] [INFO] - @ 'Client' Object saved
+[10:44:18] [SUCCESS] - @ 'Client' Object with id: 'ce1539d3-2595-4f05-bc73-5e2d3c06aa5c' added.
+[10:44:18] [INFO] - @ 'Client' Object saved
+[10:44:18] [SUCCESS] - @ 'Client' Object with id: '40f091e1-6f4e-4946-9810-87b5794ee2d5' added.
+[11:07:55] [FATAL] - @ 'Client' File not found: data/Client.B64 (No such file or directory)
+[11:07:55] [FATAL] - @ 'Client' File not found: data/Client.B64 (No such file or directory)
+[11:07:55] [FATAL] - @ 'Client' File not found: data/Client.B64 (No such file or directory)
+[11:07:55] [INFO] - @ 'Client' Object saved
+[11:07:55] [SUCCESS] - @ 'Client' Object with id: '1de4885b-5a3a-4688-bc97-0a226732391d' added.
+[11:07:58] [INFO] - @ 'Client' Object saved
+[11:07:58] [SUCCESS] - @ 'Client' Object with id: '240da371-70db-4618-99b5-7e7f407ca5b6' added.
+[11:09:07] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[11:09:07] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[11:09:07] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[11:09:07] [INFO] - @ 'Client' Object saved
+[11:09:07] [SUCCESS] - @ 'Client' Object with id: 'aff4bb2c-dfd5-4442-b668-e4111a705cde' added.
+[11:09:11] [INFO] - @ 'Client' Object saved
+[11:09:11] [SUCCESS] - @ 'Client' Object with id: '2dd42218-b412-42c0-89e5-a0bdd29fa109' added.
+[11:19:40] [FATAL] - @ 'Client' File not found: data/Client.B64 (No such file or directory)
+[11:19:40] [FATAL] - @ 'Client' File not found: data/Client.B64 (No such file or directory)
+[11:19:40] [FATAL] - @ 'Client' File not found: data/Client.B64 (No such file or directory)
+[11:19:40] [INFO] - @ 'Client' Object saved
+[11:19:40] [SUCCESS] - @ 'Client' Object with id: '0944eb49-1256-4ab0-a955-edb8b243c35e' added.
+[11:19:55] [INFO] - @ 'Client' Object saved
+[11:19:55] [SUCCESS] - @ 'Client' Object with id: 'a1e5fae7-6b25-414d-8ece-ac72bfad6bae' added.

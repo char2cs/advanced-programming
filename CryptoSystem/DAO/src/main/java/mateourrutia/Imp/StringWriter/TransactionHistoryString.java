@@ -1,47 +1,51 @@
-package mateourrutia.Imp.FileWriter;
+package mateourrutia.Imp.StringWriter;
 
 import mateourrutia.DAO.TransactionHistoryDAO;
 import mateourrutia.Domain.TransactionHistory;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
 import mateourrutia.Exceptions.OperationFailedException;
-import mateourrutia.utils.ListWriter;
+import mateourrutia.utils.persistance.StringWriter;
 
 import java.util.List;
 import java.util.UUID;
 
-public class TransactionHistoryImp implements TransactionHistoryDAO {
+public class TransactionHistoryString implements TransactionHistoryDAO {
+    StringWriter<TransactionHistory> fileWriter = new StringWriter<TransactionHistory>( TransactionHistory.class.getSimpleName() );
 
-    ListWriter<TransactionHistory> listWriter = new ListWriter<TransactionHistory>( TransactionHistory.class.getSimpleName() );
+    @Override
+    public String getFilePath() {
+        return fileWriter.getFilePath();
+    }
 
     @Override
     public void create(TransactionHistory objects) {
-        listWriter.create(objects);
+        fileWriter.create(objects);
     }
 
     @Override
     public void add(TransactionHistory objects) throws ObjectAlreadyExistsException {
-        listWriter.add(objects);
+        fileWriter.add(objects);
     }
 
     @Override
     public TransactionHistory get(UUID uuid) throws ObjectNotFoundException {
-        return listWriter.get(uuid);
+        return fileWriter.get(uuid);
     }
 
     @Override
     public boolean update(TransactionHistory objects) throws ObjectNotFoundException, OperationFailedException {
-        return listWriter.update(objects);
+        return fileWriter.update(objects);
     }
 
     @Override
     public boolean delete(UUID uuid) throws ObjectNotFoundException, OperationFailedException {
-        return listWriter.delete(uuid);
+        return fileWriter.delete(uuid);
     }
 
     @Override
     public List<TransactionHistory> getAll() {
-        return listWriter.getAll();
+        return fileWriter.getAll();
     }
 
 }
