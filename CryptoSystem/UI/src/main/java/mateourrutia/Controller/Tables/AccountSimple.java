@@ -60,7 +60,7 @@ public class AccountSimple extends SimpleTable<Account> {
 			if ( account.getClass().getSimpleName().equals("CheckingAccount") )
 			{
 				assert account instanceof CheckingAccount;
-				accountArray[i][1] = null;
+				accountArray[i][1] = account.getBalance();
 				accountArray[i][2] = ((CheckingAccount) account).getOverdraftLimit();
 			}
 			else {

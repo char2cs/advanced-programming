@@ -8,7 +8,6 @@ import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
 import mateourrutia.Exceptions.OperationFailedException;
 import mateourrutia.utils.ObjectWriter;
-import mateourrutia.utils.persistance.FileWriter;
 
 public interface CRUD<T extends ObjectWriter & Serializable> {
 	String getFilePath();
