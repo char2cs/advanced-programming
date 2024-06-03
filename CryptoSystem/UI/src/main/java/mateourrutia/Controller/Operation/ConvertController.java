@@ -59,7 +59,7 @@ public class ConvertController extends DepositWithdrawUtils<ConvertView> {
 		String balanceString = getInnerView().getBalance().getText();
 		Double balance = Double.parseDouble(getInnerView().getBalance().getText());
 
-		if ( getInnerView().getCrypto().getSelectedIndex() != 0 && getAccount() instanceof Wallet )
+		if ( getInnerView().getCrypto().getSelectedIndex() == 0 && getAccount() instanceof Wallet )
 		{
 			TransferController transferController = new TransferController(
 					getParent(),
@@ -96,7 +96,6 @@ public class ConvertController extends DepositWithdrawUtils<ConvertView> {
 						toAccounts[0] = transferedAccount;
 					}
 					catch (ObjectNotFoundException e) {
-						System.out.println("Inside transferController");
 						ErrorController.show(getView(), e);
 					}
 				}
@@ -108,13 +107,10 @@ public class ConvertController extends DepositWithdrawUtils<ConvertView> {
 		else {
 			Currency currency = Currency.values()[
 				getAccount() instanceof Wallet ?
-					getInnerView().getCrypto().getSelectedIndex() + 1 :
+					getInnerView().getCrypto().getSelectedIndex() - 1 :
 					getInnerView().getCrypto().getSelectedIndex()
 			];
 			toAccounts[0] = getToAccount(currency);
-
-			System.out.println(currency);
-			System.out.println( getToAccount(currency) );
 		}
 
 		if ( toAccounts[0] == null )
@@ -132,7 +128,7 @@ public class ConvertController extends DepositWithdrawUtils<ConvertView> {
 
 		try {
 			TransactionHistory transactionResult = getAccount().convert(
-					Double.parseDouble( getInnerView().getBalance().getText() ),
+					balance,
 					toAccount
 			);
 
@@ -143,7 +139,6 @@ public class ConvertController extends DepositWithdrawUtils<ConvertView> {
 			ErrorHandling( transactionResult );
 		}
 		catch (Exception e) {
-			System.out.println("Inside Convert");
 			ErrorController.show(getView(), e);
 		}
 	}

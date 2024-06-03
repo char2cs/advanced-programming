@@ -15,10 +15,6 @@ import mateourrutia.View.AccountOverviewView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * TODO Know why the balance is not updated.
- */
-
 public class AccountOverviewController extends WindowController<AccountOverviewView> {
 	private Account account;
 	private AccountDAO accountDAO;

@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ClientOverviewController extends WindowController<ClientOverviewView> {
 	private final ClientService clientService;
-	private final Client client;
+	private Client client;
 	private final AccountDAO accountDAO = AccountFactory.getAccountDAO(PersistenceType.FILEWRITER);
 	private AccountSimple accountSimple;
 
@@ -76,6 +76,19 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 		tablePanel.repaint();
 	}
 
+	/**
+	 * Reload user
+	 */
+	private void reloadUser() {
+        try {
+            client = clientService.getClientDAO().get(client.getUuid());
+			setTable(client);
+        }
+		catch (ObjectNotFoundException e) {
+            handleError(e);
+        }
+    }
+
 	private class AccountSelectListener extends OpenAnotherWindowListener<AccountOverviewController> {
 		@Override
 		protected AccountOverviewController Object() {
@@ -93,12 +106,7 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 
 		@Override
 		protected void onClose() {
-			try {
-				setTable( clientService.getClientDAO().get(client.getUuid()) );
-			}
-			catch (ObjectNotFoundException ex) {
-				handleError(ex);
-			}
+			reloadUser();
 		}
 	}
 
