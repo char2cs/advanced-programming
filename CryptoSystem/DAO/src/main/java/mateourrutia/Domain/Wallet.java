@@ -55,7 +55,25 @@ public class Wallet extends Account {
 			double amount,
 			Account toAccount
 	) {
-		if (balance >= amount && toAccount instanceof Wallet)
+		if ( !(toAccount instanceof Wallet) )
+			return new TransactionHistory(
+					TransactionHistory.Type.TRANSFER,
+					TransactionHistory.Status.ERROR_ACCOUNT_IS_NOT_WALLET,
+					amount,
+					this,
+					toAccount
+			);
+
+		if ( ! ((Wallet) toAccount).getCryptocurrency().getName().equals( this.cryptocurrency.getName() ) )
+			return new TransactionHistory(
+					TransactionHistory.Type.TRANSFER,
+					TransactionHistory.Status.ERROR_WALLETS_ARE_DIFFERENT_TYPE,
+					amount,
+					this,
+					toAccount
+			);
+
+		if (balance >= amount)
 		{
 			balance -= amount;
 			toAccount.deposit(amount);
@@ -68,14 +86,6 @@ public class Wallet extends Account {
 				toAccount
 			);
 		}
-		else if ( !(toAccount instanceof Wallet) )
-			return new TransactionHistory(
-				TransactionHistory.Type.TRANSFER,
-				TransactionHistory.Status.ERROR_ACCOUNT_IS_NOT_WALLET,
-				amount,
-				this,
-				toAccount
-			);
 
 		return new TransactionHistory(
 			TransactionHistory.Type.TRANSFER,

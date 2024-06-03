@@ -30,7 +30,7 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public TransactionHistory withdraw(double amount) {
-		if (balance + overdraftLimit >= amount)
+		if ( amount <= balance && balance - amount >= overdraftLimit )
 		{
 			balance -= amount;
 
@@ -52,7 +52,25 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public TransactionHistory transfer(double amount, Account toAccount) {
-		if (balance + overdraftLimit >= amount)
+		if ( toAccount.getUuid().equals( this.getUuid() ) )
+			return new TransactionHistory(
+					TransactionHistory.Type.TRANSFER,
+					TransactionHistory.Status.ERROR_ACCOUNTS_ARE_THE_SAME_ACCOUNT,
+					amount,
+					this,
+					toAccount
+			);
+
+		if ( toAccount instanceof Wallet )
+			return new TransactionHistory(
+					TransactionHistory.Type.TRANSFER,
+					TransactionHistory.Status.ERROR_ACCOUNT_IS_WALLET,
+					amount,
+					this,
+					toAccount
+			);
+
+		if ( amount <= balance && balance - amount >= overdraftLimit )
 		{
 			balance -= amount;
 			toAccount.deposit(amount);

@@ -14,6 +14,7 @@ import mateourrutia.Services.ClientService;
 import mateourrutia.View.ClientOverviewView;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -66,6 +67,8 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 	 */
 	private void setTable(Client client) {
 		accountSimple = new AccountSimple(client);
+		accountSimple.allowSelection();
+
 		JPanel tablePanel = getView().getTable();
 		tablePanel.removeAll();
 		tablePanel.add(accountSimple.getView(), BorderLayout.CENTER);
@@ -83,7 +86,8 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 				return null;
 
 			return new AccountOverviewController(
-					accounts.get(row)
+					accounts.get(row),
+					accountDAO
 			);
 		}
 

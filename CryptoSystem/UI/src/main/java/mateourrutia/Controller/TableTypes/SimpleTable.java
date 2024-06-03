@@ -4,6 +4,7 @@ import mateourrutia.View.TableTypes.SimpleView;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public abstract class SimpleTable<T> extends TableType<T, SimpleView> {
@@ -37,6 +38,15 @@ public abstract class SimpleTable<T> extends TableType<T, SimpleView> {
 			);
 
 		return row;
+	}
+
+	public void allowSelection() {
+		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+		renderer.setHorizontalAlignment(SwingConstants.LEFT);
+		getView().getTable().setDefaultRenderer(Object.class, renderer);
+
+		getView().getTable().setCellSelectionEnabled(true);
+		getView().getTable().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 
 	@Override

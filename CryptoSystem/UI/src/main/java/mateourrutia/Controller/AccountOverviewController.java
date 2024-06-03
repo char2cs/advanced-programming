@@ -1,7 +1,14 @@
 package mateourrutia.Controller;
 
+import mateourrutia.Controller.Operation.DepositController;
+import mateourrutia.Controller.Operation.TransferController;
+import mateourrutia.Controller.Operation.WithdrawController;
+import mateourrutia.DAO.AccountDAO;
+import mateourrutia.DAO.TransactionHistoryDAO;
 import mateourrutia.Domain.Account;
 import mateourrutia.Domain.Wallet;
+import mateourrutia.Factory.PersistenceType;
+import mateourrutia.Factory.TransactionHistoryFactory;
 import mateourrutia.View.AccountOverviewView;
 
 import java.awt.event.ActionEvent;
@@ -9,10 +16,16 @@ import java.awt.event.ActionListener;
 
 public class AccountOverviewController extends WindowController<AccountOverviewView> {
 	private Account account;
+	private AccountDAO accountDAO;
+	private TransactionHistoryDAO transactionHistoryDAO = TransactionHistoryFactory.getTransactionHistoryDAO( PersistenceType.STRINGWRITER );
 
-	public AccountOverviewController(Account account) {
+	public AccountOverviewController(
+			Account account,
+			AccountDAO accountDAO
+	) {
 		super( new AccountOverviewView() );
 		this.account = account;
+		this.accountDAO = accountDAO;
 
 		initController();
 	}
@@ -34,27 +47,65 @@ public class AccountOverviewController extends WindowController<AccountOverviewV
 		getView().getDeposit().addActionListener(new DepositListener());
 		getView().getWithdraw().addActionListener(new WithdrawListener());
 		getView().getTransaction().addActionListener(new TransactionListener());
+		getView().getConvert().addActionListener(new ConvertListener());
 		updateBalance();
 	}
 
 	private class DepositListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			DepositController depositController = new DepositController(
+					getWindow(),
+					account,
+					accountDAO,
+					transactionHistoryDAO
+			);
 
+			depositController.showDialog();
+
+			updateBalance();
 		}
 	}
 
 	private class WithdrawListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			WithdrawController withdrawController = new WithdrawController(
+					getWindow(),
+					account,
+					accountDAO,
+					transactionHistoryDAO
+			);
 
+			withdrawController.showDialog();
+
+			updateBalance();
 		}
 	}
 
 	private class TransactionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			TransferController transferController = new TransferController(
+					getWindow(),
+					account,
+					accountDAO,
+					transactionHistoryDAO
+			);
 
+			transferController.showDialog();
+
+			updateBalance();
+		}
+	}
+
+	private class ConvertListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			/**
+			 * TODO ...
+			 */
+			updateBalance();
 		}
 	}
 

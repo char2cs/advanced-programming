@@ -60,6 +60,24 @@ public class SavingsAccount extends Account {
 			double amount,
 			Account toAccount
 	) {
+		if ( toAccount.getUuid().equals( this.getUuid() ) )
+			return new TransactionHistory(
+					TransactionHistory.Type.TRANSFER,
+					TransactionHistory.Status.ERROR_ACCOUNTS_ARE_THE_SAME_ACCOUNT,
+					amount,
+					this,
+					toAccount
+			);
+
+		if ( toAccount instanceof Wallet )
+			return new TransactionHistory(
+					TransactionHistory.Type.TRANSFER,
+					TransactionHistory.Status.ERROR_ACCOUNT_IS_WALLET,
+					amount,
+					this,
+					toAccount
+			);
+
 		if (balance >= amount)
 		{
 			balance -= amount;

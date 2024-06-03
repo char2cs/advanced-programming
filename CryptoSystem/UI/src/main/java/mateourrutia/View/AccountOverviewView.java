@@ -25,6 +25,7 @@ public class AccountOverviewView extends JPanel {
         Deposit = new JButton();
         Transaction = new JButton();
         Withdraw = new JButton();
+        Convert = new JButton();
         hSpacer2 = new JPanel(null);
         panel2 = new JPanel();
         Back = new JButton();
@@ -64,6 +65,11 @@ public class AccountOverviewView extends JPanel {
             Withdraw.setText("Retirar");
             Withdraw.setFont(new Font("DejaVu Sans", Font.PLAIN, 26));
             Buttons.add(Withdraw);
+
+            //---- Convert ----
+            Convert.setText("Conversion");
+            Convert.setFont(new Font("DejaVu Sans", Font.PLAIN, 26));
+            Buttons.add(Convert);
         }
         add(Buttons, BorderLayout.CENTER);
         add(hSpacer2, BorderLayout.EAST);
@@ -89,6 +95,7 @@ public class AccountOverviewView extends JPanel {
     private JButton Deposit;
     private JButton Transaction;
     private JButton Withdraw;
+    private JButton Convert;
     private JPanel hSpacer2;
     private JPanel panel2;
     private JButton Back;
@@ -112,6 +119,10 @@ public class AccountOverviewView extends JPanel {
 
     public JButton getDeposit() {
         return Deposit;
+    }
+
+    public JButton getConvert() {
+        return Convert;
     }
 
     public JButton getBack() {

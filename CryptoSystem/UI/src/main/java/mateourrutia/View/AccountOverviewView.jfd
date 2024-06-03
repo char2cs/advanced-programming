@@ -47,6 +47,11 @@ new FormModel {
 					"text": "Retirar"
 					"font": #Font0
 				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "Convert"
+					"text": "Conversion"
+					"font": #Font0
+				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )

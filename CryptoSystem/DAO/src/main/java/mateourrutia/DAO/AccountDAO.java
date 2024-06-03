@@ -43,6 +43,15 @@ public interface AccountDAO {
 	Account get(UUID uuid) throws ObjectNotFoundException;
 
 	/**
+	 * Busca la account seleccionada global, por CBU.
+	 * !!! Siempre que se pueda, EVITAR METODOS DE BUSQUEDA GLOBAL
+	 * @param cbu
+	 * @return
+	 * @throws ObjectNotFoundException
+	 */
+	Account get(Long cbu) throws ObjectNotFoundException;
+
+	/**
 	 * Busca el objecto, por UUID y lo actualiza.
 	 * @param objects
 	 * @param client
