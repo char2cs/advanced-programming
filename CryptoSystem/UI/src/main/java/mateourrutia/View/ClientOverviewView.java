@@ -41,7 +41,7 @@ public class ClientOverviewView extends JPanel {
             Title.setLayout(new BorderLayout());
 
             //---- Welcome ----
-            Welcome.setText("Bienvenido,");
+            Welcome.setText("Bienvenido");
             Welcome.setFont(new Font("DejaVu Sans", Font.PLAIN, 28));
             Title.add(Welcome, BorderLayout.NORTH);
 
@@ -80,7 +80,7 @@ public class ClientOverviewView extends JPanel {
                 Btn_Right.add(Back);
 
                 //---- SelectedAccount ----
-                SelectedAccount.setText("Ir a Cuenta Seleccionada");
+                SelectedAccount.setText("Operar con cuenta seleccionada");
                 Btn_Right.add(SelectedAccount);
             }
             Buttons.add(Btn_Right, BorderLayout.EAST);

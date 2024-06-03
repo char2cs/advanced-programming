@@ -9,7 +9,7 @@ new FormModel {
 				name: "Title"
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "Welcome"
-					"text": "Bienvenido,"
+					"text": "Bienvenido"
 					"font": new java.awt.Font( "DejaVu Sans", 0, 28 )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"

@@ -8,7 +8,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "Estas apunto de crear tu cuenta corriente"
-				"font": new java.awt.Font( "DejaVu Sans", 0, 16 )
+				"font": new java.awt.Font( "DejaVu Sans", 0, 18 )
 				"horizontalAlignment": 0
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "North"

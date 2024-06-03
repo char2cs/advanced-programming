@@ -1,30 +1,36 @@
 package mateourrutia.Controller.Account;
 
+import mateourrutia.Controller.ErrorController;
+import mateourrutia.Controller.StaticDialogController;
+import mateourrutia.DAO.AccountDAO;
+import mateourrutia.Domain.Account;
 import mateourrutia.Domain.CheckingAccount;
 import mateourrutia.Domain.Client;
 import mateourrutia.View.Account.CheckingAccountCreateView;
+import mateourrutia.View.Window;
+import mateourrutia.utils.Listed;
 
 import javax.swing.*;
 
-public class CheckingAccountCreateController {
-	private Client client;
-	private final CheckingAccountCreateView view = new CheckingAccountCreateView();
+public class CheckingAccountCreateController extends StaticDialogController<CheckingAccountCreateView>  {
+	private final Client 		client;
+	private final AccountDAO 	accountDAO;
 
 	public CheckingAccountCreateController(
-			Client client
+			Window 		window,
+			Client 		client,
+			AccountDAO 	accountDAO
 	) {
+		super(window, new CheckingAccountCreateView());
 		this.client = client;
-	}
-
-	public CheckingAccountCreateView getView() {
-		return view;
+		this.accountDAO = accountDAO;
 	}
 
 	public CheckingAccount createCheckingAccount() {
-		if ( !isValidDouble(view.getOverdraft()) )
+		if ( !isValidDouble(getInnerView().getOverdraft()) )
 		{
 			JOptionPane.showMessageDialog(
-					view,
+					getInnerView(),
 					"Por favor, solo numeros estan habilitados",
 					"UNFORESEEN CONSEQUENCES",
 					JOptionPane.WARNING_MESSAGE
@@ -35,7 +41,7 @@ public class CheckingAccountCreateController {
 		return new CheckingAccount(
 				client,
 				0,
-				Double.parseDouble(view.getOverdraft())
+				Double.parseDouble(getInnerView().getOverdraft())
 		);
 	}
 
@@ -48,4 +54,48 @@ public class CheckingAccountCreateController {
 			return false;
 		}
 	}
+
+	private boolean checkCheckingAccount() {
+		Listed<Account> accounts = client.getAccounts();
+		boolean result = true;
+
+		for ( Account account : accounts.getList() )
+			if (account.getClass().getSimpleName().equals("CheckingAccount"))
+			{
+				result = false;
+				break;
+			}
+
+		return result;
+	}
+
+	@Override
+	public void onAccept() {
+		if ( !checkCheckingAccount() )
+		{
+			JOptionPane.showMessageDialog(
+					getView(),
+					"Por favor, selecciona otro tipo de cuenta, ya tiene una checking account",
+					"UNFORESEEN CONSEQUENCES",
+					JOptionPane.WARNING_MESSAGE
+			);
+			return;
+		}
+
+		CheckingAccount checkingAccount = createCheckingAccount();
+
+		if ( checkingAccount == null )
+			return;
+
+		try {
+			client.getAccounts().add(checkingAccount);
+			accountDAO.add(checkingAccount, client);
+		}
+		catch (Exception e) {
+			ErrorController.show( getView(), e );
+		}
+	}
+
+	@Override
+	public void onCancel() {}
 }

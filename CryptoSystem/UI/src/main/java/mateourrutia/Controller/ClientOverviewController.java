@@ -1,6 +1,8 @@
 package mateourrutia.Controller;
 
-import mateourrutia.Controller.Account.AccountCreatorListener;
+import mateourrutia.Controller.Account.SavingsAccountCreateController;
+import mateourrutia.Controller.Account.CheckingAccountCreateController;
+import mateourrutia.Controller.Account.WalletAccountCreateController;
 import mateourrutia.Controller.Tables.AccountSimple;
 import mateourrutia.DAO.AccountDAO;
 import mateourrutia.Domain.Account;
@@ -15,6 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ClientOverviewController extends WindowController<ClientOverviewView> {
 	private final ClientService clientService;
@@ -34,6 +37,7 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 		setTitle("Overview: " + client.getLastname() + ", " + client.getName());
 		getView().getClientName().setText(client.getLastname() + ", " + client.getName());
 
+		getView().getSelectedAccount().addActionListener(new AccountSelectListener());
 		getView().getBack().addActionListener(e -> getWindow().dispose());
 
 		initializeCreateTypeDropdown();
@@ -69,6 +73,31 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 		tablePanel.repaint();
 	}
 
+	private class AccountSelectListener extends OpenAnotherWindowListener<AccountOverviewController> {
+		@Override
+		protected AccountOverviewController Object() {
+			List<Account> accounts = client.getAccounts().getList();
+			int row = accountSimple.getSelectedRowIndex();
+
+			if ( row == -1 )
+				return null;
+
+			return new AccountOverviewController(
+					accounts.get(row)
+			);
+		}
+
+		@Override
+		protected void onClose() {
+			try {
+				setTable( clientService.getClientDAO().get(client.getUuid()) );
+			}
+			catch (ObjectNotFoundException ex) {
+				handleError(ex);
+			}
+		}
+	}
+
 	private class CreateListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -79,20 +108,31 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 				return;
 			}
 
-			AccountCreatorListener accountCreatorListener = new AccountCreatorListener(client, accountDAO, getView(), getWindow());
-
 			switch (selectedIndex) {
 				case 1:
-					accountCreatorListener.CheckingAccountSelected();
+					CheckingAccountCreateController checkingAccountCreateController = new CheckingAccountCreateController(
+							getWindow(),
+							client,
+							accountDAO
+					);
+					checkingAccountCreateController.showDialog();
 					break;
 				case 2:
-					accountCreatorListener.SavingsAccountSelected();
+					SavingsAccountCreateController.SavingsAccountSelected(
+							client,
+							accountDAO,
+							getView()
+					);
+					break;
+
+				case 3:
+					WalletAccountCreateController wallet = new WalletAccountCreateController( getWindow(), client, accountDAO );
+					wallet.showDialog();
 					break;
 			}
 
 			try {
 				setTable( clientService.getClientDAO().get(client.getUuid()) );
-				clientService.loadClients();
 			}
 			catch (ObjectNotFoundException ex) {
 				handleError(ex);

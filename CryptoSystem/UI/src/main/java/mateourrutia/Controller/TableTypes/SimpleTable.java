@@ -32,7 +32,7 @@ public abstract class SimpleTable<T> extends TableType<T, SimpleView> {
 			JOptionPane.showMessageDialog(
 					getView(),
 					"Por favor, selecciona una opcion.",
-					"*Almost* UNFORESEEN CONSEQUENCES",
+					"UNFORESEEN CONSEQUENCES",
 					JOptionPane.WARNING_MESSAGE
 			);
 

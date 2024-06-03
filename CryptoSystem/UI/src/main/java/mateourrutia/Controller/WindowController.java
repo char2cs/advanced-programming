@@ -4,6 +4,8 @@ import mateourrutia.View.Window;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -86,5 +88,38 @@ public abstract class WindowController<T extends JPanel> {
 	public void handleError(Exception ex) {
 		ex.printStackTrace();
 		ErrorController.show(view, ex);
+	}
+
+	/**
+	 * Para ventanas emergentes que requieran, generalmente, recargar algun elemento.
+	 * @param
+	 */
+	protected abstract class OpenAnotherWindowListener<object extends WindowController<? extends JPanel>> implements ActionListener {
+		/**
+		 * Este metodo deberia devolver el objecto CRUD ya creado para este Listener.
+		 * @return Instancia de Object
+		 */
+		protected abstract object Object();
+
+		/**
+		 * Se ejecuta cuando la ventana emergente es cerrada.
+		 */
+		protected abstract void onClose();
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			object crud = Object();
+
+			if ( crud == null )
+				return;
+
+			hideWindow();
+			crud.showWindow(JFrame.DISPOSE_ON_CLOSE);
+
+			crud.onClose(() -> {
+				onClose();
+				showWindow();
+			});
+		}
 	}
 }

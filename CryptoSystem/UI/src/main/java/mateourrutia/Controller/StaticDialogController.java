@@ -18,18 +18,19 @@ import java.util.concurrent.Semaphore;
  * el main frame se pausara, y recien volvera a activarse una
  * vez que este dialog se cierre.
  */
-public abstract class StaticDialogController {
-	private Window window;
-	private StaticDialogView view;
-	private JPanel innerView;
+public abstract class StaticDialogController<T extends JPanel> {
+	private Window parent;
 	private Semaphore semaphore;
+	private StaticDialogView view;
+
+	private T innerView;
 
 	public StaticDialogController(Window owner) {
 		this(owner, null);
 	}
 
-	public StaticDialogController(Window owner, JPanel innerView) {
-		window 			= owner;
+	public StaticDialogController(Window owner, T innerView) {
+		parent = owner;
 		this.innerView 	= innerView;
 		semaphore 		= new Semaphore(0);
 		view 			= new StaticDialogView(owner);
@@ -90,15 +91,19 @@ public abstract class StaticDialogController {
 	}
 
 	private void parentWindowActivate() {
-		window.revalidate();
-		window.repaint();
+		parent.revalidate();
+		parent.repaint();
 	}
 
-	public void setInnerView(JPanel innerView) {
+	public void setInnerView(T innerView) {
 		this.innerView = innerView;
 		view.getContentPanel().removeAll();
 		view.getContentPanel().add(innerView, BorderLayout.CENTER);
 		view.getContentPanel().revalidate();
 		view.getContentPanel().repaint();
+	}
+
+	public T getInnerView() {
+		return innerView;
 	}
 }

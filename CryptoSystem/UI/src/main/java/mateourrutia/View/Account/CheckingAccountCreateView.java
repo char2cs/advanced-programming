@@ -27,7 +27,7 @@ public class CheckingAccountCreateView extends JPanel {
 
         //---- label1 ----
         label1.setText("Estas apunto de crear tu cuenta corriente");
-        label1.setFont(new Font("DejaVu Sans", Font.PLAIN, 16));
+        label1.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         add(label1, BorderLayout.NORTH);
 

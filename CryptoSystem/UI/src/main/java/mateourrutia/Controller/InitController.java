@@ -7,7 +7,6 @@ import mateourrutia.Domain.Client;
 import mateourrutia.Services.ClientService;
 import mateourrutia.View.InitView;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,12 +29,22 @@ public class InitController extends WindowController<InitView> {
 			protected ClientCRUD Object() {
 				return new ClientCRUD( clientService );
 			}
+
+			@Override
+			protected void onClose() {
+				reloadTable();
+			}
 		});
 
 		getView().getTransactionHistory().addActionListener(new OpenAnotherWindowListener<TransactionHistorySimple>() {
 			@Override
 			protected TransactionHistorySimple Object() {
 				return new TransactionHistorySimple();
+			}
+
+			@Override
+			protected void onClose() {
+				reloadTable();
 			}
 		});
 
@@ -51,56 +60,28 @@ public class InitController extends WindowController<InitView> {
 		getView().getTablePanel().add( clientSimple.getView(), BorderLayout.CENTER );
 	}
 
-	/**
-	 * Para ventanas emergentes que requieran recargar el contenido de Init.
-	 * @param
-	 */
-	private abstract class OpenAnotherWindowListener<object extends WindowController<? extends JPanel>> implements ActionListener {
-		/**
-		 * Este metodo deberia devolver el objecto CRUD ya creado para este Listener.
-		 * @return Instancia de Object
-		 */
-		protected abstract object Object();
-
+	private class UserSelectListener extends OpenAnotherWindowListener<ClientOverviewController> {
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			hideWindow();
-
-			object crud = Object();
-			crud.showWindow(JFrame.DISPOSE_ON_CLOSE);
-
-			crud.onClose(() -> {
-				reloadTable();
-				showWindow();
-			});
-		}
-	}
-
-	// Listener for UserSelect button
-	private class UserSelectListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
+		protected ClientOverviewController Object() {
 			List<Client> clients = clientService.getClients();
 			int row = clientSimple.getSelectedRowIndex();
 
 			if (row == -1)
-				return;
+				return null;
 
-			ClientOverviewController clientOverviewController = new ClientOverviewController(
+			return new ClientOverviewController(
 					clients.get(row),
 					clientService
 			);
+		}
 
-			hideWindow();
-			clientOverviewController.showWindow(JFrame.DISPOSE_ON_CLOSE);
-			clientOverviewController.onClose(() -> {
-				reloadTable();
-				showWindow();
-			});
+		@Override
+		protected void onClose() {
+			reloadTable();
+			showWindow();
 		}
 	}
 
-	// Listener for Exit button
 	private class ExitListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

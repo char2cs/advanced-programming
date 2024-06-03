@@ -26,6 +26,8 @@ public class StaticDialogView extends JDialog {
         cancelButton = new JButton();
 
         //======== this ========
+        setMinimumSize(new Dimension(416, 216));
+        setPreferredSize(new Dimension(416, 216));
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
