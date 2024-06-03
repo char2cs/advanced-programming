@@ -106,4 +106,8 @@ public abstract class StaticDialogController<T extends JPanel> {
 	public T getInnerView() {
 		return innerView;
 	}
+
+	public Window getParent() {
+		return parent;
+	}
 }

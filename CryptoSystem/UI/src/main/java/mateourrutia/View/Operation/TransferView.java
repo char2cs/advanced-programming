@@ -89,4 +89,8 @@ public class TransferView extends JPanel {
     public JTextField getBalance() {
         return Balance;
     }
+
+    public JLabel getTitle() {
+        return Title;
+    }
 }

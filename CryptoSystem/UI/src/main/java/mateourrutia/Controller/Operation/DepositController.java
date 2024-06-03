@@ -39,6 +39,8 @@ public class DepositController extends DepositWithdrawUtils<DepositView> {
 			TransactionHistory transactionResult = getAccount().deposit( Double.parseDouble( getInnerView().getBalance().getText() ) );
 			getTransactionHistoryDAO().add(transactionResult);
 			getAccountDAO().update(getAccount(), getAccount().getClient());
+
+			ErrorHandling(transactionResult);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

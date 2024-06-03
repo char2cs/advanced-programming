@@ -98,7 +98,7 @@ public class Wallet extends Account {
 
 	public TransactionHistory convert(
 			double amount,
-			Wallet toWallet
+			Account toWallet
 	) {
 		if ( !toWallet.getClient().getCuit().equals( this.getClient().getCuit() ) )
 			return new TransactionHistory(
@@ -112,7 +112,13 @@ public class Wallet extends Account {
 		if ( balance >= amount )
 		{
 			balance -= amount;
-			double convertedAmount = amount * cryptocurrency.getCurrentValue() / toWallet.getCryptocurrency().getCurrentValue();
+			double convertedAmount;
+
+			if ( toWallet instanceof Wallet )
+				convertedAmount = amount * cryptocurrency.getCurrentValue() / ((Wallet) toWallet).getCryptocurrency().getCurrentValue();
+			else
+				convertedAmount = amount * cryptocurrency.getCurrentValue();
+
 			toWallet.deposit(convertedAmount);
 
 			return new TransactionHistory(

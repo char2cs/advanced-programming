@@ -50,53 +50,7 @@ public class TransferController extends DepositWithdrawUtils<TransferView> {
 			getAccountDAO().update(getAccount(), getAccount().getClient());
 			getAccountDAO().update(transferedAccount, transferedAccount.getClient());
 
-			if ( transactionResult.getStatus().equals(TransactionHistory.Status.ERROR_ACCOUNTS_ARE_THE_SAME_ACCOUNT) )
-				JOptionPane.showMessageDialog(
-						getInnerView(),
-						"El CBU destino pertenece a esta misma cuenta",
-						"UNFORESEEN CONSEQUENCES",
-						JOptionPane.ERROR_MESSAGE
-				);
-
-			if ( transactionResult.getStatus().equals(TransactionHistory.Status.ERROR_NOT_ENOUGH_BALANCE) )
-				JOptionPane.showMessageDialog(
-						getInnerView(),
-						"Su retiro de dinero es incorrecto, no cuenta con los fondos suficientes",
-						"UNFORESEEN CONSEQUENCES",
-						JOptionPane.ERROR_MESSAGE
-				);
-
-			if ( transactionResult.getStatus().equals(TransactionHistory.Status.ERROR_ACCOUNT_IS_WALLET) )
-				JOptionPane.showMessageDialog(
-						getInnerView(),
-						"El CBU destino es una Wallet, conversion no se puede realizar.",
-						"UNFORESEEN CONSEQUENCES",
-						JOptionPane.ERROR_MESSAGE
-				);
-
-			if ( transactionResult.getStatus().equals(TransactionHistory.Status.ERROR_ACCOUNT_IS_NOT_WALLET) )
-				JOptionPane.showMessageDialog(
-						getInnerView(),
-						"El CBU destino no es una Wallet, conversion no se puede realizar.",
-						"UNFORESEEN CONSEQUENCES",
-						JOptionPane.ERROR_MESSAGE
-				);
-
-			if ( transactionResult.getStatus().equals(TransactionHistory.Status.ERROR_WALLETS_ARE_DIFFERENT_TYPE) )
-				JOptionPane.showMessageDialog(
-						getInnerView(),
-						"La Wallet destino es de otra crypto, opta por una conversion y luego una transferencia.",
-						"UNFORESEEN CONSEQUENCES",
-						JOptionPane.ERROR_MESSAGE
-				);
-
-			if ( transactionResult.getStatus().equals(TransactionHistory.Status.ERROR_OVERDRAFT_ISSUE) )
-				JOptionPane.showMessageDialog(
-						getInnerView(),
-						"Ha superado el limite para transferir su dinero, pruebe con otro tipo de cuenta",
-						"UNFORESEEN CONSEQUENCES",
-						JOptionPane.ERROR_MESSAGE
-				);
+			ErrorHandling(transactionResult);
 		}
 		catch (Exception e) {
 			ErrorController.show(getView(), e);

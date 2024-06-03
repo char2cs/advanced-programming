@@ -1,5 +1,6 @@
 package mateourrutia.Controller;
 
+import mateourrutia.Controller.Operation.ConvertController;
 import mateourrutia.Controller.Operation.DepositController;
 import mateourrutia.Controller.Operation.TransferController;
 import mateourrutia.Controller.Operation.WithdrawController;
@@ -13,6 +14,10 @@ import mateourrutia.View.AccountOverviewView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+/**
+ * TODO Know why the balance is not updated.
+ */
 
 public class AccountOverviewController extends WindowController<AccountOverviewView> {
 	private Account account;
@@ -102,9 +107,15 @@ public class AccountOverviewController extends WindowController<AccountOverviewV
 	private class ConvertListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			/**
-			 * TODO ...
-			 */
+			ConvertController convertController = new ConvertController(
+					getWindow(),
+					account,
+					accountDAO,
+					transactionHistoryDAO
+			);
+
+			convertController.showDialog();
+
 			updateBalance();
 		}
 	}

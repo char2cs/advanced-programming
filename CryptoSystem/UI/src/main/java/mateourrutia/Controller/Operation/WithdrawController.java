@@ -42,21 +42,7 @@ public class WithdrawController extends DepositWithdrawUtils<WithdrawView> {
 			getTransactionHistoryDAO().add(transactionResult);
 			getAccountDAO().update(getAccount(), getAccount().getClient());
 
-			if ( transactionResult.getStatus().equals(TransactionHistory.Status.ERROR_NOT_ENOUGH_BALANCE) )
-				JOptionPane.showMessageDialog(
-						getInnerView(),
-						"Su retiro de dinero es incorrecto, no cuenta con los fondos suficientes",
-						"UNFORESEEN CONSEQUENCES",
-						JOptionPane.ERROR_MESSAGE
-				);
-
-			if ( transactionResult.getStatus().equals(TransactionHistory.Status.ERROR_OVERDRAFT_ISSUE) )
-				JOptionPane.showMessageDialog(
-						getInnerView(),
-						"Ha superado el limite para transferir su dinero, pruebe con otro tipo de cuenta",
-						"UNFORESEEN CONSEQUENCES",
-						JOptionPane.ERROR_MESSAGE
-				);
+			ErrorHandling( transactionResult );
 		}
 		catch (Exception e) {
 			ErrorController.show(getView(), e);

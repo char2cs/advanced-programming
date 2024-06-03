@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class Account extends ObjectWriter implements Serializable {
 	private final 	Long	cbu;
 	protected 		double 	balance;
-	private final 	Client	client;
+	private 		Client	client;
 
 	public Account(
 			Client client,
@@ -21,6 +21,10 @@ public abstract class Account extends ObjectWriter implements Serializable {
 
 	public Client getClient() {
 		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public Long getCbu() {
@@ -42,6 +46,11 @@ public abstract class Account extends ObjectWriter implements Serializable {
 	public abstract TransactionHistory transfer(
 			double amount,
 			Account toAccount
+	);
+
+	public abstract TransactionHistory convert(
+		double amount,
+		Account toAccount
 	);
 
 	@Override

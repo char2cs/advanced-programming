@@ -52,6 +52,14 @@ public interface AccountDAO {
 	Account get(Long cbu) throws ObjectNotFoundException;
 
 	/**
+	 * Busca al cliente a quien le pertenece la account seleccionada
+	 * @param uuid
+	 * @return
+	 * @throws ObjectNotFoundException
+	 */
+	Client getClient(UUID uuid) throws ObjectNotFoundException;
+
+	/**
 	 * Busca el objecto, por UUID y lo actualiza.
 	 * @param objects
 	 * @param client

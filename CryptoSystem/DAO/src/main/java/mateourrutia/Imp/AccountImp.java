@@ -76,6 +76,20 @@ public abstract class AccountImp implements AccountDAO {
     }
 
     @Override
+    public Client getClient(UUID uuid) throws ObjectNotFoundException {
+        List<Client> clients = clientImp.getAll();
+
+        for ( Client client : clients )
+            try {
+                get( uuid, client );
+                return client;
+            }
+            catch (ObjectNotFoundException ignored) {}
+
+        throw new ObjectNotFoundException( "Object Not Found: " + uuid );
+    }
+
+    @Override
     public boolean update(Account objects, Client client) throws ObjectNotFoundException, OperationFailedException {
         Client getClient = clientImp.get( client.getUuid() );
 

@@ -1,11 +1,12 @@
 package mateourrutia.Imp;
 
 import mateourrutia.DAO.ClientDAO;
+import mateourrutia.Domain.Account;
 import mateourrutia.Domain.Client;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
 import mateourrutia.Exceptions.OperationFailedException;
-import mateourrutia.utils.persistance.FileWriter;
+import mateourrutia.utils.Listed;
 import mateourrutia.utils.persistance.Writers;
 
 import java.util.List;
@@ -24,11 +25,11 @@ public abstract class ClientImp<T extends Writers<Client>> implements ClientDAO 
     @Override
     public void create(Client objects) {
         Writer.create( objects );
-    }
+	}
 
     @Override
     public void add(Client objects) throws ObjectAlreadyExistsException {
-        Writer.add( objects );
+        Writer.add(objects);
     }
 
     @Override
@@ -38,6 +39,14 @@ public abstract class ClientImp<T extends Writers<Client>> implements ClientDAO 
 
     @Override
     public boolean update(Client objects) throws ObjectNotFoundException, OperationFailedException {
+        Listed<Account> accounts = objects.getAccounts();
+
+        for ( Account account : accounts.getList() )
+        {
+            account.setClient(objects);
+            accounts.set(account);
+        }
+
         return Writer.update( objects );
     }
 

@@ -93,6 +93,50 @@ public class CheckingAccount extends Account {
 	}
 
 	@Override
+	public TransactionHistory convert(double amount, Account toAccount) {
+		if (!( toAccount instanceof Wallet ))
+			return new TransactionHistory(
+					TransactionHistory.Type.CONVERT,
+					TransactionHistory.Status.ERROR_ACCOUNT_IS_NOT_WALLET,
+					amount,
+					this,
+					toAccount
+			);
+
+		if ( !toAccount.getClient().getCuit().equals( this.getClient().getCuit() ) )
+			return new TransactionHistory(
+					TransactionHistory.Type.CONVERT,
+					TransactionHistory.Status.ERROR_WALLETS_ARE_NOT_FROM_SAME_CLIENT,
+					amount,
+					this,
+					toAccount
+			);
+
+		if ( amount <= balance && balance - amount >= overdraftLimit )
+		{
+			balance -= amount;
+			double convertedAmount = amount / ((Wallet) toAccount).getCryptocurrency().getCurrentValue();
+			toAccount.deposit(convertedAmount);
+
+			return new TransactionHistory(
+					TransactionHistory.Type.CONVERT,
+					TransactionHistory.Status.SUCCESS,
+					convertedAmount,
+					this,
+					toAccount
+			);
+		}
+
+		return new TransactionHistory(
+				TransactionHistory.Type.CONVERT,
+				TransactionHistory.Status.ERROR_OVERDRAFT_ISSUE,
+				amount,
+				this,
+				toAccount
+		);
+	}
+
+	@Override
 	public String toString() {
 		return super.toString() + "CheckingAccount{" +
 				"overdraftLimit=" + overdraftLimit +
