@@ -57,7 +57,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "AllClients"
-						"text": "ABM de Cuentas"
+						"text": "ABM de Clientes"
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "West"

@@ -12,6 +12,13 @@ import mateourrutia.utils.persistance.Writers;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Las implementaciones de los metodos del DAO son
+ * iguales indistintamente de su implementacion.
+ *
+ * La idea es que cualquier clase pueda ser almacenada
+ * como String o como Byte de manera independiente.
+ */
 public abstract class ClientImp<T extends Writers<Client>> implements ClientDAO {
     protected final T Writer = getClientImp();
 

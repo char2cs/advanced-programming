@@ -16,6 +16,9 @@ import java.util.UUID;
 /**
  * Las implementaciones de los metodos del DAO son
  * iguales indistintamente de su implementacion.
+ *
+ * La idea es que cualquier clase pueda ser almacenada
+ * como String o como Byte de manera independiente.
  */
 public abstract class AccountImp implements AccountDAO {
     protected final ClientDAO clientImp = getClientImp();

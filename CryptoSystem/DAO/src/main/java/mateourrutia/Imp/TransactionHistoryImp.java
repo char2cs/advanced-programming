@@ -15,6 +15,13 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * Las implementaciones de los metodos del DAO son
+ * iguales indistintamente de su implementacion.
+ *
+ * La idea es que cualquier clase pueda ser almacenada
+ * como String o como Byte de manera independiente.
+ */
 public abstract class TransactionHistoryImp<T extends Writers<TransactionHistory>> implements TransactionHistoryDAO {
     T Writer = getTransactionHistoryImp();
 

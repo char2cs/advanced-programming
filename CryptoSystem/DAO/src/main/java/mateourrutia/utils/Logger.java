@@ -5,6 +5,13 @@ import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Esta clase logger esta destinada principalmente para
+ * acciones de bajo nivel, dentro de la implementacion
+ * de cada tipo de archivos, su uso principal para debugear.
+ *
+ * Actua como logger la clase TransactionHistory.
+ */
 public abstract class Logger {
 
 	public enum LogLevel {

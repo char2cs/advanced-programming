@@ -41,7 +41,7 @@ public class ClientService implements CRUD<Client> {
 	 * aplicacion.
 	 * @return
 	 */
-	public Thread coldStart() throws InterruptedException {
+	public Thread coldStart() {
 		Thread thread = new Thread( new FileListener(
 				1000,
 				getFilePath(),
@@ -50,7 +50,13 @@ public class ClientService implements CRUD<Client> {
 		) );
 
 		thread.start();
-		thread.join(); // Esperamos a que cargen los datos.
+
+		try {
+			thread.join(); // Esperamos a que cargen los datos.
+		}
+		catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 
 		return thread;
 	}

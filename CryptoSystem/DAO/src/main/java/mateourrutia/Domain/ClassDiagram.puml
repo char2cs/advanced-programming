@@ -1,0 +1,50 @@
+@startuml
+
+top to bottom direction
+skinparam linetype ortho
+
+class Account {
+   cbu: Long
+   balance: double
+   client: Client
+}
+class CheckingAccount {
+   overdraftLimit: double
+}
+class Client {
+   name: String
+   accounts: Listed<Account>
+   cuit: Long
+   email: String
+   lastname: String
+   address: String
+   phone: Long
+}
+class Cryptocurrency {
+   name: Currency
+   currentValue: double
+}
+enum Currency << enumeration >>
+class SavingsAccount {
+   cuit: Long
+}
+enum Status << enumeration >>
+class TransactionHistory {
+   type: Type
+   toAccount: Account
+   amount: double
+   fromAccount: Account
+   status: Status
+   date: Date
+}
+enum Type << enumeration >>
+class Wallet {
+   cryptocurrency: Cryptocurrency
+}
+
+CheckingAccount     -[#000082,plain]-^  Account            
+SavingsAccount      -[#000082,plain]-^  Account            
+Status              +-[#820000,plain]-  TransactionHistory 
+Type                +-[#820000,plain]-  TransactionHistory 
+Wallet              -[#000082,plain]-^  Account            
+@enduml

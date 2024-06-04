@@ -11,6 +11,11 @@ import mateourrutia.utils.ObjectWriter;
 
 /**
  * En este caso, usamos Base64 para almacenar datos utilizando Strings.
+ *
+ * Decidi usar Base64 y no otro mecanismo porque ya esta impelmentado en
+ * Java de manera nativa.
+ *
+ * Todos los archivos Base64 terminan con la extension '.B64'
  * @param <T>
  */
 public class StringWriter<T extends ObjectWriter & Serializable> extends Writers<T> {

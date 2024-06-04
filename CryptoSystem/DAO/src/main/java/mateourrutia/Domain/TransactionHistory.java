@@ -5,6 +5,17 @@ import mateourrutia.utils.ObjectWriter;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Esta clase no esta relacionada de manera directa con el cliente.
+ *
+ * Esto es debido a que TransactionHistory esta pensado como un tipo
+ * historico, por ende se capta y se guardan las respectivas cuentas
+ * de cada cliente y no se vuelven a actualizar para mantener el estado
+ * final de aquella transaccion.
+ *
+ * Denominamos transaccion a cualquier tipo de movimiento dentro de las
+ * cuentas, como por ej, conversion, transaccion, deposito y retiro.
+ */
 public class TransactionHistory extends ObjectWriter implements Serializable {
 	private 	Date 		date 		= new Date();
 	private 	Status 		status		;
@@ -85,15 +96,6 @@ public class TransactionHistory extends ObjectWriter implements Serializable {
 
 	public Account getToAccount() {
 		return toAccount;
-	}
-
-	/**
-	 * Will return true IF the transaction is only from and to the same account.
-	 *
-	 * @return boolean
-	 */
-	public boolean isPersonal() {
-		return toAccount == null;
 	}
 
 	@Override

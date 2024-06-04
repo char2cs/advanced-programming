@@ -87,7 +87,7 @@ public class InitView extends JPanel {
                 ButtonLeft.add(TransactionHistory);
 
                 //---- AllClients ----
-                AllClients.setText("ABM de Cuentas");
+                AllClients.setText("ABM de Clientes");
                 ButtonLeft.add(AllClients);
             }
             BUttons.add(ButtonLeft, BorderLayout.WEST);

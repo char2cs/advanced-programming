@@ -50,9 +50,9 @@ public class GeneralView extends JPanel {
 				Add.setText("Agregar +");
 				BtnRight.add(Add);
 			}
-			Buttons.add(BtnRight, BorderLayout.EAST);
+			Buttons.add(BtnRight, BorderLayout.SOUTH);
 		}
-		add(Buttons, BorderLayout.SOUTH);
+		add(Buttons, BorderLayout.NORTH);
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
 	}
 

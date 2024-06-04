@@ -24,12 +24,10 @@ public class Main {
 				AccountFactory.getAccountDAO(PersistenceType.FILEWRITER)
 		);
 
-		try {
-			clientService.coldStart();
-		}
-		catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
+		/**
+		 * Esperamos a que cargen todos los datos de todos los clientes
+		 */
+		clientService.coldStart();
 
 		/**
 		 * Escucha continuamente por cambios en el archivo de clientes.

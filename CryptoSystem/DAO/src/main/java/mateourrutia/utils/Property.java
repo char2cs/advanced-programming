@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.util.Properties;
 
 /**
- * De manera estatica, devuelve una setting especifica dentro del archivo env.properties.
+ * De manera estatica, devuelve una setting especifica dentro del archivo 'env.properties'.
  */
 public abstract class Property {
 	private static final Properties properties = new Properties();

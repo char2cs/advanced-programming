@@ -7,7 +7,9 @@ import mateourrutia.utils.Logger;
 import mateourrutia.utils.ObjectWriter;
 
 /**
- * En este caso, utilizamos Bytes para almacenar los objectos.
+ * En este caso, utilizamos Bytes para almacenar los objectos, utiliznado el ObjectInputStream.
+ *
+ * Todos los archivos Base64 terminan con la extension '.dat'
  * @param <T>
  */
 public class FileWriter<T extends ObjectWriter & Serializable> extends Writers<T> {

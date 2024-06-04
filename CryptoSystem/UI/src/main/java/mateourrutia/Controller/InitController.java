@@ -35,7 +35,7 @@ public class InitController extends WindowController<InitView> {
 		getView().getAllClients().addActionListener(new OpenAnotherWindowListener<ClientCRUD>() {
 			@Override
 			protected ClientCRUD Object() {
-				return new ClientCRUD( clientService );
+				return new ClientCRUD( clientService, transactionHistoryService );
 			}
 
 			@Override

@@ -13,7 +13,8 @@ import java.util.stream.IntStream;
 
 /**
  * Writers contiene todos los metodos que una clase almacenadora de objetos requiere, incluyendo
- * metodos CRUD.
+ * metodos CRUD. De esta forma, podemos solo instanciar aquella clase almacenadora y utilizar estos
+ * metodos, asi no hay que reescribir tanto codigo.
  * @param <T>
  */
 public abstract class Writers<T extends ObjectWriter & Serializable> {
