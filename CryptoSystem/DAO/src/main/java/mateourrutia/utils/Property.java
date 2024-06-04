@@ -8,11 +8,11 @@ import java.util.Properties;
  * De manera estatica, devuelve una setting especifica dentro del archivo env.properties.
  */
 public abstract class Property {
+	private static final Properties properties = new Properties();
+
 	public static String get(
 			String property
 	) {
-		Properties properties = new Properties();
-
 		try {
 			properties.load(new FileReader("env.properties"));
 		}

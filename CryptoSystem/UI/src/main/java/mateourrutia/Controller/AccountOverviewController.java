@@ -15,6 +15,11 @@ import mateourrutia.View.AccountOverviewView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Nos permite visualizar una cuenta seleccionada.
+ * Se encarga de ser el front de las transferencias,
+ * depositos, converciones y retiros.
+ */
 public class AccountOverviewController extends WindowController<AccountOverviewView> {
 	private Account account;
 	private AccountDAO accountDAO;

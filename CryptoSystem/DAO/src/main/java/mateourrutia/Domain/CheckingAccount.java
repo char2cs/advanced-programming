@@ -30,10 +30,9 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public TransactionHistory withdraw(double amount) {
-		if ( amount <= balance && balance - amount >= overdraftLimit )
+		if (amount <= balance || amount <= balance + overdraftLimit)
 		{
 			balance -= amount;
-
 			return new TransactionHistory(
 					TransactionHistory.Type.WITHDRAW,
 					TransactionHistory.Status.SUCCESS,
@@ -52,7 +51,7 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public TransactionHistory transfer(double amount, Account toAccount) {
-		if ( toAccount.getUuid().equals( this.getUuid() ) )
+		if (toAccount.getUuid().equals(this.getUuid()))
 			return new TransactionHistory(
 					TransactionHistory.Type.TRANSFER,
 					TransactionHistory.Status.ERROR_ACCOUNTS_ARE_THE_SAME_ACCOUNT,
@@ -61,7 +60,7 @@ public class CheckingAccount extends Account {
 					toAccount
 			);
 
-		if ( toAccount instanceof Wallet )
+		if (toAccount instanceof Wallet)
 			return new TransactionHistory(
 					TransactionHistory.Type.TRANSFER,
 					TransactionHistory.Status.ERROR_ACCOUNT_IS_WALLET,
@@ -70,7 +69,7 @@ public class CheckingAccount extends Account {
 					toAccount
 			);
 
-		if ( amount <= balance && balance - amount >= overdraftLimit )
+		if (amount <= balance || amount <= balance + overdraftLimit)
 		{
 			balance -= amount;
 			toAccount.deposit(amount);
@@ -94,7 +93,7 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public TransactionHistory convert(double amount, Account toAccount) {
-		if (!( toAccount instanceof Wallet ))
+		if (!(toAccount instanceof Wallet))
 			return new TransactionHistory(
 					TransactionHistory.Type.CONVERT,
 					TransactionHistory.Status.ERROR_ACCOUNT_IS_NOT_WALLET,
@@ -103,7 +102,7 @@ public class CheckingAccount extends Account {
 					toAccount
 			);
 
-		if ( !toAccount.getClient().getCuit().equals( this.getClient().getCuit() ) )
+		if (!toAccount.getClient().getCuit().equals(this.getClient().getCuit()))
 			return new TransactionHistory(
 					TransactionHistory.Type.CONVERT,
 					TransactionHistory.Status.ERROR_WALLETS_ARE_NOT_FROM_SAME_CLIENT,
@@ -112,7 +111,7 @@ public class CheckingAccount extends Account {
 					toAccount
 			);
 
-		if ( amount <= balance && balance - amount >= overdraftLimit )
+		if (amount <= balance || amount <= balance + overdraftLimit)
 		{
 			balance -= amount;
 			double convertedAmount = amount / ((Wallet) toAccount).getCryptocurrency().getCurrentValue();
@@ -135,6 +134,7 @@ public class CheckingAccount extends Account {
 				toAccount
 		);
 	}
+
 
 	@Override
 	public String toString() {

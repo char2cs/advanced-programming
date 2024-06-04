@@ -8,6 +8,17 @@ new FormModel {
 			"minimumSize": new java.awt.Dimension( 768, 512 )
 			"preferredSize": new java.awt.Dimension( 768, 512 )
 			"name": "TableFrame"
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "GlobalMenu"
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "Window"
+					"text": "Ventana"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "TransactionHistory"
+						"text": "Ver transacciones en tiempo real"
+					} )
+				} )
+			}
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 775, 705 )

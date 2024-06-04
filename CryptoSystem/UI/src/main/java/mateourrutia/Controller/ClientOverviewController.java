@@ -14,12 +14,15 @@ import mateourrutia.Services.ClientService;
 import mateourrutia.View.ClientOverviewView;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * ABM de Cuentas del usuario seleccionado, como tambien
+ * la interfaz que nos permite controlar y manejar nuestras cuentas.
+ */
 public class ClientOverviewController extends WindowController<ClientOverviewView> {
 	private final ClientService clientService;
 	private Client client;
@@ -89,6 +92,9 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
         }
     }
 
+	/**
+	 * Abre la interfaz de la cuenta
+	 */
 	private class AccountSelectListener extends OpenAnotherWindowListener<AccountOverviewController> {
 		@Override
 		protected AccountOverviewController Object() {
@@ -110,6 +116,9 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 		}
 	}
 
+	/**
+	 * Se encarga de manejar la creacion de cuentas
+	 */
 	private class CreateListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -152,6 +161,9 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 		}
 	}
 
+	/**
+	 * Maneja el borrado de las cuentas
+	 */
 	private class DeleteListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

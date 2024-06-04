@@ -43,9 +43,7 @@ public class InitController extends WindowController<InitView> {
 			}
 
 			@Override
-			protected void onClose() {
-				reloadTable();
-			}
+			protected void onClose() {}
 		});
 
 		getView().getUserSelect().addActionListener(new UserSelectListener());
