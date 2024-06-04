@@ -19,14 +19,11 @@ public class TransactionHistoryView extends JPanel {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         label3 = new JLabel();
         Content = new JPanel();
-        ButtonsBottom = new JPanel();
-        label2 = new JLabel();
-        State = new JComboBox();
-        label1 = new JLabel();
-        Type = new JComboBox();
         Buttons = new JPanel();
         Filters = new JLabel();
+        FilterButtonPanel = new JPanel();
         Filter = new JButton();
+        Reset = new JButton();
         FilterContent = new JPanel();
         ButtonCBU = new JPanel();
         label5 = new JLabel();
@@ -37,6 +34,11 @@ public class TransactionHistoryView extends JPanel {
         MontoMax = new JPanel();
         label6 = new JLabel();
         BalanceMax = new JTextField();
+        ButtonsBottom = new JPanel();
+        label2 = new JLabel();
+        State = new JComboBox();
+        label1 = new JLabel();
+        Type = new JComboBox();
 
         //======== this ========
         setLayout(new BorderLayout());
@@ -53,22 +55,6 @@ public class TransactionHistoryView extends JPanel {
         }
         add(Content, BorderLayout.CENTER);
 
-        //======== ButtonsBottom ========
-        {
-            ButtonsBottom.setLayout(new FlowLayout());
-
-            //---- label2 ----
-            label2.setText("Estado");
-            ButtonsBottom.add(label2);
-            ButtonsBottom.add(State);
-
-            //---- label1 ----
-            label1.setText("Tipo");
-            ButtonsBottom.add(label1);
-            ButtonsBottom.add(Type);
-        }
-        add(ButtonsBottom, BorderLayout.SOUTH);
-
         //======== Buttons ========
         {
             Buttons.setLayout(new BorderLayout());
@@ -79,9 +65,19 @@ public class TransactionHistoryView extends JPanel {
             Filters.setFont(new Font("DejaVu Sans", Font.ITALIC, 16));
             Buttons.add(Filters, BorderLayout.PAGE_START);
 
-            //---- Filter ----
-            Filter.setText("Filter");
-            Buttons.add(Filter, BorderLayout.PAGE_END);
+            //======== FilterButtonPanel ========
+            {
+                FilterButtonPanel.setLayout(new GridLayout());
+
+                //---- Filter ----
+                Filter.setText("Filtrar");
+                FilterButtonPanel.add(Filter);
+
+                //---- Reset ----
+                Reset.setText("Reset");
+                FilterButtonPanel.add(Reset);
+            }
+            Buttons.add(FilterButtonPanel, BorderLayout.PAGE_END);
 
             //======== FilterContent ========
             {
@@ -110,6 +106,7 @@ public class TransactionHistoryView extends JPanel {
                     MontoMin.add(label4);
 
                     //---- BalanceMin ----
+                    BalanceMin.setBackground(new Color(0xd6d9df));
                     BalanceMin.setColumns(12);
                     MontoMin.add(BalanceMin);
                 }
@@ -124,7 +121,8 @@ public class TransactionHistoryView extends JPanel {
                     MontoMax.add(label6);
 
                     //---- BalanceMax ----
-                    BalanceMax.setColumns(12);
+                    BalanceMax.setBackground(new Color(0xd6d9df));
+                    BalanceMax.setColumns(11);
                     MontoMax.add(BalanceMax);
                 }
                 FilterContent.add(MontoMax);
@@ -132,20 +130,33 @@ public class TransactionHistoryView extends JPanel {
             Buttons.add(FilterContent, BorderLayout.CENTER);
         }
         add(Buttons, BorderLayout.WEST);
+
+        //======== ButtonsBottom ========
+        {
+            ButtonsBottom.setLayout(new FlowLayout());
+
+            //---- label2 ----
+            label2.setText("Estado");
+            ButtonsBottom.add(label2);
+            ButtonsBottom.add(State);
+
+            //---- label1 ----
+            label1.setText("Tipo de transaccion");
+            ButtonsBottom.add(label1);
+            ButtonsBottom.add(Type);
+        }
+        add(ButtonsBottom, BorderLayout.SOUTH);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JLabel label3;
     private JPanel Content;
-    private JPanel ButtonsBottom;
-    private JLabel label2;
-    private JComboBox State;
-    private JLabel label1;
-    private JComboBox Type;
     private JPanel Buttons;
     private JLabel Filters;
+    private JPanel FilterButtonPanel;
     private JButton Filter;
+    private JButton Reset;
     private JPanel FilterContent;
     private JPanel ButtonCBU;
     private JLabel label5;
@@ -156,6 +167,11 @@ public class TransactionHistoryView extends JPanel {
     private JPanel MontoMax;
     private JLabel label6;
     private JTextField BalanceMax;
+    private JPanel ButtonsBottom;
+    private JLabel label2;
+    private JComboBox State;
+    private JLabel label1;
+    private JComboBox Type;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
     public JPanel getContent() {
@@ -171,8 +187,24 @@ public class TransactionHistoryView extends JPanel {
         Content.repaint();
     }
 
+    public JTextField getBalanceMax() {
+        return BalanceMax;
+    }
+
+    public JTextField getBalanceMin() {
+        return BalanceMin;
+    }
+
     public JTextField getCBUText() {
         return CBUText;
+    }
+
+    public JButton getFilter() {
+        return Filter;
+    }
+
+    public JButton getReset() {
+        return Reset;
     }
 
     public JComboBox getType() {

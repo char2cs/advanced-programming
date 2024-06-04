@@ -56,7 +56,7 @@ public class TransactionHistoryService implements CRUD<TransactionHistory> {
 	}
 
 	public void reload() {
-		transactionsHistories = new Listed<>(transactionHistoryDAO.getAll());
+		transactionsHistories = new Listed<>( transactionHistoryDAO.getAll() );
 		Logger.log(Logger.LogLevel.SUCCESS, "Transactions History data loaded successfully!");
 		System.out.println("Loading Transactions History Data done!");
 	}
@@ -98,6 +98,22 @@ public class TransactionHistoryService implements CRUD<TransactionHistory> {
 	@Override
 	public List<TransactionHistory> getAll() {
 		return transactionsHistories.getList();
+	}
+
+	public List<TransactionHistory> getAll(
+			TransactionHistory.Status status,
+			TransactionHistory.Type type,
+			Long amount,
+			double balanceMin,
+			double balanceMax
+	) {
+		return transactionHistoryDAO.getAll(
+				status,
+				type,
+				amount,
+				balanceMin,
+				balanceMax
+		);
 	}
 
 }

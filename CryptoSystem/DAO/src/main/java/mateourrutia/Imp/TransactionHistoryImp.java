@@ -9,8 +9,11 @@ import mateourrutia.Exceptions.OperationFailedException;
 import mateourrutia.utils.persistance.FileWriter;
 import mateourrutia.utils.persistance.Writers;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public abstract class TransactionHistoryImp<T extends Writers<TransactionHistory>> implements TransactionHistoryDAO {
     T Writer = getTransactionHistoryImp();
@@ -52,4 +55,24 @@ public abstract class TransactionHistoryImp<T extends Writers<TransactionHistory
         return Writer.getAll();
     }
 
+    @Override
+    public List<TransactionHistory> getAll(
+            TransactionHistory.Status status,
+            TransactionHistory.Type type,
+            Long cbu,
+            double minBalance,
+            double maxBalance
+    ) {
+        List<TransactionHistory> list = Writer.getAll();
+
+        return list.stream()
+                .filter(transaction -> (cbu == null || cbu == 0 || transaction.getFromAccount().getCbu().equals(cbu) ||
+                        (transaction.getToAccount() != null && transaction.getToAccount().getCbu().equals(cbu))))
+                .filter(transaction -> (status == TransactionHistory.Status.ALL || transaction.getStatus().equals(status)))
+                .filter(transaction -> (type == TransactionHistory.Type.ALL || transaction.getType().equals(type)))
+                .filter(transaction -> (minBalance == 0 || transaction.getAmount() >= minBalance))
+                .filter(transaction -> (maxBalance == 0 || transaction.getAmount() <= maxBalance))
+                .sorted(Comparator.comparing(TransactionHistory::getDate))
+                .collect(Collectors.toList());
+    }
 }

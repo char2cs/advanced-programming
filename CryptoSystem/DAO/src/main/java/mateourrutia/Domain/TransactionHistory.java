@@ -14,6 +14,7 @@ public class TransactionHistory extends ObjectWriter implements Serializable {
 	private 	Account 	toAccount 	= null;
 
 	public enum Type {
+		ALL, // Solo para los filtros
 		DEPOSIT,
 		WITHDRAW,
 		TRANSFER,
@@ -21,6 +22,7 @@ public class TransactionHistory extends ObjectWriter implements Serializable {
 	}
 
 	public enum Status {
+		ALL, // Solo para los filtros
 		SUCCESS,
 		UNKNOWN_ERROR,
 		ERROR_NOT_ENOUGH_BALANCE,

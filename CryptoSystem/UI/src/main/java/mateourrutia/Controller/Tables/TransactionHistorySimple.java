@@ -1,7 +1,9 @@
 package mateourrutia.Controller.Tables;
 
 import mateourrutia.Controller.TableTypes.SimpleTable;
+import mateourrutia.Domain.Account;
 import mateourrutia.Domain.TransactionHistory;
+import mateourrutia.Domain.Wallet;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
@@ -20,7 +22,7 @@ public class TransactionHistorySimple extends SimpleTable<TransactionHistory> {
 	) {
 		DefaultTableModel tableModel = new DefaultTableModel(
 				convert( transactionHistories ),
-				new Object[]{"Fecha", "Estado", "Tipo", "Cantidad", "De", "Hacia"}
+				new Object[]{"Fecha", "Estado", "Tipo", "Cantidad", "De", "De C. Tipo", "Hacia", "Hacia C. Tipo"}
 		) {
 			@Override
 			public Class<?> getColumnClass(int columnIndex) {
@@ -55,7 +57,7 @@ public class TransactionHistorySimple extends SimpleTable<TransactionHistory> {
 		if (transactionHistories == null || transactionHistories.isEmpty())
 			return new Object[0][0];
 
-		Object[][] transactionArray = new Object[transactionHistories.size()][6];
+		Object[][] transactionArray = new Object[transactionHistories.size()][8];
 
 		for (int i = 0; i < transactionHistories.size(); i++)
 		{
@@ -65,14 +67,32 @@ public class TransactionHistorySimple extends SimpleTable<TransactionHistory> {
 			transactionArray[i][2] = transactionHistory.getType();
 			transactionArray[i][3] = transactionHistory.getAmount();
 			transactionArray[i][4] = transactionHistory.getFromAccount().getCbu();
+			transactionArray[i][5] = AccountDetail(transactionHistory.getFromAccount());
 
 			if ( transactionHistory.getToAccount() != null )
-				transactionArray[i][5] = transactionHistory.getToAccount().getCbu();
-			else
-				transactionArray[i][5] = "PERSONAL";
+			{
+				transactionArray[i][6] = transactionHistory.getToAccount().getCbu();
+				transactionArray[i][7] = AccountDetail(transactionHistory.getToAccount());
+			}
+			else {
+				transactionArray[i][6] = "PERSONAL";
+				transactionArray[i][7] = null;
+			}
 		}
 
 		return transactionArray;
+	}
+
+	private String AccountDetail(
+			Account account
+	) {
+		return account instanceof Wallet ?
+				account
+						.getClass().getSimpleName()
+						.concat(" en ")
+						.concat( ((Wallet)account).getCryptocurrency().getName().toString() ) :
+				account
+						.getClass().getSimpleName();
 	}
 
 }

@@ -383,3 +383,326 @@
 [12:59:36] [SUCCESS] - Transactions History data loaded successfully!
 [12:59:39] [SUCCESS] - Client data loaded successfully!
 [12:59:50] [SUCCESS] - Client data loaded successfully!
+[14:10:17] [SUCCESS] - Accounts data loaded successfully!
+[14:10:17] [SUCCESS] - Client data loaded successfully!
+[14:10:17] [SUCCESS] - Transactions History data loaded successfully!
+[14:10:19] [SUCCESS] - Transactions History data loaded successfully!
+[14:10:55] [INFO] - @ 'TransactionHistory' Object saved
+[14:10:55] [SUCCESS] - @ 'TransactionHistory' Object with id: '84303f45-ad34-4a33-84aa-d2964969c588' added.
+[14:10:55] [INFO] - @ 'Client' Object saved
+[14:10:55] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[14:10:55] [INFO] - @ 'Client' Object saved
+[14:10:55] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[14:10:55] [SUCCESS] - Transactions History data loaded successfully!
+[14:10:56] [SUCCESS] - Client data loaded successfully!
+[14:12:48] [SUCCESS] - Accounts data loaded successfully!
+[14:12:48] [SUCCESS] - Client data loaded successfully!
+[14:12:48] [SUCCESS] - Transactions History data loaded successfully!
+[14:13:00] [SUCCESS] - Accounts data loaded successfully!
+[14:13:00] [SUCCESS] - Client data loaded successfully!
+[14:13:00] [SUCCESS] - Transactions History data loaded successfully!
+[14:13:01] [SUCCESS] - Transactions History data loaded successfully!
+[14:18:16] [SUCCESS] - Accounts data loaded successfully!
+[14:18:16] [SUCCESS] - Client data loaded successfully!
+[14:18:16] [SUCCESS] - Transactions History data loaded successfully!
+[14:18:18] [SUCCESS] - Transactions History data loaded successfully!
+[14:19:08] [INFO] - @ 'TransactionHistory' Object saved
+[14:19:08] [SUCCESS] - @ 'TransactionHistory' Object with id: '53613444-5898-4990-9e6b-be3801c52d1e' added.
+[14:19:08] [INFO] - @ 'Client' Object saved
+[14:19:08] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[14:19:08] [INFO] - @ 'Client' Object saved
+[14:19:08] [SUCCESS] - @ 'Client' Updated object with id 'fef43d08-f1de-4fb9-a098-e5a3ca6d90a1'
+[14:19:08] [SUCCESS] - Transactions History data loaded successfully!
+[14:19:12] [SUCCESS] - Client data loaded successfully!
+[14:19:31] [INFO] - @ 'Client' Object saved
+[14:19:31] [SUCCESS] - @ 'Client' Removed object with id '098f8f51-575d-4e45-ae78-f18838c9a386'
+[14:38:11] [SUCCESS] - Accounts data loaded successfully!
+[14:38:11] [SUCCESS] - Client data loaded successfully!
+[14:38:11] [SUCCESS] - Transactions History data loaded successfully!
+[14:38:13] [SUCCESS] - Transactions History data loaded successfully!
+[14:39:11] [SUCCESS] - Accounts data loaded successfully!
+[14:39:11] [SUCCESS] - Client data loaded successfully!
+[14:39:11] [SUCCESS] - Transactions History data loaded successfully!
+[14:39:13] [SUCCESS] - Transactions History data loaded successfully!
+[14:41:51] [SUCCESS] - Accounts data loaded successfully!
+[14:41:51] [SUCCESS] - Client data loaded successfully!
+[14:41:51] [SUCCESS] - Transactions History data loaded successfully!
+[14:41:53] [SUCCESS] - Transactions History data loaded successfully!
+[14:47:56] [SUCCESS] - Accounts data loaded successfully!
+[14:47:56] [SUCCESS] - Client data loaded successfully!
+[14:47:56] [SUCCESS] - Transactions History data loaded successfully!
+[14:47:57] [SUCCESS] - Transactions History data loaded successfully!
+[14:50:00] [SUCCESS] - Accounts data loaded successfully!
+[14:50:00] [SUCCESS] - Client data loaded successfully!
+[14:50:00] [SUCCESS] - Transactions History data loaded successfully!
+[14:50:02] [SUCCESS] - Transactions History data loaded successfully!
+[14:50:37] [SUCCESS] - Accounts data loaded successfully!
+[14:50:37] [SUCCESS] - Client data loaded successfully!
+[14:50:37] [SUCCESS] - Transactions History data loaded successfully!
+[14:50:38] [SUCCESS] - Transactions History data loaded successfully!
+[14:52:11] [SUCCESS] - Accounts data loaded successfully!
+[14:52:11] [SUCCESS] - Client data loaded successfully!
+[14:52:11] [SUCCESS] - Transactions History data loaded successfully!
+[14:53:12] [SUCCESS] - Accounts data loaded successfully!
+[14:53:12] [SUCCESS] - Client data loaded successfully!
+[14:53:12] [SUCCESS] - Transactions History data loaded successfully!
+[14:53:59] [SUCCESS] - Accounts data loaded successfully!
+[14:53:59] [SUCCESS] - Client data loaded successfully!
+[14:53:59] [SUCCESS] - Transactions History data loaded successfully!
+[14:55:41] [SUCCESS] - Accounts data loaded successfully!
+[14:55:41] [SUCCESS] - Client data loaded successfully!
+[14:55:41] [SUCCESS] - Transactions History data loaded successfully!
+[14:56:47] [SUCCESS] - Accounts data loaded successfully!
+[14:56:47] [SUCCESS] - Client data loaded successfully!
+[14:56:47] [SUCCESS] - Transactions History data loaded successfully!
+[14:56:49] [SUCCESS] - Transactions History data loaded successfully!
+[14:57:08] [INFO] - @ 'TransactionHistory' Object saved
+[14:57:08] [SUCCESS] - @ 'TransactionHistory' Object with id: 'e50c7651-ef88-43ca-8030-ddef95b1d07d' added.
+[14:57:08] [INFO] - @ 'Client' Object saved
+[14:57:08] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[14:57:08] [INFO] - @ 'Client' Object saved
+[14:57:08] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[14:57:08] [SUCCESS] - Transactions History data loaded successfully!
+[14:57:28] [INFO] - @ 'TransactionHistory' Object saved
+[14:57:28] [SUCCESS] - @ 'TransactionHistory' Object with id: '98039ba9-2a3b-4815-8367-50389e724e5b' added.
+[14:57:28] [INFO] - @ 'Client' Object saved
+[14:57:28] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[14:57:28] [INFO] - @ 'Client' Object saved
+[14:57:28] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[14:57:28] [SUCCESS] - Transactions History data loaded successfully!
+[14:57:33] [SUCCESS] - Client data loaded successfully!
+[15:09:41] [SUCCESS] - Accounts data loaded successfully!
+[15:09:41] [SUCCESS] - Client data loaded successfully!
+[15:09:42] [SUCCESS] - Transactions History data loaded successfully!
+[15:09:44] [SUCCESS] - Transactions History data loaded successfully!
+[15:12:21] [SUCCESS] - Accounts data loaded successfully!
+[15:12:21] [SUCCESS] - Client data loaded successfully!
+[15:12:21] [SUCCESS] - Transactions History data loaded successfully!
+[15:12:22] [SUCCESS] - Transactions History data loaded successfully!
+[15:12:42] [SUCCESS] - Accounts data loaded successfully!
+[15:12:42] [SUCCESS] - Client data loaded successfully!
+[15:12:42] [SUCCESS] - Transactions History data loaded successfully!
+[15:12:43] [SUCCESS] - Transactions History data loaded successfully!
+[15:13:10] [SUCCESS] - Accounts data loaded successfully!
+[15:13:10] [SUCCESS] - Client data loaded successfully!
+[15:13:10] [SUCCESS] - Transactions History data loaded successfully!
+[15:13:11] [SUCCESS] - Transactions History data loaded successfully!
+[15:14:43] [SUCCESS] - Accounts data loaded successfully!
+[15:14:43] [SUCCESS] - Client data loaded successfully!
+[15:14:43] [SUCCESS] - Transactions History data loaded successfully!
+[15:14:44] [SUCCESS] - Transactions History data loaded successfully!
+[15:16:10] [SUCCESS] - Accounts data loaded successfully!
+[15:16:10] [SUCCESS] - Client data loaded successfully!
+[15:16:10] [SUCCESS] - Transactions History data loaded successfully!
+[15:16:11] [SUCCESS] - Transactions History data loaded successfully!
+[15:16:45] [SUCCESS] - Accounts data loaded successfully!
+[15:16:45] [SUCCESS] - Client data loaded successfully!
+[15:16:45] [SUCCESS] - Transactions History data loaded successfully!
+[15:16:47] [SUCCESS] - Transactions History data loaded successfully!
+[15:16:58] [SUCCESS] - Accounts data loaded successfully!
+[15:16:58] [SUCCESS] - Client data loaded successfully!
+[15:16:58] [SUCCESS] - Transactions History data loaded successfully!
+[15:17:00] [SUCCESS] - Transactions History data loaded successfully!
+[15:18:15] [SUCCESS] - Accounts data loaded successfully!
+[15:18:15] [SUCCESS] - Client data loaded successfully!
+[15:18:15] [SUCCESS] - Transactions History data loaded successfully!
+[15:18:17] [SUCCESS] - Transactions History data loaded successfully!
+[15:19:03] [SUCCESS] - Accounts data loaded successfully!
+[15:19:03] [SUCCESS] - Client data loaded successfully!
+[15:19:03] [SUCCESS] - Transactions History data loaded successfully!
+[15:19:04] [SUCCESS] - Transactions History data loaded successfully!
+[15:23:44] [SUCCESS] - Accounts data loaded successfully!
+[15:23:44] [SUCCESS] - Client data loaded successfully!
+[15:23:44] [SUCCESS] - Transactions History data loaded successfully!
+[15:23:46] [SUCCESS] - Transactions History data loaded successfully!
+[15:25:26] [SUCCESS] - Accounts data loaded successfully!
+[15:25:26] [SUCCESS] - Client data loaded successfully!
+[15:25:26] [SUCCESS] - Transactions History data loaded successfully!
+[15:25:27] [SUCCESS] - Transactions History data loaded successfully!
+[15:27:05] [SUCCESS] - Accounts data loaded successfully!
+[15:27:05] [SUCCESS] - Client data loaded successfully!
+[15:27:05] [SUCCESS] - Transactions History data loaded successfully!
+[15:27:06] [SUCCESS] - Transactions History data loaded successfully!
+[15:28:13] [SUCCESS] - Accounts data loaded successfully!
+[15:28:13] [SUCCESS] - Client data loaded successfully!
+[15:28:13] [SUCCESS] - Transactions History data loaded successfully!
+[15:28:15] [SUCCESS] - Transactions History data loaded successfully!
+[15:28:45] [SUCCESS] - Accounts data loaded successfully!
+[15:28:45] [SUCCESS] - Client data loaded successfully!
+[15:28:46] [SUCCESS] - Transactions History data loaded successfully!
+[15:28:47] [SUCCESS] - Transactions History data loaded successfully!
+[15:29:08] [SUCCESS] - Accounts data loaded successfully!
+[15:29:08] [SUCCESS] - Client data loaded successfully!
+[15:29:08] [SUCCESS] - Transactions History data loaded successfully!
+[15:29:10] [SUCCESS] - Transactions History data loaded successfully!
+[15:34:23] [SUCCESS] - Accounts data loaded successfully!
+[15:34:23] [SUCCESS] - Client data loaded successfully!
+[15:34:23] [SUCCESS] - Transactions History data loaded successfully!
+[15:34:24] [SUCCESS] - Transactions History data loaded successfully!
+[15:35:17] [SUCCESS] - Accounts data loaded successfully!
+[15:35:17] [SUCCESS] - Client data loaded successfully!
+[15:35:17] [SUCCESS] - Transactions History data loaded successfully!
+[15:35:19] [SUCCESS] - Transactions History data loaded successfully!
+[15:36:48] [SUCCESS] - Accounts data loaded successfully!
+[15:36:48] [SUCCESS] - Client data loaded successfully!
+[15:36:48] [SUCCESS] - Transactions History data loaded successfully!
+[15:36:50] [SUCCESS] - Transactions History data loaded successfully!
+[15:39:22] [SUCCESS] - Accounts data loaded successfully!
+[15:39:22] [SUCCESS] - Client data loaded successfully!
+[15:39:22] [SUCCESS] - Transactions History data loaded successfully!
+[15:39:24] [SUCCESS] - Transactions History data loaded successfully!
+[15:40:01] [SUCCESS] - Accounts data loaded successfully!
+[15:40:01] [SUCCESS] - Client data loaded successfully!
+[15:40:01] [SUCCESS] - Transactions History data loaded successfully!
+[15:40:02] [SUCCESS] - Transactions History data loaded successfully!
+[15:41:18] [SUCCESS] - Accounts data loaded successfully!
+[15:41:18] [SUCCESS] - Client data loaded successfully!
+[15:41:18] [SUCCESS] - Transactions History data loaded successfully!
+[15:41:19] [SUCCESS] - Transactions History data loaded successfully!
+[15:41:21] [SUCCESS] - Transactions History data loaded successfully!
+[15:41:23] [SUCCESS] - Transactions History data loaded successfully!
+[15:41:25] [SUCCESS] - Transactions History data loaded successfully!
+[15:41:27] [SUCCESS] - Transactions History data loaded successfully!
+[15:41:29] [SUCCESS] - Transactions History data loaded successfully!
+[15:48:14] [SUCCESS] - Accounts data loaded successfully!
+[15:48:14] [SUCCESS] - Client data loaded successfully!
+[15:48:14] [SUCCESS] - Transactions History data loaded successfully!
+[15:48:15] [SUCCESS] - Transactions History data loaded successfully!
+[15:50:42] [SUCCESS] - Accounts data loaded successfully!
+[15:50:42] [SUCCESS] - Client data loaded successfully!
+[15:50:42] [SUCCESS] - Transactions History data loaded successfully!
+[15:50:48] [SUCCESS] - Accounts data loaded successfully!
+[15:50:48] [SUCCESS] - Client data loaded successfully!
+[15:50:48] [SUCCESS] - Transactions History data loaded successfully!
+[15:51:39] [SUCCESS] - Accounts data loaded successfully!
+[15:51:39] [SUCCESS] - Client data loaded successfully!
+[15:51:39] [SUCCESS] - Transactions History data loaded successfully!
+[15:53:33] [SUCCESS] - Accounts data loaded successfully!
+[15:53:33] [SUCCESS] - Client data loaded successfully!
+[15:53:33] [SUCCESS] - Transactions History data loaded successfully!
+[15:53:34] [SUCCESS] - Transactions History data loaded successfully!
+[15:53:37] [SUCCESS] - Accounts data loaded successfully!
+[15:53:37] [SUCCESS] - Client data loaded successfully!
+[15:53:37] [SUCCESS] - Transactions History data loaded successfully!
+[15:53:39] [SUCCESS] - Transactions History data loaded successfully!
+[15:54:12] [SUCCESS] - Transactions History data loaded successfully!
+[15:54:33] [INFO] - @ 'TransactionHistory' Object saved
+[15:54:33] [SUCCESS] - @ 'TransactionHistory' Object with id: 'e68e0fe0-aeb8-46c6-b657-9ae7eef0e950' added.
+[15:54:33] [INFO] - @ 'Client' Object saved
+[15:54:33] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[15:54:33] [INFO] - @ 'Client' Object saved
+[15:54:33] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[15:54:33] [SUCCESS] - Transactions History data loaded successfully!
+[15:54:33] [SUCCESS] - Transactions History data loaded successfully!
+[15:54:35] [SUCCESS] - Client data loaded successfully!
+[15:54:42] [SUCCESS] - Client data loaded successfully!
+[15:54:50] [SUCCESS] - Accounts data loaded successfully!
+[15:54:50] [SUCCESS] - Client data loaded successfully!
+[15:54:50] [SUCCESS] - Transactions History data loaded successfully!
+[15:54:56] [SUCCESS] - Client data loaded successfully!
+[15:55:07] [INFO] - @ 'TransactionHistory' Object saved
+[15:55:07] [SUCCESS] - @ 'TransactionHistory' Object with id: 'be6f4504-c30a-4020-a2fc-aafdc31da5f0' added.
+[15:55:07] [INFO] - @ 'Client' Object saved
+[15:55:07] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[15:55:07] [INFO] - @ 'Client' Object saved
+[15:55:07] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[15:55:08] [SUCCESS] - Client data loaded successfully!
+[15:55:15] [SUCCESS] - Client data loaded successfully!
+[15:55:18] [SUCCESS] - Client data loaded successfully!
+[15:55:29] [INFO] - @ 'TransactionHistory' Object saved
+[15:55:29] [SUCCESS] - @ 'TransactionHistory' Object with id: '6d03186c-5e8c-4e2a-b9e1-6e75420c3f0e' added.
+[15:55:29] [INFO] - @ 'Client' Object saved
+[15:55:29] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[15:55:29] [INFO] - @ 'Client' Object saved
+[15:55:29] [SUCCESS] - @ 'Client' Updated object with id '71177c62-6814-47d2-83d9-d2df75ef5fde'
+[15:55:31] [SUCCESS] - Client data loaded successfully!
+[15:55:40] [SUCCESS] - Client data loaded successfully!
+[15:55:44] [SUCCESS] - Transactions History data loaded successfully!
+[15:59:38] [SUCCESS] - Accounts data loaded successfully!
+[15:59:38] [SUCCESS] - Client data loaded successfully!
+[15:59:38] [SUCCESS] - Transactions History data loaded successfully!
+[15:59:45] [SUCCESS] - Transactions History data loaded successfully!
+[16:00:00] [SUCCESS] - Accounts data loaded successfully!
+[16:00:00] [SUCCESS] - Client data loaded successfully!
+[16:00:00] [SUCCESS] - Transactions History data loaded successfully!
+[16:00:02] [SUCCESS] - Transactions History data loaded successfully!
+[16:00:20] [SUCCESS] - Accounts data loaded successfully!
+[16:00:20] [SUCCESS] - Client data loaded successfully!
+[16:00:20] [SUCCESS] - Transactions History data loaded successfully!
+[16:00:22] [SUCCESS] - Transactions History data loaded successfully!
+[16:00:56] [SUCCESS] - Accounts data loaded successfully!
+[16:00:56] [SUCCESS] - Client data loaded successfully!
+[16:00:57] [SUCCESS] - Transactions History data loaded successfully!
+[16:01:02] [SUCCESS] - Transactions History data loaded successfully!
+[16:02:32] [SUCCESS] - Accounts data loaded successfully!
+[16:02:32] [SUCCESS] - Client data loaded successfully!
+[16:02:32] [SUCCESS] - Transactions History data loaded successfully!
+[16:02:34] [SUCCESS] - Transactions History data loaded successfully!
+[16:04:41] [SUCCESS] - Accounts data loaded successfully!
+[16:04:41] [SUCCESS] - Client data loaded successfully!
+[16:04:41] [SUCCESS] - Transactions History data loaded successfully!
+[16:04:46] [SUCCESS] - Transactions History data loaded successfully!
+[16:05:24] [SUCCESS] - Accounts data loaded successfully!
+[16:05:24] [SUCCESS] - Client data loaded successfully!
+[16:05:24] [SUCCESS] - Transactions History data loaded successfully!
+[16:05:26] [SUCCESS] - Transactions History data loaded successfully!
+[16:07:28] [SUCCESS] - Accounts data loaded successfully!
+[16:07:28] [SUCCESS] - Client data loaded successfully!
+[16:07:28] [SUCCESS] - Transactions History data loaded successfully!
+[16:07:30] [SUCCESS] - Transactions History data loaded successfully!
+[16:10:47] [SUCCESS] - Accounts data loaded successfully!
+[16:10:47] [SUCCESS] - Client data loaded successfully!
+[16:10:47] [SUCCESS] - Transactions History data loaded successfully!
+[16:10:52] [SUCCESS] - Transactions History data loaded successfully!
+[16:12:09] [SUCCESS] - Accounts data loaded successfully!
+[16:12:09] [SUCCESS] - Client data loaded successfully!
+[16:12:09] [SUCCESS] - Transactions History data loaded successfully!
+[16:12:14] [SUCCESS] - Transactions History data loaded successfully!
+[16:12:52] [SUCCESS] - Accounts data loaded successfully!
+[16:12:52] [SUCCESS] - Client data loaded successfully!
+[16:12:52] [SUCCESS] - Transactions History data loaded successfully!
+[16:12:58] [SUCCESS] - Transactions History data loaded successfully!
+[16:13:59] [SUCCESS] - Accounts data loaded successfully!
+[16:13:59] [SUCCESS] - Client data loaded successfully!
+[16:13:59] [SUCCESS] - Transactions History data loaded successfully!
+[16:14:00] [SUCCESS] - Transactions History data loaded successfully!
+[16:14:06] [INFO] - @ 'Client' Object saved
+[16:14:06] [SUCCESS] - @ 'Client' Object with id: '623bf3c0-3085-4728-a10b-b75b94293e82' added.
+[16:14:12] [INFO] - @ 'Client' Object saved
+[16:14:12] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:14:14] [INFO] - @ 'Client' Object saved
+[16:14:14] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:14:15] [INFO] - @ 'Client' Object saved
+[16:14:15] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:14:20] [INFO] - @ 'Client' Object saved
+[16:14:20] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:14:24] [INFO] - @ 'Client' Object saved
+[16:14:24] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:14:32] [INFO] - @ 'Client' Object saved
+[16:14:32] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:14:34] [INFO] - @ 'Client' Object saved
+[16:14:34] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:14:38] [INFO] - @ 'Client' Object saved
+[16:14:38] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:14:44] [INFO] - @ 'TransactionHistory' Object saved
+[16:14:44] [SUCCESS] - @ 'TransactionHistory' Object with id: '06a064f3-1212-47c4-b7f1-74f52854439d' added.
+[16:14:44] [INFO] - @ 'Client' Object saved
+[16:14:44] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:14:44] [SUCCESS] - Transactions History data loaded successfully!
+[16:14:45] [SUCCESS] - Client data loaded successfully!
+[16:14:49] [SUCCESS] - Transactions History data loaded successfully!
+[16:15:01] [INFO] - @ 'TransactionHistory' Object saved
+[16:15:01] [SUCCESS] - @ 'TransactionHistory' Object with id: '7b4da420-76f8-413b-b008-9969d44c8fd7' added.
+[16:15:01] [INFO] - @ 'Client' Object saved
+[16:15:01] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:15:01] [INFO] - @ 'Client' Object saved
+[16:15:01] [SUCCESS] - @ 'Client' Updated object with id '623bf3c0-3085-4728-a10b-b75b94293e82'
+[16:15:01] [SUCCESS] - Transactions History data loaded successfully!
+[16:15:01] [SUCCESS] - Transactions History data loaded successfully!
+[16:15:05] [SUCCESS] - Client data loaded successfully!
+[16:15:16] [INFO] - @ 'Client' Object saved
+[16:15:16] [SUCCESS] - @ 'Client' Updated object with id 'fef43d08-f1de-4fb9-a098-e5a3ca6d90a1'
+[16:16:47] [SUCCESS] - Accounts data loaded successfully!
+[16:16:47] [SUCCESS] - Client data loaded successfully!
+[16:16:47] [SUCCESS] - Transactions History data loaded successfully!
+[16:16:52] [SUCCESS] - Transactions History data loaded successfully!

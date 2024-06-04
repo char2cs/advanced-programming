@@ -18,25 +18,6 @@ new FormModel {
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
-				name: "ButtonsBottom"
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label2"
-					"text": "Estado"
-				} )
-				add( new FormComponent( "javax.swing.JComboBox" ) {
-					name: "State"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label1"
-					"text": "Tipo"
-				} )
-				add( new FormComponent( "javax.swing.JComboBox" ) {
-					name: "Type"
-				} )
-			}, new FormLayoutConstraints( class java.lang.String ) {
-				"value": "South"
-			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "Buttons"
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -47,9 +28,16 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "First"
 				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "Filter"
-					"text": "Filter"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+					name: "FilterButtonPanel"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "Filter"
+						"text": "Filtrar"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "Reset"
+						"text": "Reset"
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Last"
 				} )
@@ -81,6 +69,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "BalanceMin"
+							"background": &Color0 new java.awt.Color( 214, 217, 223, 255 )
 							"columns": 12
 						} )
 					} )
@@ -94,7 +83,8 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "BalanceMax"
-							"columns": 12
+							"background": #Color0
+							"columns": 11
 						} )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
@@ -102,6 +92,25 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "West"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "ButtonsBottom"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "Estado"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "State"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Tipo de transaccion"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "Type"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "South"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
