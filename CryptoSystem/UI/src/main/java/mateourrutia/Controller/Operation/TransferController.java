@@ -5,6 +5,8 @@ import mateourrutia.DAO.AccountDAO;
 import mateourrutia.DAO.TransactionHistoryDAO;
 import mateourrutia.Domain.Account;
 import mateourrutia.Domain.TransactionHistory;
+import mateourrutia.Service.AccountService;
+import mateourrutia.Service.TransactionHistoryService;
 import mateourrutia.View.Operation.TransferView;
 import mateourrutia.View.Window;
 
@@ -15,10 +17,10 @@ public class TransferController extends DepositWithdrawUtils<TransferView> {
 	public TransferController(
 			Window owner,
 			Account account,
-			AccountDAO accountDAO,
-			TransactionHistoryDAO transactionHistoryDAO
+			AccountService accountService,
+			TransactionHistoryService transactionHistoryService
 	) {
-		super(owner, new TransferView(), account, accountDAO, transactionHistoryDAO);
+		super(owner, new TransferView(), account, accountService, transactionHistoryService);
 	}
 
 	protected void initController() {}
@@ -39,16 +41,22 @@ public class TransferController extends DepositWithdrawUtils<TransferView> {
 		}
 
 		try {
-			Account transferedAccount = getAccountDAO().get( Long.parseLong(getInnerView().getCBU().getText()) );
+			Account transferedAccount = getAccountService().get( Long.parseLong(getInnerView().getCBU().getText()) );
 
 			TransactionHistory transactionResult = getAccount().transfer(
 					Double.parseDouble( getInnerView().getBalance().getText() ),
 					transferedAccount
 			);
 
-			getTransactionHistoryDAO().add(transactionResult);
-			getAccountDAO().update(getAccount(), getAccount().getClient());
-			getAccountDAO().update(transferedAccount, transferedAccount.getClient());
+			getTransactionHistoryService().add(transactionResult);
+			getAccountService().update(
+					transactionResult.getFromAccount(),
+					transactionResult.getFromAccount().getClient()
+			);
+			getAccountService().update(
+					transactionResult.getToAccount(),
+					transactionResult.getToAccount().getClient()
+			);
 
 			ErrorHandling(transactionResult);
 		}

@@ -2,25 +2,25 @@ package mateourrutia.Controller.Account;
 
 import mateourrutia.Controller.ErrorController;
 import mateourrutia.Controller.StaticDialogController;
-import mateourrutia.DAO.AccountDAO;
 import mateourrutia.Domain.*;
+import mateourrutia.Service.AccountService;
 import mateourrutia.View.Account.WalletAccountCreateView;
 import mateourrutia.View.Window;
 
 import javax.swing.*;
 
 public class WalletAccountCreateController extends StaticDialogController<WalletAccountCreateView> {
-	private Client client;
-	private final AccountDAO accountDAO;
+	private 		Client 			client;
+	private final 	AccountService 	accountService;
 
 	public WalletAccountCreateController(
-			Window owner,
-			Client client,
-			AccountDAO accountDAO
+			Window 			owner,
+			Client 			client,
+			AccountService	accountService
 	) {
 		super( owner, new WalletAccountCreateView() );
 		this.client = client;
-		this.accountDAO = accountDAO;
+		this.accountService = accountService;
 		initController();
 	}
 
@@ -51,8 +51,7 @@ public class WalletAccountCreateController extends StaticDialogController<Wallet
 		);
 
 		try {
-			client.getAccounts().add(wallet);
-			accountDAO.add(wallet, client);
+			accountService.add(wallet, client);
 		}
 		catch (Exception e) {
 			ErrorController.show( getView(), e );

@@ -3,7 +3,7 @@ package mateourrutia.Controller.Tables;
 import mateourrutia.Controller.ErrorController;
 import mateourrutia.Domain.Client;
 import mateourrutia.Controller.TableTypes.SimpleTable;
-import mateourrutia.Services.ClientService;
+import mateourrutia.Service.ClientService;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -19,7 +19,7 @@ public class ClientSimple extends SimpleTable<Client> {
 
 		try {
 			DefaultTableModel tableModel = new DefaultTableModel(
-					convertToTableData( clientService.getClients() ),
+					convertToTableData( clientService.getAll() ),
 					new Object[]{"CUIT", "Nombre", "Apellido", "Telefono", "Email", "Direccion"}
 			) {
 				@Override

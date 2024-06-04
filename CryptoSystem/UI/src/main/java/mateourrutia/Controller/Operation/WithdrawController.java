@@ -5,6 +5,8 @@ import mateourrutia.DAO.AccountDAO;
 import mateourrutia.DAO.TransactionHistoryDAO;
 import mateourrutia.Domain.Account;
 import mateourrutia.Domain.TransactionHistory;
+import mateourrutia.Service.AccountService;
+import mateourrutia.Service.TransactionHistoryService;
 import mateourrutia.View.Operation.WithdrawView;
 import mateourrutia.View.Window;
 
@@ -15,10 +17,10 @@ public class WithdrawController extends DepositWithdrawUtils<WithdrawView> {
 	public WithdrawController(
 			Window owner,
 			Account account,
-			AccountDAO accountDAO,
-			TransactionHistoryDAO transactionHistoryDAO
+			AccountService accountService,
+			TransactionHistoryService transactionHistoryService
 	) {
-		super(owner, new WithdrawView(), account, accountDAO, transactionHistoryDAO);
+		super(owner, new WithdrawView(), account, accountService, transactionHistoryService);
 	}
 
 	protected void initController() {}
@@ -39,8 +41,11 @@ public class WithdrawController extends DepositWithdrawUtils<WithdrawView> {
 		try {
 			TransactionHistory transactionResult = getAccount().withdraw( Double.parseDouble( getInnerView().getBalance().getText() ) );
 
-			getTransactionHistoryDAO().add(transactionResult);
-			getAccountDAO().update(getAccount(), getAccount().getClient());
+			getTransactionHistoryService().add(transactionResult);
+			getAccountService().update(
+					transactionResult.getFromAccount(),
+					transactionResult.getFromAccount().getClient()
+			);
 
 			ErrorHandling( transactionResult );
 		}

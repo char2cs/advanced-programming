@@ -2,29 +2,30 @@ package mateourrutia.Controller.Operation;
 
 import mateourrutia.Controller.StaticDialogController;
 import mateourrutia.DAO.AccountDAO;
-import mateourrutia.DAO.TransactionHistoryDAO;
 import mateourrutia.Domain.Account;
 import mateourrutia.Domain.TransactionHistory;
+import mateourrutia.Service.AccountService;
+import mateourrutia.Service.TransactionHistoryService;
 import mateourrutia.View.Window;
 
 import javax.swing.*;
 
 public abstract class DepositWithdrawUtils<T extends JPanel> extends StaticDialogController<T> {
-	private final Account account;
-	private final AccountDAO accountDAO;
-	private final TransactionHistoryDAO transactionHistoryDAO;
+	private final Account 					account;
+	private final AccountService 			accountService;
+	private final TransactionHistoryService transactionHistoryService;
 
 	public DepositWithdrawUtils(
-			Window 					owner,
-			T 						view,
-			Account 				account,
-			AccountDAO 				accountDAO,
-			TransactionHistoryDAO 	transactionHistoryDAO
+			Window 						owner,
+			T 							view,
+			Account 					account,
+			AccountService 				accountDAO,
+			TransactionHistoryService 	transactionHistoryService
 	) {
 		super( owner, view );
 		this.account = account;
-		this.accountDAO = accountDAO;
-		this.transactionHistoryDAO = transactionHistoryDAO;
+		this.accountService = accountDAO;
+		this.transactionHistoryService = transactionHistoryService;
 
 		initController();
 	}
@@ -55,12 +56,12 @@ public abstract class DepositWithdrawUtils<T extends JPanel> extends StaticDialo
 		return account;
 	}
 
-	protected AccountDAO getAccountDAO() {
-		return accountDAO;
+	protected AccountService getAccountService() {
+		return accountService;
 	}
 
-	protected TransactionHistoryDAO getTransactionHistoryDAO() {
-		return transactionHistoryDAO;
+	protected TransactionHistoryService getTransactionHistoryService() {
+		return transactionHistoryService;
 	}
 
 	protected void ErrorHandling(

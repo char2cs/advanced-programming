@@ -6,6 +6,9 @@ import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class SimpleTable<T> extends TableType<T, SimpleView> {
 	public SimpleTable() {}
@@ -17,10 +20,25 @@ public abstract class SimpleTable<T> extends TableType<T, SimpleView> {
 	}
 
 	protected void setModel(DefaultTableModel model) {
+		setModel(model, false);
+	}
+
+	protected void setModel(DefaultTableModel model, boolean allowSorting) {
 		this.model  = model;
 		setView( new SimpleView(this.model) );
 
 		getView().getTable().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		if ( allowSorting )
+		{
+			TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>( model );
+
+			List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+			sortKeys.add(new RowSorter.SortKey(0, SortOrder.DESCENDING));
+			sorter.setSortKeys(sortKeys);
+
+			getView().getTable().setRowSorter( sorter );
+		}
 
 		setTableModelListeners();
 		setUpListeners();

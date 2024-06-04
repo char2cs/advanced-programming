@@ -19,80 +19,167 @@ public class TransactionHistoryView extends JPanel {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         label3 = new JLabel();
         Content = new JPanel();
-        Buttons = new JPanel();
-        ButtonRight = new JPanel();
+        ButtonsBottom = new JPanel();
         label2 = new JLabel();
-        comboBox1 = new JComboBox();
+        State = new JComboBox();
         label1 = new JLabel();
         Type = new JComboBox();
-        ButtonLeft = new JPanel();
-        textField1 = new JTextField();
-        button1 = new JButton();
+        Buttons = new JPanel();
+        Filters = new JLabel();
+        Filter = new JButton();
+        FilterContent = new JPanel();
+        ButtonCBU = new JPanel();
+        label5 = new JLabel();
+        CBUText = new JTextField();
+        MontoMin = new JPanel();
+        label4 = new JLabel();
+        BalanceMin = new JTextField();
+        MontoMax = new JPanel();
+        label6 = new JLabel();
+        BalanceMax = new JTextField();
 
         //======== this ========
         setLayout(new BorderLayout());
 
         //---- label3 ----
         label3.setText("Historial de Transacciones");
-        label3.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
+        label3.setFont(new Font("DejaVu Sans", Font.PLAIN, 20));
         label3.setHorizontalAlignment(SwingConstants.CENTER);
         add(label3, BorderLayout.NORTH);
 
         //======== Content ========
         {
-            Content.setLayout(new FlowLayout());
+            Content.setLayout(new BorderLayout());
         }
         add(Content, BorderLayout.CENTER);
+
+        //======== ButtonsBottom ========
+        {
+            ButtonsBottom.setLayout(new FlowLayout());
+
+            //---- label2 ----
+            label2.setText("Estado");
+            ButtonsBottom.add(label2);
+            ButtonsBottom.add(State);
+
+            //---- label1 ----
+            label1.setText("Tipo");
+            ButtonsBottom.add(label1);
+            ButtonsBottom.add(Type);
+        }
+        add(ButtonsBottom, BorderLayout.SOUTH);
 
         //======== Buttons ========
         {
             Buttons.setLayout(new BorderLayout());
 
-            //======== ButtonRight ========
+            //---- Filters ----
+            Filters.setText("Filtros");
+            Filters.setHorizontalAlignment(SwingConstants.CENTER);
+            Filters.setFont(new Font("DejaVu Sans", Font.ITALIC, 16));
+            Buttons.add(Filters, BorderLayout.PAGE_START);
+
+            //---- Filter ----
+            Filter.setText("Filter");
+            Buttons.add(Filter, BorderLayout.PAGE_END);
+
+            //======== FilterContent ========
             {
-                ButtonRight.setLayout(new FlowLayout());
+                FilterContent.setLayout(new GridLayout(12, 1));
 
-                //---- label2 ----
-                label2.setText("Estado");
-                ButtonRight.add(label2);
-                ButtonRight.add(comboBox1);
+                //======== ButtonCBU ========
+                {
+                    ButtonCBU.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-                //---- label1 ----
-                label1.setText("Tipo");
-                ButtonRight.add(label1);
-                ButtonRight.add(Type);
+                    //---- label5 ----
+                    label5.setText("CBU");
+                    ButtonCBU.add(label5);
+
+                    //---- CBUText ----
+                    CBUText.setColumns(12);
+                    ButtonCBU.add(CBUText);
+                }
+                FilterContent.add(ButtonCBU);
+
+                //======== MontoMin ========
+                {
+                    MontoMin.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                    //---- label4 ----
+                    label4.setText("Monto Min.");
+                    MontoMin.add(label4);
+
+                    //---- BalanceMin ----
+                    BalanceMin.setColumns(12);
+                    MontoMin.add(BalanceMin);
+                }
+                FilterContent.add(MontoMin);
+
+                //======== MontoMax ========
+                {
+                    MontoMax.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                    //---- label6 ----
+                    label6.setText("Monto Max.");
+                    MontoMax.add(label6);
+
+                    //---- BalanceMax ----
+                    BalanceMax.setColumns(12);
+                    MontoMax.add(BalanceMax);
+                }
+                FilterContent.add(MontoMax);
             }
-            Buttons.add(ButtonRight, BorderLayout.EAST);
-
-            //======== ButtonLeft ========
-            {
-                ButtonLeft.setLayout(new FlowLayout());
-
-                //---- textField1 ----
-                textField1.setColumns(12);
-                ButtonLeft.add(textField1);
-
-                //---- button1 ----
-                button1.setText("Filtrar CBU");
-                ButtonLeft.add(button1);
-            }
-            Buttons.add(ButtonLeft, BorderLayout.WEST);
+            Buttons.add(FilterContent, BorderLayout.CENTER);
         }
-        add(Buttons, BorderLayout.SOUTH);
+        add(Buttons, BorderLayout.WEST);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JLabel label3;
     private JPanel Content;
-    private JPanel Buttons;
-    private JPanel ButtonRight;
+    private JPanel ButtonsBottom;
     private JLabel label2;
-    private JComboBox comboBox1;
+    private JComboBox State;
     private JLabel label1;
     private JComboBox Type;
-    private JPanel ButtonLeft;
-    private JTextField textField1;
-    private JButton button1;
+    private JPanel Buttons;
+    private JLabel Filters;
+    private JButton Filter;
+    private JPanel FilterContent;
+    private JPanel ButtonCBU;
+    private JLabel label5;
+    private JTextField CBUText;
+    private JPanel MontoMin;
+    private JLabel label4;
+    private JTextField BalanceMin;
+    private JPanel MontoMax;
+    private JLabel label6;
+    private JTextField BalanceMax;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
+
+    public JPanel getContent() {
+        return Content;
+    }
+
+    public void setContent(
+            JPanel component
+    ) {
+        Content.removeAll();
+        Content.add(component, BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }
+
+    public JTextField getCBUText() {
+        return CBUText;
+    }
+
+    public JComboBox getType() {
+        return Type;
+    }
+
+    public JComboBox getState() {
+        return State;
+    }
 }

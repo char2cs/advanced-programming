@@ -4,12 +4,10 @@ import mateourrutia.Controller.Operation.ConvertController;
 import mateourrutia.Controller.Operation.DepositController;
 import mateourrutia.Controller.Operation.TransferController;
 import mateourrutia.Controller.Operation.WithdrawController;
-import mateourrutia.DAO.AccountDAO;
-import mateourrutia.DAO.TransactionHistoryDAO;
 import mateourrutia.Domain.Account;
 import mateourrutia.Domain.Wallet;
-import mateourrutia.Factory.PersistenceType;
-import mateourrutia.Factory.TransactionHistoryFactory;
+import mateourrutia.Service.AccountService;
+import mateourrutia.Service.TransactionHistoryService;
 import mateourrutia.View.AccountOverviewView;
 
 import java.awt.event.ActionEvent;
@@ -21,17 +19,20 @@ import java.awt.event.ActionListener;
  * depositos, converciones y retiros.
  */
 public class AccountOverviewController extends WindowController<AccountOverviewView> {
-	private Account account;
-	private AccountDAO accountDAO;
-	private TransactionHistoryDAO transactionHistoryDAO = TransactionHistoryFactory.getTransactionHistoryDAO( PersistenceType.STRINGWRITER );
+	private final 	TransactionHistoryService 	transactionHistoryService;
+	private 		Account 					account;
+	private final 	AccountService 				accountService;
 
 	public AccountOverviewController(
-			Account account,
-			AccountDAO accountDAO
+			AccountOverviewView 		view,
+			Account 					account,
+			AccountService 				accountService,
+			TransactionHistoryService 	transactionHistoryService
 	) {
-		super( new AccountOverviewView() );
-		this.account = account;
-		this.accountDAO = accountDAO;
+		super( view );
+		this.account 					= account;
+		this.accountService			 	= accountService;
+		this.transactionHistoryService 	= transactionHistoryService;
 
 		initController();
 	}
@@ -63,8 +64,8 @@ public class AccountOverviewController extends WindowController<AccountOverviewV
 			DepositController depositController = new DepositController(
 					getWindow(),
 					account,
-					accountDAO,
-					transactionHistoryDAO
+					accountService,
+					transactionHistoryService
 			);
 
 			depositController.showDialog();
@@ -79,8 +80,8 @@ public class AccountOverviewController extends WindowController<AccountOverviewV
 			WithdrawController withdrawController = new WithdrawController(
 					getWindow(),
 					account,
-					accountDAO,
-					transactionHistoryDAO
+					accountService,
+					transactionHistoryService
 			);
 
 			withdrawController.showDialog();
@@ -95,8 +96,8 @@ public class AccountOverviewController extends WindowController<AccountOverviewV
 			TransferController transferController = new TransferController(
 					getWindow(),
 					account,
-					accountDAO,
-					transactionHistoryDAO
+					accountService,
+					transactionHistoryService
 			);
 
 			transferController.showDialog();
@@ -111,8 +112,8 @@ public class AccountOverviewController extends WindowController<AccountOverviewV
 			ConvertController convertController = new ConvertController(
 					getWindow(),
 					account,
-					accountDAO,
-					transactionHistoryDAO
+					accountService,
+					transactionHistoryService
 			);
 
 			convertController.showDialog();

@@ -14,9 +14,6 @@ import java.awt.event.WindowEvent;
  * Esta clase habilita a sus hijos a ser:
  *  1. Un JFrame por ellos mismos.
  *  2. Ser un JPanel.
- *
- * Tambien se encarga de controllar los elementos dentro
- * de la vista Window.
  * @param <T>
  */
 public abstract class WindowController<T extends JPanel> {
@@ -54,7 +51,6 @@ public abstract class WindowController<T extends JPanel> {
 			window = new Window();
 			window.setTitle(windowTitle);
 			window.getContentPane().add(view, BorderLayout.CENTER);
-			initController();
 		}
 
 		window.setDefaultCloseOperation(operation);
@@ -126,19 +122,5 @@ public abstract class WindowController<T extends JPanel> {
 				showWindow();
 			});
 		}
-	}
-
-	/**
-	 * Especifico de WindowView
-	 * En este caso, abre la ventana de TransactionHistory.
-	 */
-	private void initController() {
-		getWindow().getTransactionHistory().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TransactionHistorySimple transactionHistorySimple = new TransactionHistorySimple();
-				transactionHistorySimple.showWindow(JFrame.DISPOSE_ON_CLOSE);
-			}
-		});
 	}
 }

@@ -6,7 +6,7 @@ import mateourrutia.Domain.Client;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
 import mateourrutia.Exceptions.OperationFailedException;
-import mateourrutia.Services.ClientService;
+import mateourrutia.Service.ClientService;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
@@ -24,7 +24,7 @@ public class ClientCRUD extends GeneralTable<Client> {
 
 		try {
 			DefaultTableModel tableModel = new DefaultTableModel(
-					convertToTableData( clientService.getClients() ),
+					convertToTableData( clientService.getAll() ),
 					new Object[]{"CUIT", "Nombre", "Apellido", "Telefono", "Email", "Direccion"}
 			) {
 				@Override
@@ -64,7 +64,7 @@ public class ClientCRUD extends GeneralTable<Client> {
 		);
 
 		try {
-			clientService.getClientDAO().add(client);
+			clientService.add(client);
 		}
 		catch (ObjectAlreadyExistsException e) {
 			e.printStackTrace();
@@ -81,7 +81,7 @@ public class ClientCRUD extends GeneralTable<Client> {
 		int column 				= e.getColumn();
 
 		Object something 		= Model.getValueAt(row, column);
-		List<Client> clients 	= clientService.getClients();
+		List<Client> clients 	= clientService.getAll();
 		Client client 			= clients.get(row);
 
 		switch (column) {
@@ -111,7 +111,7 @@ public class ClientCRUD extends GeneralTable<Client> {
 		}
 
 		try {
-			clientService.getClientDAO().update(client);
+			clientService.update(client);
 		}
 		catch (ObjectNotFoundException ex) {
 			ex.printStackTrace();
@@ -125,11 +125,11 @@ public class ClientCRUD extends GeneralTable<Client> {
 
 	@Override
 	protected void onDelete(Integer[] rows, JTable table) throws ClassCastException {
-		List<Client> clients = clientService.getClients();
+		List<Client> clients = clientService.getAll();
 
 		for (int row : rows)
 			try {
-				clientService.getClientDAO().delete( clients.get( row ).getUuid() );
+				clientService.delete( clients.get( row ).getUuid() );
 				this.removeRow( row );
 			}
 			catch (ObjectNotFoundException e) {

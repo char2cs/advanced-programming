@@ -1,10 +1,10 @@
 package mateourrutia.Controller.Operation;
 
 import mateourrutia.Controller.ErrorController;
-import mateourrutia.DAO.AccountDAO;
-import mateourrutia.DAO.TransactionHistoryDAO;
 import mateourrutia.Domain.Account;
 import mateourrutia.Domain.TransactionHistory;
+import mateourrutia.Service.AccountService;
+import mateourrutia.Service.TransactionHistoryService;
 import mateourrutia.View.Operation.DepositView;
 import mateourrutia.View.Window;
 
@@ -12,12 +12,13 @@ import javax.swing.*;
 
 public class DepositController extends DepositWithdrawUtils<DepositView> {
 	public DepositController(
-			Window owner,
-			Account account,
-			AccountDAO accountDAO,
-			TransactionHistoryDAO transactionHistoryDAO
+			Window 						owner,
+			Account 					account,
+
+			AccountService 				accountService,
+			TransactionHistoryService 	transactionHistoryService
 	) {
-		super(owner, new DepositView(), account, accountDAO, transactionHistoryDAO);
+		super(owner, new DepositView(), account, accountService, transactionHistoryService);
 	}
 
 	protected void initController() {}
@@ -37,8 +38,11 @@ public class DepositController extends DepositWithdrawUtils<DepositView> {
 
 		try {
 			TransactionHistory transactionResult = getAccount().deposit( Double.parseDouble( getInnerView().getBalance().getText() ) );
-			getTransactionHistoryDAO().add(transactionResult);
-			getAccountDAO().update(getAccount(), getAccount().getClient());
+			getTransactionHistoryService().add(transactionResult);
+			getAccountService().update(
+					transactionResult.getFromAccount(),
+					transactionResult.getFromAccount().getClient()
+			);
 
 			ErrorHandling(transactionResult);
 		}

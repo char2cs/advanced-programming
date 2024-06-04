@@ -4,6 +4,7 @@ import mateourrutia.Controller.ErrorController;
 import mateourrutia.DAO.AccountDAO;
 import mateourrutia.Domain.Client;
 import mateourrutia.Domain.SavingsAccount;
+import mateourrutia.Service.AccountService;
 import mateourrutia.View.ClientOverviewView;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ public class SavingsAccountCreateController {
 
 	public static void SavingsAccountSelected(
 			Client 				client,
-			AccountDAO 			accountDAO,
+			AccountService 		accountService,
 			ClientOverviewView 	clientOverviewView
 	) {
 		if (JOptionPane.showConfirmDialog(null, "Estas seguro de crear una nueva Cuenta Bancaria?", "Confirmar",
@@ -20,14 +21,11 @@ public class SavingsAccountCreateController {
 			return;
 
 		try {
-			SavingsAccount savingsAccount = new SavingsAccount(
+			accountService.add(new SavingsAccount(
 					client,
 					0,
 					client.getCuit()
-			);
-
-			client.getAccounts().add(savingsAccount);
-			accountDAO.add(savingsAccount, client);
+			), client);
 		}
 		catch (Exception e) {
 			ErrorController.show( clientOverviewView, e );

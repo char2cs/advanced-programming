@@ -5,6 +5,8 @@ import mateourrutia.DAO.AccountDAO;
 import mateourrutia.DAO.TransactionHistoryDAO;
 import mateourrutia.Domain.*;
 import mateourrutia.Exceptions.ObjectNotFoundException;
+import mateourrutia.Service.AccountService;
+import mateourrutia.Service.TransactionHistoryService;
 import mateourrutia.View.Operation.ConvertView;
 import mateourrutia.View.Window;
 
@@ -13,12 +15,12 @@ import javax.swing.*;
 public class ConvertController extends DepositWithdrawUtils<ConvertView> {
 
 	public ConvertController(
-			Window owner,
-			Account account,
-			AccountDAO accountDAO,
-			TransactionHistoryDAO transactionHistoryDAO
+			Window 						owner,
+			Account 					account,
+			AccountService 				accountService,
+			TransactionHistoryService 	transactionHistoryDAO
 	) {
-		super(owner, new ConvertView(), account, accountDAO, transactionHistoryDAO);
+		super(owner, new ConvertView(), account, accountService, transactionHistoryDAO);
 	}
 
 	protected void initController() {
@@ -64,8 +66,8 @@ public class ConvertController extends DepositWithdrawUtils<ConvertView> {
 			TransferController transferController = new TransferController(
 					getParent(),
 					getAccount(),
-					getAccountDAO(),
-					getTransactionHistoryDAO()
+					getAccountService(),
+					getTransactionHistoryService()
 			) {
 				@Override
 				protected void initController() {
@@ -92,7 +94,7 @@ public class ConvertController extends DepositWithdrawUtils<ConvertView> {
 					}
 
 					try {
-						Account transferedAccount = getAccountDAO().get( Long.parseLong(getInnerView().getCBU().getText()) );
+						Account transferedAccount = getAccountService().get( Long.parseLong(getInnerView().getCBU().getText()) );
 						toAccounts[0] = transferedAccount;
 					}
 					catch (ObjectNotFoundException e) {
@@ -132,9 +134,15 @@ public class ConvertController extends DepositWithdrawUtils<ConvertView> {
 					toAccount
 			);
 
-			getTransactionHistoryDAO().add(transactionResult);
-			getAccountDAO().update(getAccount(), getAccount().getClient());
-			getAccountDAO().update(toAccount, toAccount.getClient());
+			getTransactionHistoryService().add(transactionResult);
+			getAccountService().update(
+					transactionResult.getFromAccount(),
+					transactionResult.getFromAccount().getClient()
+			);
+			getAccountService().update(
+					transactionResult.getToAccount(),
+					transactionResult.getToAccount().getClient()
+			);
 
 			ErrorHandling( transactionResult );
 		}

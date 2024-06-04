@@ -8,52 +8,100 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
 				"text": "Historial de Transacciones"
-				"font": new java.awt.Font( "DejaVu Sans", 0, 18 )
+				"font": new java.awt.Font( "DejaVu Sans", 0, 20 )
 				"horizontalAlignment": 0
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "North"
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "Content"
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
-				name: "Buttons"
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
-					name: "ButtonRight"
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label2"
-						"text": "Estado"
-					} )
-					add( new FormComponent( "javax.swing.JComboBox" ) {
-						name: "comboBox1"
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label1"
-						"text": "Tipo"
-					} )
-					add( new FormComponent( "javax.swing.JComboBox" ) {
-						name: "Type"
-					} )
-				}, new FormLayoutConstraints( class java.lang.String ) {
-					"value": "East"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "ButtonsBottom"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "Estado"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
-					name: "ButtonLeft"
-					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField1"
-						"columns": 12
-					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button1"
-						"text": "Filtrar CBU"
-					} )
-				}, new FormLayoutConstraints( class java.lang.String ) {
-					"value": "West"
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "State"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Tipo"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "Type"
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "South"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "Buttons"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "Filters"
+					"text": "Filtros"
+					"horizontalAlignment": 0
+					"font": new java.awt.Font( "DejaVu Sans", 2, 16 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "First"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "Filter"
+					"text": "Filter"
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Last"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+					"columns": 1
+					"rows": 12
+				} ) {
+					name: "FilterContent"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "ButtonCBU"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label5"
+							"text": "CBU"
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "CBUText"
+							"columns": 12
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "MontoMin"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label4"
+							"text": "Monto Min."
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "BalanceMin"
+							"columns": 12
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "MontoMax"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label6"
+							"text": "Monto Max."
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "BalanceMax"
+							"columns": 12
+						} )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "West"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

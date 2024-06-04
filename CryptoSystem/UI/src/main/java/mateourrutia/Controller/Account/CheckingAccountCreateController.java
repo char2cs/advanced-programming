@@ -6,6 +6,7 @@ import mateourrutia.DAO.AccountDAO;
 import mateourrutia.Domain.Account;
 import mateourrutia.Domain.CheckingAccount;
 import mateourrutia.Domain.Client;
+import mateourrutia.Service.AccountService;
 import mateourrutia.View.Account.CheckingAccountCreateView;
 import mateourrutia.View.Window;
 import mateourrutia.utils.Listed;
@@ -13,36 +14,17 @@ import mateourrutia.utils.Listed;
 import javax.swing.*;
 
 public class CheckingAccountCreateController extends StaticDialogController<CheckingAccountCreateView>  {
-	private final Client 		client;
-	private final AccountDAO 	accountDAO;
+	private final Client 			client;
+	private final AccountService accountService;
 
 	public CheckingAccountCreateController(
-			Window 		window,
-			Client 		client,
-			AccountDAO 	accountDAO
+			Window 			window,
+			Client 			client,
+			AccountService 	accountDAO
 	) {
 		super(window, new CheckingAccountCreateView());
 		this.client = client;
-		this.accountDAO = accountDAO;
-	}
-
-	public CheckingAccount createCheckingAccount() {
-		if ( !isValidDouble(getInnerView().getOverdraft()) )
-		{
-			JOptionPane.showMessageDialog(
-					getInnerView(),
-					"Por favor, solo numeros estan habilitados",
-					"UNFORESEEN CONSEQUENCES",
-					JOptionPane.WARNING_MESSAGE
-			);
-			return null;
-		}
-
-		return new CheckingAccount(
-				client,
-				0,
-				Double.parseDouble(getInnerView().getOverdraft())
-		);
+		this.accountService = accountDAO;
 	}
 
 	private boolean isValidDouble(String value) {
@@ -82,14 +64,23 @@ public class CheckingAccountCreateController extends StaticDialogController<Chec
 			return;
 		}
 
-		CheckingAccount checkingAccount = createCheckingAccount();
-
-		if ( checkingAccount == null )
+		if ( !isValidDouble(getInnerView().getOverdraft()) )
+		{
+			JOptionPane.showMessageDialog(
+					getInnerView(),
+					"Por favor, solo numeros estan habilitados",
+					"UNFORESEEN CONSEQUENCES",
+					JOptionPane.WARNING_MESSAGE
+			);
 			return;
+		}
 
 		try {
-			client.getAccounts().add(checkingAccount);
-			accountDAO.add(checkingAccount, client);
+			accountService.add(new CheckingAccount(
+					client,
+					0,
+					Double.parseDouble(getInnerView().getOverdraft())
+			), client);
 		}
 		catch (Exception e) {
 			ErrorController.show( getView(), e );

@@ -10,7 +10,9 @@ import mateourrutia.Domain.Client;
 import mateourrutia.Exceptions.ObjectNotFoundException;
 import mateourrutia.Factory.AccountFactory;
 import mateourrutia.Factory.PersistenceType;
-import mateourrutia.Services.ClientService;
+import mateourrutia.Service.ClientService;
+import mateourrutia.Service.TransactionHistoryService;
+import mateourrutia.View.AccountOverviewView;
 import mateourrutia.View.ClientOverviewView;
 
 import javax.swing.*;
@@ -24,16 +26,24 @@ import java.util.List;
  * la interfaz que nos permite controlar y manejar nuestras cuentas.
  */
 public class ClientOverviewController extends WindowController<ClientOverviewView> {
-	private final ClientService clientService;
-	private Client client;
-	private final AccountDAO accountDAO = AccountFactory.getAccountDAO(PersistenceType.FILEWRITER);
-	private AccountSimple accountSimple;
+	private final 	ClientService 				clientService;
+	private final 	TransactionHistoryService 	transactionHistoryService;
 
-	public ClientOverviewController(Client client, ClientService clientService) {
-		super(new ClientOverviewView());
+	private 		Client 						client;
+	private 		AccountSimple 				accountSimple;
+
+	public ClientOverviewController(
+			ClientOverviewView 			clientOverviewView,
+			Client 						client,
+			ClientService 				clientService,
+			TransactionHistoryService 	transactionHistoryService
+	) {
+		super(clientOverviewView);
 
 		this.client = client;
 		this.clientService = clientService;
+		this.transactionHistoryService = transactionHistoryService;
+
 		initializeView();
 	}
 
@@ -84,7 +94,8 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 	 */
 	private void reloadUser() {
         try {
-            client = clientService.getClientDAO().get(client.getUuid());
+			clientService.reload();
+            client = clientService.get(client.getUuid());
 			setTable(client);
         }
 		catch (ObjectNotFoundException e) {
@@ -105,8 +116,10 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 				return null;
 
 			return new AccountOverviewController(
+					new AccountOverviewView(),
 					accounts.get(row),
-					accountDAO
+					clientService.getAccountService(),
+					transactionHistoryService
 			);
 		}
 
@@ -134,26 +147,26 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 					CheckingAccountCreateController checkingAccountCreateController = new CheckingAccountCreateController(
 							getWindow(),
 							client,
-							accountDAO
+							clientService.getAccountService()
 					);
 					checkingAccountCreateController.showDialog();
 					break;
 				case 2:
 					SavingsAccountCreateController.SavingsAccountSelected(
 							client,
-							accountDAO,
+							clientService.getAccountService(),
 							getView()
 					);
 					break;
 
 				case 3:
-					WalletAccountCreateController wallet = new WalletAccountCreateController( getWindow(), client, accountDAO );
+					WalletAccountCreateController wallet = new WalletAccountCreateController( getWindow(), client, clientService.getAccountService() );
 					wallet.showDialog();
 					break;
 			}
 
 			try {
-				setTable( clientService.getClientDAO().get(client.getUuid()) );
+				setTable( clientService.get(client.getUuid()) );
 			}
 			catch (ObjectNotFoundException ex) {
 				handleError(ex);
@@ -180,8 +193,8 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 
 			if (confirmDeletion(account))
 				try {
-					accountDAO.delete(account.getUuid(), client);
-					setTable(clientService.getClientDAO().get(client.getUuid()));
+					clientService.getAccountService().delete(account.getUuid(), client);
+					setTable(clientService.get(client.getUuid()));
 				}
 				catch (Exception ex) {
 					handleError(ex);
