@@ -98,7 +98,6 @@ public abstract class AccountImp implements AccountDAO {
 
         getClient.getAccounts().set( objects );
         clientImp.update(getClient);
-
         return true;
     }
 

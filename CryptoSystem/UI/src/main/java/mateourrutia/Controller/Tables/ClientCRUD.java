@@ -4,6 +4,7 @@ import mateourrutia.Controller.ErrorController;
 import mateourrutia.Controller.TableTypes.GeneralTable;
 import mateourrutia.Domain.CheckingAccount;
 import mateourrutia.Domain.Client;
+import mateourrutia.Domain.Currency.Currency;
 import mateourrutia.Domain.SavingsAccount;
 import mateourrutia.Domain.TransactionHistory;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
@@ -106,7 +107,7 @@ public class ClientCRUD extends GeneralTable<Client> {
 						new SavingsAccount(
 								test1,
 								20000,
-								test1.getCuit()
+								Currency.USD
 						),
 						test1
 				);
@@ -114,7 +115,8 @@ public class ClientCRUD extends GeneralTable<Client> {
 						new CheckingAccount(
 								test2,
 								100,
-								300
+								300,
+								Currency.USD
 						),
 						test2
 				);

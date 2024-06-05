@@ -13,18 +13,36 @@ new FormModel {
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "North"
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-				"alignment": 0
-				"alignOnBaseline": true
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"columns": 1
+				"rows": 0
 			} ) {
-				name: "panel1"
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label2"
-					"text": "Limite para retirar"
+				name: "panel2"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"alignment": 0
+					"alignOnBaseline": true
+				} ) {
+					name: "panel1"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "Limite para retirar"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "Overdraft"
+						"columns": 10
+					} )
 				} )
-				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "Overdraft"
-					"columns": 10
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"alignment": 0
+				} ) {
+					name: "panel3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Tipo de moneda"
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "Currency"
+					} )
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"

@@ -1,7 +1,8 @@
 package mateourrutia.Controller;
 
 import mateourrutia.Controller.Tables.TransactionHistorySimple;
-import mateourrutia.Domain.Currency;
+import mateourrutia.Domain.Currency.CurrencyInterface;
+import mateourrutia.Domain.Currency.AllCurrency;
 import mateourrutia.Domain.TransactionHistory;
 import mateourrutia.Service.TransactionHistoryService;
 import mateourrutia.View.TransactionHistoryView;
@@ -19,6 +20,7 @@ public class TransactionHistoryController extends WindowController<TransactionHi
 	 */
 	private TransactionHistory.Status 	status		= TransactionHistory.Status.ALL;
 	private TransactionHistory.Type 	type		= TransactionHistory.Type.ALL;
+	private CurrencyInterface			currency 	= AllCurrency.ALL;
 	private Long 						cbu			= 0L;
 	private double 						balanceMin 	= 0;
 	private double 						balanceMax 	= 0;
@@ -46,6 +48,7 @@ public class TransactionHistoryController extends WindowController<TransactionHi
 		transactionHistorySimple.setModel(transactionHistoryService.getAll(
 				this.status,
 				this.type,
+				this.currency,
 				this.cbu,
 				this.balanceMin,
 				this.balanceMax
@@ -78,6 +81,12 @@ public class TransactionHistoryController extends WindowController<TransactionHi
 		 * Estos dos actionListener solo afectan a los filtros en si, no
 		 * a Type o State.
 		 */
+		getView().getCurrencies().setModel(new DefaultComboBoxModel<>( AllCurrency.getAlL().toArray() ) );
+		getView().getCurrencies().addActionListener(e -> {
+			currency = AllCurrency.getAlL().get(
+					getView().getCurrencies().getSelectedIndex()
+			);
+		});
 
 		getView().getReset().addActionListener(new ActionListener() {
 			@Override
@@ -157,19 +166,6 @@ public class TransactionHistoryController extends WindowController<TransactionHi
 		catch (NumberFormatException e) {
 			return false;
 		}
-	}
-
-	private DefaultComboBoxModel<String> getAccountTypes() {
-		DefaultComboBoxModel<String> accountTypes = new DefaultComboBoxModel<>();
-
-		accountTypes.addElement("All");
-		accountTypes.addElement("CheckingAccount");
-		accountTypes.addElement("SavingAccount");
-
-		for (Currency currency : Currency.values())
-			accountTypes.addElement( "Wallet en " + currency );
-
-		return accountTypes;
 	}
 
 	public Long getCbu() {

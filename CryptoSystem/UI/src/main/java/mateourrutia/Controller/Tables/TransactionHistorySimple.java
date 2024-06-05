@@ -3,7 +3,6 @@ package mateourrutia.Controller.Tables;
 import mateourrutia.Controller.TableTypes.SimpleTable;
 import mateourrutia.Domain.Account;
 import mateourrutia.Domain.TransactionHistory;
-import mateourrutia.Domain.Wallet;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
@@ -22,7 +21,7 @@ public class TransactionHistorySimple extends SimpleTable<TransactionHistory> {
 	) {
 		DefaultTableModel tableModel = new DefaultTableModel(
 				convert( transactionHistories ),
-				new Object[]{"Fecha", "Estado", "Tipo", "Cantidad", "De", "De C. Tipo", "Hacia", "Hacia C. Tipo"}
+				new Object[]{"Fecha", "Estado", "Tipo", "Cantidad", "De (CBU)", "De C. Tipo", "Hacia (CBU)", "Hacia C. Tipo"}
 		) {
 			@Override
 			public Class<?> getColumnClass(int columnIndex) {
@@ -38,7 +37,7 @@ public class TransactionHistorySimple extends SimpleTable<TransactionHistory> {
 				if ( columnIndex == 3 )
 					return double.class;
 
-				if ( columnIndex == 4 )
+				if ( columnIndex == 4 || columnIndex == 6 )
 					return Long.class;
 
 				return super.getColumnClass(columnIndex);
@@ -74,10 +73,8 @@ public class TransactionHistorySimple extends SimpleTable<TransactionHistory> {
 				transactionArray[i][6] = transactionHistory.getToAccount().getCbu();
 				transactionArray[i][7] = AccountDetail(transactionHistory.getToAccount());
 			}
-			else {
-				transactionArray[i][6] = "PERSONAL";
-				transactionArray[i][7] = null;
-			}
+			else
+				transactionArray[i][6] = transactionArray[i][7] = null;
 		}
 
 		return transactionArray;
@@ -86,13 +83,10 @@ public class TransactionHistorySimple extends SimpleTable<TransactionHistory> {
 	private String AccountDetail(
 			Account account
 	) {
-		return account instanceof Wallet ?
-				account
-						.getClass().getSimpleName()
-						.concat(" en ")
-						.concat( ((Wallet)account).getCryptocurrency().getName().toString() ) :
-				account
-						.getClass().getSimpleName();
+		return account
+				.getClass().getSimpleName()
+				.concat(" en ")
+				.concat( account.getCurrency().toString() );
 	}
 
 }

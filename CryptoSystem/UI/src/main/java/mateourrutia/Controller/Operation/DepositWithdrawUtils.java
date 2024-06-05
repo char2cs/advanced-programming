@@ -10,7 +10,7 @@ import mateourrutia.View.Window;
 import javax.swing.*;
 
 public abstract class DepositWithdrawUtils<T extends JPanel> extends StaticDialogController<T> {
-	private final Account 					account;
+	private Account 						account;
 	private final AccountService 			accountService;
 	private final TransactionHistoryService transactionHistoryService;
 
@@ -106,7 +106,7 @@ public abstract class DepositWithdrawUtils<T extends JPanel> extends StaticDialo
 					JOptionPane.ERROR_MESSAGE
 			);
 
-		if ( transactionHistory.getStatus().equals(TransactionHistory.Status.ERROR_WALLETS_ARE_NOT_FROM_SAME_CLIENT) )
+		if ( transactionHistory.getStatus().equals(TransactionHistory.Status.ERROR_ACCOUNTS_ARE_NOT_FROM_SAME_CLIENT) )
 			JOptionPane.showMessageDialog(
 					getInnerView(),
 					"Las cuentas no son del mismo cliente.",
@@ -122,10 +122,18 @@ public abstract class DepositWithdrawUtils<T extends JPanel> extends StaticDialo
 					JOptionPane.ERROR_MESSAGE
 			);
 
-		if ( transactionHistory.getStatus().equals(TransactionHistory.Status.ERROR_WALLETS_ARE_DIFFERENT_TYPE) )
+		if ( transactionHistory.getStatus().equals(TransactionHistory.Status.ERROR_ACCOUNTS_ARE_DIFFERENT_TYPE) )
 			JOptionPane.showMessageDialog(
 					getInnerView(),
 					"La Wallet destino es de otra crypto, opta por una conversion y luego una transferencia.",
+					"UNFORESEEN CONSEQUENCES",
+					JOptionPane.ERROR_MESSAGE
+			);
+
+		if ( transactionHistory.getStatus().equals(TransactionHistory.Status.ERROR_ACCOUNTS_ARE_SAME_TYPE) )
+			JOptionPane.showMessageDialog(
+					getInnerView(),
+					"Las cuentas son de la misma moneda.",
 					"UNFORESEEN CONSEQUENCES",
 					JOptionPane.ERROR_MESSAGE
 			);

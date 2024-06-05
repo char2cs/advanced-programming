@@ -1,0 +1,47 @@
+[02:14:42] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[02:14:42] [SUCCESS] - Accounts data loaded successfully!
+[02:14:42] [FATAL] - @ 'TransactionHistory' File not found: data/TransactionHistory.B64 (No such file or directory)
+[02:14:42] [SUCCESS] - Transactions History data loaded successfully!
+[02:14:45] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[02:14:45] [FATAL] - @ 'Client' File not found: data/Client.dat (No such file or directory)
+[02:14:45] [INFO] - @ 'Client' Object saved
+[02:14:45] [SUCCESS] - @ 'Client' Object with id: '73066ac9-a405-4b62-9fb0-24d885343346' added.
+[02:14:45] [INFO] - @ 'Client' Object saved
+[02:14:45] [SUCCESS] - @ 'Client' Object with id: '4dadb883-496d-45b6-806a-2c6788dda7d4' added.
+[02:14:45] [INFO] - @ 'Client' Object saved
+[02:14:45] [SUCCESS] - @ 'Client' Updated object with id '73066ac9-a405-4b62-9fb0-24d885343346'
+[02:14:45] [INFO] - @ 'Client' Object saved
+[02:14:45] [SUCCESS] - @ 'Client' Updated object with id '4dadb883-496d-45b6-806a-2c6788dda7d4'
+[02:14:45] [INFO] - @ 'Client' Object saved
+[02:14:45] [SUCCESS] - @ 'Client' Updated object with id '73066ac9-a405-4b62-9fb0-24d885343346'
+[02:14:45] [INFO] - @ 'Client' Object saved
+[02:14:45] [SUCCESS] - @ 'Client' Updated object with id '4dadb883-496d-45b6-806a-2c6788dda7d4'
+[02:14:45] [FATAL] - @ 'TransactionHistory' File not found: data/TransactionHistory.B64 (No such file or directory)
+[02:14:45] [FATAL] - @ 'TransactionHistory' File not found: data/TransactionHistory.B64 (No such file or directory)
+[02:14:45] [INFO] - @ 'TransactionHistory' Object saved
+[02:14:45] [SUCCESS] - @ 'TransactionHistory' Object with id: 'bb941533-945f-421f-897b-ed738fbb7c23' added.
+[02:14:51] [INFO] - @ 'Client' Object saved
+[02:14:51] [SUCCESS] - @ 'Client' Updated object with id '73066ac9-a405-4b62-9fb0-24d885343346'
+[02:14:57] [SUCCESS] - Client data loaded successfully!
+[02:15:04] [INFO] - @ 'TransactionHistory' Object saved
+[02:15:04] [SUCCESS] - @ 'TransactionHistory' Object with id: '46d949fe-65e2-418d-96db-5f8ebafab682' added.
+[02:15:04] [INFO] - @ 'Client' Object saved
+[02:15:04] [SUCCESS] - @ 'Client' Updated object with id '73066ac9-a405-4b62-9fb0-24d885343346'
+[02:15:04] [INFO] - @ 'Client' Object saved
+[02:15:04] [SUCCESS] - @ 'Client' Updated object with id '73066ac9-a405-4b62-9fb0-24d885343346'
+[02:15:05] [SUCCESS] - Client data loaded successfully!
+[02:15:16] [SUCCESS] - Accounts data loaded successfully!
+[02:15:16] [SUCCESS] - Client data loaded successfully!
+[02:15:16] [SUCCESS] - Transactions History data loaded successfully!
+[02:16:07] [SUCCESS] - Accounts data loaded successfully!
+[02:16:07] [SUCCESS] - Client data loaded successfully!
+[02:16:07] [SUCCESS] - Transactions History data loaded successfully!
+[02:16:17] [INFO] - @ 'TransactionHistory' Object saved
+[02:16:17] [SUCCESS] - @ 'TransactionHistory' Object with id: '9fe854fa-4f57-4774-9d31-c258350e0adb' added.
+[02:16:17] [INFO] - @ 'Client' Object saved
+[02:16:17] [SUCCESS] - @ 'Client' Updated object with id '73066ac9-a405-4b62-9fb0-24d885343346'
+[02:16:17] [INFO] - @ 'Client' Object saved
+[02:16:17] [SUCCESS] - @ 'Client' Updated object with id '73066ac9-a405-4b62-9fb0-24d885343346'
+[02:16:18] [SUCCESS] - Client data loaded successfully!
+[02:16:19] [SUCCESS] - Transactions History data loaded successfully!
+[02:16:54] [SUCCESS] - Client data loaded successfully!

@@ -1,5 +1,7 @@
 package mateourrutia.DAO;
 
+import mateourrutia.Domain.Currency.AllCurrency;
+import mateourrutia.Domain.Currency.CurrencyInterface;
 import mateourrutia.Domain.TransactionHistory;
 
 import java.util.List;
@@ -11,10 +13,11 @@ import java.util.List;
  */
 public interface TransactionHistoryDAO extends CRUD<mateourrutia.Domain.TransactionHistory> {
 	List<TransactionHistory> getAll(
-			TransactionHistory.Status 	status,
-			TransactionHistory.Type 	type,
-			Long						cbu,
-			double 						minBalance,
-			double 						maxBalance
+			TransactionHistory.Status   status,
+			TransactionHistory.Type     type,
+			CurrencyInterface 			currency,
+			Long                        cbu,
+			Double                      minBalance,
+			Double                      maxBalance
 	);
 }

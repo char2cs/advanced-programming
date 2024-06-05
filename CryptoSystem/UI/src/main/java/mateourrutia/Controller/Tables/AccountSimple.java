@@ -68,12 +68,7 @@ public class AccountSimple extends SimpleTable<Account> {
 				accountArray[i][2] = null;
 			}
 
-			if ( account.getClass().getSimpleName().equals("Wallet") ) {
-				assert account instanceof Wallet;
-				accountArray[i][3] = account.getClass().getSimpleName() + " en " + ((Wallet) account).getCryptocurrency().getName();
-			}
-			else
-				accountArray[i][3] = account.getClass().getSimpleName();
+			accountArray[i][3] = account.getClass().getSimpleName() + " en " + (account).getCurrency();
 		}
 
 		return accountArray;

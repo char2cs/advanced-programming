@@ -21,6 +21,19 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 					"alignment": 0
 				} ) {
+					name: "panel4"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Cuenta a transferir"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "CBU"
+						"columns": 12
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"alignment": 0
+				} ) {
 					name: "panel3"
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label1"
@@ -31,16 +44,11 @@ new FormModel {
 						"columns": 12
 					} )
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-					"alignment": 0
-				} ) {
-					name: "panel2"
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label3"
-						"text": "Convertir a"
-					} )
-					add( new FormComponent( "javax.swing.JComboBox" ) {
-						name: "Crypto"
+						name: "label4"
+						"text": "La conversion se realizara dependiendo del tipo de moneda destino"
 					} )
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {

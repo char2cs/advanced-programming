@@ -19,12 +19,14 @@ public class ConvertView extends JPanel {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         label2 = new JLabel();
         panel1 = new JPanel();
+        panel4 = new JPanel();
+        label3 = new JLabel();
+        CBU = new JTextField();
         panel3 = new JPanel();
         label1 = new JLabel();
         Balance = new JTextField();
-        panel2 = new JPanel();
-        label3 = new JLabel();
-        Crypto = new JComboBox();
+        scrollPane1 = new JScrollPane();
+        label4 = new JLabel();
 
         //======== this ========
         setLayout(new BorderLayout());
@@ -38,6 +40,20 @@ public class ConvertView extends JPanel {
         //======== panel1 ========
         {
             panel1.setLayout(new GridLayout(0, 1));
+
+            //======== panel4 ========
+            {
+                panel4.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                //---- label3 ----
+                label3.setText("Cuenta a transferir");
+                panel4.add(label3);
+
+                //---- CBU ----
+                CBU.setColumns(12);
+                panel4.add(CBU);
+            }
+            panel1.add(panel4);
 
             //======== panel3 ========
             {
@@ -53,16 +69,14 @@ public class ConvertView extends JPanel {
             }
             panel1.add(panel3);
 
-            //======== panel2 ========
+            //======== scrollPane1 ========
             {
-                panel2.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-                //---- label3 ----
-                label3.setText("Convertir a");
-                panel2.add(label3);
-                panel2.add(Crypto);
+                //---- label4 ----
+                label4.setText("La conversion se realizara dependiendo del tipo de moneda destino");
+                scrollPane1.setViewportView(label4);
             }
-            panel1.add(panel2);
+            panel1.add(scrollPane1);
         }
         add(panel1, BorderLayout.CENTER);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
@@ -71,19 +85,21 @@ public class ConvertView extends JPanel {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     private JLabel label2;
     private JPanel panel1;
+    private JPanel panel4;
+    private JLabel label3;
+    private JTextField CBU;
     private JPanel panel3;
     private JLabel label1;
     private JTextField Balance;
-    private JPanel panel2;
-    private JLabel label3;
-    private JComboBox Crypto;
+    private JScrollPane scrollPane1;
+    private JLabel label4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
     public JTextField getBalance() {
         return Balance;
     }
 
-    public JComboBox getCrypto() {
-        return Crypto;
+    public JTextField getCBU() {
+        return CBU;
     }
 }

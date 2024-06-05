@@ -38,7 +38,7 @@ public class Main {
 		 *
 		 * Se deja para depurar a futuro, pero suele producir inconsistencias.
 		 */
-		//clientService.listener();
+//		clientService.listener();
 
 		/**
 		 * Iniciamos el servicio de TransactionHistory
@@ -51,7 +51,10 @@ public class Main {
 		 * UI Stuff
 		 */
 		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+			/**
+			 * Depende el sistema, crashea o no.
+			 */
+			//UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
 		}
 		catch (Exception e) {
 			e.printStackTrace();

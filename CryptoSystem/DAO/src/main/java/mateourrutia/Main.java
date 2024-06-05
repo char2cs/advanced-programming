@@ -3,6 +3,7 @@ package mateourrutia;
 import mateourrutia.DAO.AccountDAO;
 import mateourrutia.DAO.ClientDAO;
 import mateourrutia.Domain.Client;
+import mateourrutia.Domain.Currency.Currency;
 import mateourrutia.Domain.SavingsAccount;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Factory.AccountFactory;
@@ -25,7 +26,7 @@ public class Main {
 
 		SavingsAccount savings = new SavingsAccount(mateo,
 				23213,
-				204455183406L
+				Currency.ARS
 		);
 
 		for ( Client client : clientDAO.getAll() )

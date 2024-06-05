@@ -152,11 +152,12 @@ public class ClientOverviewController extends WindowController<ClientOverviewVie
 					checkingAccountCreateController.showDialog();
 					break;
 				case 2:
-					SavingsAccountCreateController.SavingsAccountSelected(
+					SavingsAccountCreateController savingsAccountCreateController = new SavingsAccountCreateController(
+							getWindow(),
 							client,
-							clientService.getAccountService(),
-							getView()
+							clientService.getAccountService()
 					);
+					savingsAccountCreateController.showDialog();
 					break;
 
 				case 3:

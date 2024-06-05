@@ -3,6 +3,7 @@ package mateourrutia.Controller.Account;
 import mateourrutia.Controller.ErrorController;
 import mateourrutia.Controller.StaticDialogController;
 import mateourrutia.Domain.*;
+import mateourrutia.Domain.Currency.CryptoCurrency;
 import mateourrutia.Service.AccountService;
 import mateourrutia.View.Account.WalletAccountCreateView;
 import mateourrutia.View.Window;
@@ -25,13 +26,13 @@ public class WalletAccountCreateController extends StaticDialogController<Wallet
 	}
 
 	private void initController() {
-		for (Currency currency : Currency.values())
+		for (CryptoCurrency currency : CryptoCurrency.values())
 			getInnerView().getDropdown().addItem(currency);
 	}
 
 	@Override
 	public void onAccept() {
-		Currency currency = Currency.values()[ getInnerView().getDropdown().getSelectedIndex() ];
+		CryptoCurrency currency = CryptoCurrency.values()[ getInnerView().getDropdown().getSelectedIndex() ];
 
 		if ( checkIfRepeated(currency) )
 		{
@@ -47,7 +48,7 @@ public class WalletAccountCreateController extends StaticDialogController<Wallet
 		Wallet wallet = new Wallet(
 				client,
 				0,
-				new Cryptocurrency(currency)
+				currency
 		);
 
 		try {
@@ -61,10 +62,10 @@ public class WalletAccountCreateController extends StaticDialogController<Wallet
 	@Override
 	public void onCancel() {}
 
-	private boolean checkIfRepeated(Currency currency) {
+	private boolean checkIfRepeated(CryptoCurrency currency) {
 		for ( Account account : client.getAccounts().getList() )
 			if ( account instanceof Wallet )
-				if ( ((Wallet) account).getCryptocurrency().getName() == currency )
+				if ( account.getCurrency() == currency )
 					return true;
 
 		return false;

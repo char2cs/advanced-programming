@@ -2,6 +2,8 @@ package mateourrutia.Imp;
 
 import mateourrutia.DAO.TransactionHistoryDAO;
 import mateourrutia.Domain.Client;
+import mateourrutia.Domain.Currency.AllCurrency;
+import mateourrutia.Domain.Currency.CurrencyInterface;
 import mateourrutia.Domain.TransactionHistory;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
@@ -64,21 +66,30 @@ public abstract class TransactionHistoryImp<T extends Writers<TransactionHistory
 
     @Override
     public List<TransactionHistory> getAll(
-            TransactionHistory.Status status,
-            TransactionHistory.Type type,
-            Long cbu,
-            double minBalance,
-            double maxBalance
+            TransactionHistory.Status   status,
+            TransactionHistory.Type     type,
+            CurrencyInterface           currency,
+            Long                        cbu,
+            Double                      minBalance,
+            Double                      maxBalance
     ) {
         List<TransactionHistory> list = Writer.getAll();
 
         return list.stream()
-                .filter(transaction -> (cbu == null || cbu == 0 || transaction.getFromAccount().getCbu().equals(cbu) ||
-                        (transaction.getToAccount() != null && transaction.getToAccount().getCbu().equals(cbu))))
-                .filter(transaction -> (status == TransactionHistory.Status.ALL || transaction.getStatus().equals(status)))
-                .filter(transaction -> (type == TransactionHistory.Type.ALL || transaction.getType().equals(type)))
-                .filter(transaction -> (minBalance == 0 || transaction.getAmount() >= minBalance))
-                .filter(transaction -> (maxBalance == 0 || transaction.getAmount() <= maxBalance))
+                .filter(transaction -> (cbu == null || cbu == 0 ||
+                        transaction.getFromAccount().getCbu().equals(cbu) ||
+                        (transaction.getToAccount() != null &&
+                                transaction.getToAccount().getCbu().equals(cbu))))
+                .filter(transaction -> (status == TransactionHistory.Status.ALL ||
+                        transaction.getStatus() == status))
+                .filter(transaction -> (type == TransactionHistory.Type.ALL ||
+                        transaction.getType() == type))
+                .filter(transaction -> (currency == AllCurrency.ALL ||
+                        transaction.getFromAccount().getCurrency() == currency))
+                .filter(transaction -> (minBalance == 0 ||
+                        transaction.getAmount() >= minBalance))
+                .filter(transaction -> (maxBalance == 0 ||
+                        transaction.getAmount() <= maxBalance))
                 .sorted(Comparator.comparing(TransactionHistory::getDate))
                 .collect(Collectors.toList());
     }

@@ -1,16 +1,17 @@
 package mateourrutia.Domain;
 
-public class SavingsAccount extends Account {
+import mateourrutia.Domain.Currency.Currency;
 
+public class SavingsAccount extends Account {
 	private Long cuit;
 
 	public SavingsAccount(
-			Client 	client,
-			double 	balance,
-			Long 	cuit
+			Client 		client,
+			double 		balance,
+			Currency 	currency
 	) {
-		super(client, balance);
-		this.cuit = cuit;
+		super(client, balance, currency);
+		this.cuit = client.getCuit();
 	}
 
 	public Long getCuit() {
@@ -19,130 +20,6 @@ public class SavingsAccount extends Account {
 
 	public void setCuit(Long cuit) {
 		this.cuit = cuit;
-	}
-
-	@Override
-	public TransactionHistory deposit(double amount) {
-		balance += amount;
-
-		return new TransactionHistory(
-				TransactionHistory.Type.DEPOSIT,
-				TransactionHistory.Status.SUCCESS,
-				amount,
-				this
-		);
-	}
-
-	@Override
-	public TransactionHistory withdraw(double amount) {
-		if (balance >= amount)
-		{
-			balance -= amount;
-
-			return new TransactionHistory(
-					TransactionHistory.Type.WITHDRAW,
-					TransactionHistory.Status.SUCCESS,
-					amount,
-					this
-			);
-		}
-
-		return new TransactionHistory(
-				TransactionHistory.Type.WITHDRAW,
-				TransactionHistory.Status.ERROR_NOT_ENOUGH_BALANCE,
-				amount,
-				this
-		);
-	}
-
-	@Override
-	public TransactionHistory transfer(
-			double amount,
-			Account toAccount
-	) {
-		if ( toAccount.getUuid().equals( this.getUuid() ) )
-			return new TransactionHistory(
-					TransactionHistory.Type.TRANSFER,
-					TransactionHistory.Status.ERROR_ACCOUNTS_ARE_THE_SAME_ACCOUNT,
-					amount,
-					this,
-					toAccount
-			);
-
-		if ( toAccount instanceof Wallet )
-			return new TransactionHistory(
-					TransactionHistory.Type.TRANSFER,
-					TransactionHistory.Status.ERROR_ACCOUNT_IS_WALLET,
-					amount,
-					this,
-					toAccount
-			);
-
-		if (balance >= amount)
-		{
-			balance -= amount;
-			toAccount.deposit(amount);
-
-			return new TransactionHistory(
-					TransactionHistory.Type.TRANSFER,
-					TransactionHistory.Status.SUCCESS,
-					amount,
-					this,
-					toAccount
-			);
-		}
-
-		return new TransactionHistory(
-				TransactionHistory.Type.TRANSFER,
-				TransactionHistory.Status.ERROR_NOT_ENOUGH_BALANCE,
-				amount,
-				this,
-				toAccount
-		);
-	}
-
-	@Override
-	public TransactionHistory convert(double amount, Account toAccount) {
-		if (!( toAccount instanceof Wallet ))
-			return new TransactionHistory(
-					TransactionHistory.Type.CONVERT,
-					TransactionHistory.Status.ERROR_ACCOUNT_IS_NOT_WALLET,
-					amount,
-					this,
-					toAccount
-			);
-
-		if ( !toAccount.getClient().getCuit().equals( this.getClient().getCuit() ) )
-			return new TransactionHistory(
-					TransactionHistory.Type.CONVERT,
-					TransactionHistory.Status.ERROR_WALLETS_ARE_NOT_FROM_SAME_CLIENT,
-					amount,
-					this,
-					toAccount
-			);
-
-		if (balance >= amount)
-		{
-			balance -= amount;
-			double convertedAmount = amount / ((Wallet) toAccount).getCryptocurrency().getCurrentValue();
-			toAccount.deposit(convertedAmount);
-
-			return new TransactionHistory(
-					TransactionHistory.Type.CONVERT,
-					TransactionHistory.Status.SUCCESS,
-					convertedAmount,
-					this,
-					toAccount
-			);
-		}
-
-		return new TransactionHistory(
-				TransactionHistory.Type.CONVERT,
-				TransactionHistory.Status.ERROR_OVERDRAFT_ISSUE,
-				amount,
-				this,
-				toAccount
-		);
 	}
 
 	@Override

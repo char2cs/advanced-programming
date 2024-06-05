@@ -34,6 +34,9 @@ public class TransactionHistoryView extends JPanel {
         MontoMax = new JPanel();
         label6 = new JLabel();
         BalanceMax = new JTextField();
+        panel1 = new JPanel();
+        label7 = new JLabel();
+        Currencies = new JComboBox();
         ButtonsBottom = new JPanel();
         label2 = new JLabel();
         State = new JComboBox();
@@ -126,6 +129,17 @@ public class TransactionHistoryView extends JPanel {
                     MontoMax.add(BalanceMax);
                 }
                 FilterContent.add(MontoMax);
+
+                //======== panel1 ========
+                {
+                    panel1.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                    //---- label7 ----
+                    label7.setText("Moneda");
+                    panel1.add(label7);
+                    panel1.add(Currencies);
+                }
+                FilterContent.add(panel1);
             }
             Buttons.add(FilterContent, BorderLayout.CENTER);
         }
@@ -167,6 +181,9 @@ public class TransactionHistoryView extends JPanel {
     private JPanel MontoMax;
     private JLabel label6;
     private JTextField BalanceMax;
+    private JPanel panel1;
+    private JLabel label7;
+    private JComboBox Currencies;
     private JPanel ButtonsBottom;
     private JLabel label2;
     private JComboBox State;
@@ -213,5 +230,9 @@ public class TransactionHistoryView extends JPanel {
 
     public JComboBox getState() {
         return State;
+    }
+
+    public JComboBox getCurrencies() {
+        return Currencies;
     }
 }

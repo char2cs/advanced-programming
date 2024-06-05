@@ -44,9 +44,8 @@ public class AccountOverviewController extends WindowController<AccountOverviewV
 				.concat(". ")
 				.concat(account.getClass().getSimpleName());
 
-		if ( account instanceof Wallet )
-			title = title.concat(" en ")
-					.concat( ((Wallet) account).getCryptocurrency().getName().toString() );
+		title = title.concat(" en ")
+				.concat( account.getCurrency().toString() );
 
 		setTitle( title );
 		getView().getAccount().setText( title );

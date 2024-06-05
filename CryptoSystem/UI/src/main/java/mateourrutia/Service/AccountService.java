@@ -76,6 +76,7 @@ public class AccountService implements AccountDAO {
 	public boolean update(Account account, Client client) throws ObjectNotFoundException, OperationFailedException {
 		client.getAccounts().set(account);
 		accounts.set(account);
+
 		return accountDAO.update(account, client);
 	}
 

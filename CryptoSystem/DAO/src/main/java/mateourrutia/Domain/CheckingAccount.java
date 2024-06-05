@@ -1,14 +1,17 @@
 package mateourrutia.Domain;
 
+import mateourrutia.Domain.Currency.Currency;
+
 public class CheckingAccount extends Account {
 	private double overdraftLimit;
 
 	public CheckingAccount(
-			Client 	client,
-			double 	balance,
-			double 	overdraftLimit
+			Client 		client,
+			double 		balance,
+			double 		overdraftLimit,
+			Currency 	currency
 	) {
-		super(client, balance);
+		super(client, balance, currency);
 		this.overdraftLimit = overdraftLimit;
 	}
 
@@ -17,22 +20,10 @@ public class CheckingAccount extends Account {
 	}
 
 	@Override
-	public TransactionHistory deposit(double amount) {
-		balance += amount;
-
-		return new TransactionHistory(
-				TransactionHistory.Type.DEPOSIT,
-				TransactionHistory.Status.SUCCESS,
-				amount,
-				this
-		);
-	}
-
-	@Override
 	public TransactionHistory withdraw(double amount) {
-		if (amount <= balance || amount <= balance + overdraftLimit)
+		if (amount <= getBalance() || amount <= getBalance() + overdraftLimit)
 		{
-			balance -= amount;
+			super.withdraw(amount);
 			return new TransactionHistory(
 					TransactionHistory.Type.WITHDRAW,
 					TransactionHistory.Status.SUCCESS,
@@ -60,25 +51,27 @@ public class CheckingAccount extends Account {
 					toAccount
 			);
 
-		if (toAccount instanceof Wallet)
+		if (!toAccount.getCurrency().equals(this.getCurrency()))
 			return new TransactionHistory(
 					TransactionHistory.Type.TRANSFER,
-					TransactionHistory.Status.ERROR_ACCOUNT_IS_WALLET,
+					TransactionHistory.Status.ERROR_ACCOUNTS_ARE_DIFFERENT_TYPE,
 					amount,
 					this,
 					toAccount
 			);
 
-		if (amount <= balance || amount <= balance + overdraftLimit)
+		if (amount <= getBalance() || amount <= getBalance() + overdraftLimit)
 		{
-			balance -= amount;
-			toAccount.deposit(amount);
+			super.withdraw(amount);
+
+			TransactionHistory helper = toAccount.deposit(amount);
+
 			return new TransactionHistory(
 					TransactionHistory.Type.TRANSFER,
 					TransactionHistory.Status.SUCCESS,
 					amount,
 					this,
-					toAccount
+					helper.getFromAccount()
 			);
 		}
 
@@ -93,36 +86,37 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public TransactionHistory convert(double amount, Account toAccount) {
-		if (!(toAccount instanceof Wallet))
-			return new TransactionHistory(
-					TransactionHistory.Type.CONVERT,
-					TransactionHistory.Status.ERROR_ACCOUNT_IS_NOT_WALLET,
-					amount,
-					this,
-					toAccount
-			);
-
 		if (!toAccount.getClient().getCuit().equals(this.getClient().getCuit()))
 			return new TransactionHistory(
 					TransactionHistory.Type.CONVERT,
-					TransactionHistory.Status.ERROR_WALLETS_ARE_NOT_FROM_SAME_CLIENT,
+					TransactionHistory.Status.ERROR_ACCOUNTS_ARE_NOT_FROM_SAME_CLIENT,
 					amount,
 					this,
 					toAccount
 			);
 
-		if (amount <= balance || amount <= balance + overdraftLimit)
+		if (toAccount.getCurrency().equals(this.getCurrency()))
+			return new TransactionHistory(
+					TransactionHistory.Type.CONVERT,
+					TransactionHistory.Status.ERROR_ACCOUNTS_ARE_SAME_TYPE,
+					amount,
+					this,
+					toAccount
+			);
+
+		if (amount <= getBalance() || amount <= getBalance() + overdraftLimit)
 		{
-			balance -= amount;
-			double convertedAmount = amount / ((Wallet) toAccount).getCryptocurrency().getCurrentValue();
-			toAccount.deposit(convertedAmount);
+			super.withdraw(amount);
+			double convertedAmount = amount * getCurrentValue() / toAccount.getCurrentValue();
+
+			TransactionHistory helper = toAccount.deposit(convertedAmount);
 
 			return new TransactionHistory(
 					TransactionHistory.Type.CONVERT,
 					TransactionHistory.Status.SUCCESS,
-					convertedAmount,
+					amount,
 					this,
-					toAccount
+					helper.getFromAccount()
 			);
 		}
 
@@ -134,7 +128,6 @@ public class CheckingAccount extends Account {
 				toAccount
 		);
 	}
-
 
 	@Override
 	public String toString() {

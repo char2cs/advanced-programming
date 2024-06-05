@@ -2,6 +2,7 @@ package mateourrutia.Service;
 
 import mateourrutia.DAO.CRUD;
 import mateourrutia.DAO.TransactionHistoryDAO;
+import mateourrutia.Domain.Currency.CurrencyInterface;
 import mateourrutia.Domain.TransactionHistory;
 import mateourrutia.Exceptions.ObjectAlreadyExistsException;
 import mateourrutia.Exceptions.ObjectNotFoundException;
@@ -101,18 +102,20 @@ public class TransactionHistoryService implements CRUD<TransactionHistory> {
 	}
 
 	public List<TransactionHistory> getAll(
-			TransactionHistory.Status status,
-			TransactionHistory.Type type,
-			Long amount,
-			double balanceMin,
-			double balanceMax
+			TransactionHistory.Status   status,
+			TransactionHistory.Type     type,
+			CurrencyInterface 			currency,
+			Long                        cbu,
+			Double                      minBalance,
+			Double                      maxBalance
 	) {
 		return transactionHistoryDAO.getAll(
 				status,
 				type,
-				amount,
-				balanceMin,
-				balanceMax
+				currency,
+				cbu,
+				minBalance,
+				maxBalance
 		);
 	}
 
